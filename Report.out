@@ -1,0 +1,53 @@
+\BOOKMARK [0][-]{chapter*.2}{Abstract}{}% 1
+\BOOKMARK [0][-]{chapter*.3}{Nomenclature}{}% 2
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
+\BOOKMARK [1][-]{section.1.1}{Related Work}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{General Framework}{}% 5
+\BOOKMARK [1][-]{subsection.2.0.1}{SVO \046 MSF}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.0.2}{Base Detection \046 Base Tracking}{subsection.2.0.1}% 7
+\BOOKMARK [2][-]{subsection.2.0.3}{Area Exploration \046 Trajectory Generation}{subsection.2.0.1}% 8
+\BOOKMARK [2][-]{subsection.2.0.4}{Flight Control \046 Copilot}{subsection.2.0.1}% 9
+\BOOKMARK [0][-]{chapter.3}{Base Tracking}{}% 10
+\BOOKMARK [1][-]{section.3.1}{Extended Kalman Filter}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{Prediction update: non-holonomic model}{chapter.3}% 12
+\BOOKMARK [2][-]{subsection.3.2.1}{Straight and circular path}{section.3.2}% 13
+\BOOKMARK [2][-]{subsection.3.2.2}{Infinity shape path}{section.3.2}% 14
+\BOOKMARK [1][-]{section.3.3}{Measurement update}{chapter.3}% 15
+\BOOKMARK [2][-]{subsection.3.3.1}{Tag Detector}{section.3.3}% 16
+\BOOKMARK [2][-]{subsection.3.3.2}{Cross Detector}{section.3.3}% 17
+\BOOKMARK [2][-]{subsection.3.3.3}{Covariance Estimation}{section.3.3}% 18
+\BOOKMARK [1][-]{section.3.4}{Results}{chapter.3}% 19
+\BOOKMARK [0][-]{chapter.4}{Area exploration}{}% 20
+\BOOKMARK [1][-]{section.4.1}{State machine}{chapter.4}% 21
+\BOOKMARK [2][-]{subsection.4.1.1}{Phases}{section.4.1}% 22
+\BOOKMARK [0][-]{chapter.5}{Trajectory Generator}{}% 23
+\BOOKMARK [1][-]{section.5.1}{Base trajectory prediction}{chapter.5}% 24
+\BOOKMARK [1][-]{section.5.2}{Rapid Trajectory}{chapter.5}% 25
+\BOOKMARK [1][-]{section.5.3}{Results}{chapter.5}% 26
+\BOOKMARK [0][-]{chapter.6}{Nonlinear Model Predictive Control}{}% 27
+\BOOKMARK [1][-]{section.6.1}{Model}{chapter.6}% 28
+\BOOKMARK [1][-]{section.6.2}{Cost Function}{chapter.6}% 29
+\BOOKMARK [1][-]{section.6.3}{Acado Library}{chapter.6}% 30
+\BOOKMARK [1][-]{section.6.4}{Learning}{chapter.6}% 31
+\BOOKMARK [1][-]{section.6.5}{Results}{chapter.6}% 32
+\BOOKMARK [0][-]{chapter.7}{Experiments}{}% 33
+\BOOKMARK [0][-]{chapter.8}{Scientific Writing}{}% 34
+\BOOKMARK [1][-]{section.8.1}{General Style}{chapter.8}% 35
+\BOOKMARK [1][-]{section.8.2}{Important Stuff}{chapter.8}% 36
+\BOOKMARK [1][-]{section.8.3}{Small Things}{chapter.8}% 37
+\BOOKMARK [0][-]{chapter.9}{LaTeX Tips and Tricks}{}% 38
+\BOOKMARK [1][-]{section.9.1}{Using Git}{chapter.9}% 39
+\BOOKMARK [1][-]{section.9.2}{Headings}{chapter.9}% 40
+\BOOKMARK [1][-]{section.9.3}{References}{chapter.9}% 41
+\BOOKMARK [1][-]{section.9.4}{Writing Equations}{chapter.9}% 42
+\BOOKMARK [1][-]{section.9.5}{Including Graphics}{chapter.9}% 43
+\BOOKMARK [1][-]{section.9.6}{Including Matlab Figures}{chapter.9}% 44
+\BOOKMARK [1][-]{section.9.7}{Including Code in your Document}{chapter.9}% 45
+\BOOKMARK [0][-]{chapter.10}{RPG Notation Style}{}% 46
+\BOOKMARK [1][-]{section.10.1}{Variable styles in LaTeX}{chapter.10}% 47
+\BOOKMARK [1][-]{section.10.2}{Coordinate Systems and Rotations}{chapter.10}% 48
+\BOOKMARK [1][-]{section.10.3}{Measured, estimated and target values}{chapter.10}% 49
+\BOOKMARK [0][-]{chapter.11}{Discussion}{}% 50
+\BOOKMARK [1][-]{section.11.1}{Conclusion}{chapter.11}% 51
+\BOOKMARK [1][-]{section.11.2}{Future Work}{chapter.11}% 52
+\BOOKMARK [0][-]{appendix.A}{Something}{}% 53
