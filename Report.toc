@@ -2,61 +2,66 @@
 \contentsline {chapter}{Nomenclature}{v}{chapter*.3}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Related Work}{1}{section.1.1}
-\contentsline {chapter}{\numberline {2}General Framework}{2}{chapter.2}
-\contentsline {subsection}{\numberline {2.0.1}SVO \& MSF}{2}{subsection.2.0.1}
-\contentsline {subsubsection}{SVO front looking camera}{2}{section*.8}
-\contentsline {subsection}{\numberline {2.0.2}Base Detection \& Base Tracking}{2}{subsection.2.0.2}
-\contentsline {subsection}{\numberline {2.0.3}Area Exploration \& Trajectory Generation}{2}{subsection.2.0.3}
-\contentsline {subsection}{\numberline {2.0.4}Flight Control \& Copilot}{2}{subsection.2.0.4}
-\contentsline {chapter}{\numberline {3}Base Tracking}{4}{chapter.3}
-\contentsline {section}{\numberline {3.1}Extended Kalman Filter}{4}{section.3.1}
-\contentsline {section}{\numberline {3.2}Prediction update: non-holonomic model}{6}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Straight and circular path}{6}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Infinity shape path}{7}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Measurement update}{8}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Tag Detector}{8}{subsection.3.3.1}
-\contentsline {subsubsection}{Base design}{8}{section*.13}
-\contentsline {subsubsection}{April Tag vs Ar Sys}{9}{section*.14}
-\contentsline {subsubsection}{Implementation}{10}{section*.15}
-\contentsline {subsection}{\numberline {3.3.2}Cross Detector}{10}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Covariance Estimation}{10}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Results}{10}{section.3.4}
-\contentsline {chapter}{\numberline {4}Area exploration}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}State machine}{11}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Phases}{11}{subsection.4.1.1}
-\contentsline {subsubsection}{First phase - Searching for the base}{11}{section*.19}
-\contentsline {subsubsection}{Second phase - Approaching the base}{12}{section*.20}
-\contentsline {subsubsection}{Second phase - Following the base}{12}{section*.21}
-\contentsline {subsubsection}{Second phase - Landing on the base}{12}{section*.22}
-\contentsline {chapter}{\numberline {5}Trajectory Generator}{14}{chapter.5}
-\contentsline {section}{\numberline {5.1}Base trajectory prediction}{14}{section.5.1}
-\contentsline {section}{\numberline {5.2}Rapid Trajectory}{14}{section.5.2}
-\contentsline {subsubsection}{Compute the acceleration}{14}{section*.23}
-\contentsline {section}{\numberline {5.3}Results}{14}{section.5.3}
-\contentsline {chapter}{\numberline {6}Nonlinear Model Predictive Control}{16}{chapter.6}
-\contentsline {section}{\numberline {6.1}Model}{16}{section.6.1}
-\contentsline {section}{\numberline {6.2}Cost Function}{16}{section.6.2}
-\contentsline {section}{\numberline {6.3}Acado Library}{16}{section.6.3}
-\contentsline {section}{\numberline {6.4}Learning}{16}{section.6.4}
-\contentsline {section}{\numberline {6.5}Results}{16}{section.6.5}
-\contentsline {chapter}{\numberline {7}Experiments}{17}{chapter.7}
-\contentsline {chapter}{\numberline {8}Scientific Writing}{18}{chapter.8}
-\contentsline {section}{\numberline {8.1}General Style}{18}{section.8.1}
-\contentsline {section}{\numberline {8.2}Important Stuff}{19}{section.8.2}
-\contentsline {section}{\numberline {8.3}Small Things}{19}{section.8.3}
-\contentsline {chapter}{\numberline {9}\LaTeX \ Tips and Tricks}{21}{chapter.9}
-\contentsline {section}{\numberline {9.1}Using Git}{21}{section.9.1}
-\contentsline {section}{\numberline {9.2}Headings}{21}{section.9.2}
-\contentsline {section}{\numberline {9.3}References}{21}{section.9.3}
-\contentsline {section}{\numberline {9.4}Writing Equations}{22}{section.9.4}
-\contentsline {section}{\numberline {9.5}Including Graphics}{22}{section.9.5}
-\contentsline {section}{\numberline {9.6}Including Matlab Figures}{23}{section.9.6}
-\contentsline {section}{\numberline {9.7}Including Code in your Document}{24}{section.9.7}
-\contentsline {chapter}{\numberline {10}RPG Notation Style}{25}{chapter.10}
-\contentsline {section}{\numberline {10.1}Variable styles in \LaTeX }{25}{section.10.1}
-\contentsline {section}{\numberline {10.2}Coordinate Systems and Rotations}{25}{section.10.2}
-\contentsline {section}{\numberline {10.3}Measured, estimated and target values}{26}{section.10.3}
-\contentsline {chapter}{\numberline {11}Discussion}{27}{chapter.11}
-\contentsline {section}{\numberline {11.1}Conclusion}{27}{section.11.1}
-\contentsline {section}{\numberline {11.2}Future Work}{27}{section.11.2}
-\contentsline {chapter}{\numberline {A}Something}{29}{appendix.A}
+\contentsline {section}{\numberline {1.2}MBZIRC challenge}{1}{section.1.2}
+\contentsline {paragraph}{Design of the platform}{1}{section*.7}
+\contentsline {paragraph}{Infinity shape path}{2}{section*.8}
+\contentsline {chapter}{\numberline {2}General Framework}{5}{chapter.2}
+\contentsline {subsection}{\numberline {2.0.1}SVO \& MSF}{5}{subsection.2.0.1}
+\contentsline {subsubsection}{SVO front looking camera}{5}{section*.13}
+\contentsline {subsection}{\numberline {2.0.2}Base Detection \& Base Tracking}{5}{subsection.2.0.2}
+\contentsline {subsection}{\numberline {2.0.3}Area Exploration \& Trajectory Generation}{5}{subsection.2.0.3}
+\contentsline {subsection}{\numberline {2.0.4}Flight Control \& Copilot}{5}{subsection.2.0.4}
+\contentsline {chapter}{\numberline {3}Base Detection and Tracking}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}From high altitude}{7}{section.3.1}
+\contentsline {subsubsection}{From images to real world}{10}{section*.15}
+\contentsline {section}{\numberline {3.2}From low altitude}{11}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Extended Kalman Filter}{11}{subsection.3.2.1}
+\contentsline {subsubsection}{Prediction update: non-holonomic model}{13}{section*.17}
+\contentsline {paragraph}{Straight and circular path}{14}{section*.19}
+\contentsline {subsection}{\numberline {3.2.2}Measurement update}{14}{subsection.3.2.2}
+\contentsline {subsubsection}{Tag Detector}{14}{section*.20}
+\contentsline {paragraph}{April Tag vs Ar Sys}{14}{section*.21}
+\contentsline {subsubsection}{Cross Detector}{14}{section*.22}
+\contentsline {subsubsection}{Covariance Estimation}{15}{section*.23}
+\contentsline {section}{\numberline {3.3}Results}{15}{section.3.3}
+\contentsline {chapter}{\numberline {4}Area exploration}{16}{chapter.4}
+\contentsline {section}{\numberline {4.1}Phases}{16}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}First phase - Searching for the base}{16}{subsection.4.1.1}
+\contentsline {subsubsection}{Understand type of movement}{18}{section*.27}
+\contentsline {subsubsection}{Calculate future position}{21}{section*.30}
+\contentsline {subsubsection}{Following the base and proceed with following phase}{25}{section*.34}
+\contentsline {subsection}{\numberline {4.1.2}Second phase - Approaching the base}{28}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Second phase - Following the base}{28}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Second phase - Landing on the base}{28}{subsection.4.1.4}
+\contentsline {chapter}{\numberline {5}Trajectory Generator}{31}{chapter.5}
+\contentsline {section}{\numberline {5.1}Base trajectory prediction}{31}{section.5.1}
+\contentsline {section}{\numberline {5.2}Rapid Trajectory}{31}{section.5.2}
+\contentsline {subsubsection}{Compute the acceleration}{31}{section*.37}
+\contentsline {section}{\numberline {5.3}Results}{31}{section.5.3}
+\contentsline {chapter}{\numberline {6}Nonlinear Model Predictive Control}{33}{chapter.6}
+\contentsline {section}{\numberline {6.1}Model}{33}{section.6.1}
+\contentsline {section}{\numberline {6.2}Cost Function}{33}{section.6.2}
+\contentsline {section}{\numberline {6.3}Acado Library}{33}{section.6.3}
+\contentsline {section}{\numberline {6.4}Learning}{33}{section.6.4}
+\contentsline {section}{\numberline {6.5}Results}{33}{section.6.5}
+\contentsline {chapter}{\numberline {7}Experiments}{34}{chapter.7}
+\contentsline {chapter}{\numberline {8}Scientific Writing}{35}{chapter.8}
+\contentsline {section}{\numberline {8.1}General Style}{35}{section.8.1}
+\contentsline {section}{\numberline {8.2}Important Stuff}{36}{section.8.2}
+\contentsline {section}{\numberline {8.3}Small Things}{36}{section.8.3}
+\contentsline {chapter}{\numberline {9}\LaTeX \ Tips and Tricks}{38}{chapter.9}
+\contentsline {section}{\numberline {9.1}Using Git}{38}{section.9.1}
+\contentsline {section}{\numberline {9.2}Headings}{38}{section.9.2}
+\contentsline {section}{\numberline {9.3}References}{38}{section.9.3}
+\contentsline {section}{\numberline {9.4}Writing Equations}{39}{section.9.4}
+\contentsline {section}{\numberline {9.5}Including Graphics}{39}{section.9.5}
+\contentsline {section}{\numberline {9.6}Including Matlab Figures}{40}{section.9.6}
+\contentsline {section}{\numberline {9.7}Including Code in your Document}{41}{section.9.7}
+\contentsline {chapter}{\numberline {10}RPG Notation Style}{42}{chapter.10}
+\contentsline {section}{\numberline {10.1}Variable styles in \LaTeX }{42}{section.10.1}
+\contentsline {section}{\numberline {10.2}Coordinate Systems and Rotations}{42}{section.10.2}
+\contentsline {section}{\numberline {10.3}Measured, estimated and target values}{43}{section.10.3}
+\contentsline {chapter}{\numberline {11}Discussion}{44}{chapter.11}
+\contentsline {section}{\numberline {11.1}Conclusion}{44}{section.11.1}
+\contentsline {section}{\numberline {11.2}Future Work}{44}{section.11.2}
+\contentsline {chapter}{\numberline {A}Something}{45}{appendix.A}
