@@ -2,52 +2,38 @@
 \BOOKMARK [0][-]{chapter*.3}{Nomenclature}{}% 2
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
 \BOOKMARK [1][-]{section.1.1}{Related Work}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.2}{MBZIRC challenge}{chapter.1}% 5
-\BOOKMARK [0][-]{chapter.2}{General Framework}{}% 6
-\BOOKMARK [1][-]{subsection.2.0.1}{SVO \046 MSF}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.0.2}{Base Detection \046 Base Tracking}{subsection.2.0.1}% 8
-\BOOKMARK [2][-]{subsection.2.0.3}{Area Exploration \046 Trajectory Generation}{subsection.2.0.1}% 9
-\BOOKMARK [2][-]{subsection.2.0.4}{Flight Control \046 Copilot}{subsection.2.0.1}% 10
-\BOOKMARK [0][-]{chapter.3}{Base Detection and Tracking}{}% 11
-\BOOKMARK [1][-]{section.3.1}{From high altitude}{chapter.3}% 12
-\BOOKMARK [1][-]{section.3.2}{From low altitude}{chapter.3}% 13
-\BOOKMARK [2][-]{subsection.3.2.1}{Extended Kalman Filter}{section.3.2}% 14
-\BOOKMARK [2][-]{subsection.3.2.2}{Measurement update}{section.3.2}% 15
-\BOOKMARK [1][-]{section.3.3}{Results}{chapter.3}% 16
-\BOOKMARK [0][-]{chapter.4}{Area exploration}{}% 17
-\BOOKMARK [1][-]{section.4.1}{Phases}{chapter.4}% 18
-\BOOKMARK [2][-]{subsection.4.1.1}{First phase - Searching for the base}{section.4.1}% 19
-\BOOKMARK [2][-]{subsection.4.1.2}{Second phase - Approaching the base}{section.4.1}% 20
-\BOOKMARK [2][-]{subsection.4.1.3}{Second phase - Following the base}{section.4.1}% 21
-\BOOKMARK [2][-]{subsection.4.1.4}{Second phase - Landing on the base}{section.4.1}% 22
-\BOOKMARK [0][-]{chapter.5}{Trajectory Generator}{}% 23
-\BOOKMARK [1][-]{section.5.1}{Base trajectory prediction}{chapter.5}% 24
-\BOOKMARK [1][-]{section.5.2}{Rapid Trajectory}{chapter.5}% 25
-\BOOKMARK [1][-]{section.5.3}{Results}{chapter.5}% 26
-\BOOKMARK [0][-]{chapter.6}{Nonlinear Model Predictive Control}{}% 27
-\BOOKMARK [1][-]{section.6.1}{Model}{chapter.6}% 28
-\BOOKMARK [1][-]{section.6.2}{Cost Function}{chapter.6}% 29
-\BOOKMARK [1][-]{section.6.3}{Acado Library}{chapter.6}% 30
-\BOOKMARK [1][-]{section.6.4}{Learning}{chapter.6}% 31
-\BOOKMARK [1][-]{section.6.5}{Results}{chapter.6}% 32
-\BOOKMARK [0][-]{chapter.7}{Experiments}{}% 33
-\BOOKMARK [0][-]{chapter.8}{Scientific Writing}{}% 34
-\BOOKMARK [1][-]{section.8.1}{General Style}{chapter.8}% 35
-\BOOKMARK [1][-]{section.8.2}{Important Stuff}{chapter.8}% 36
-\BOOKMARK [1][-]{section.8.3}{Small Things}{chapter.8}% 37
-\BOOKMARK [0][-]{chapter.9}{LaTeX Tips and Tricks}{}% 38
-\BOOKMARK [1][-]{section.9.1}{Using Git}{chapter.9}% 39
-\BOOKMARK [1][-]{section.9.2}{Headings}{chapter.9}% 40
-\BOOKMARK [1][-]{section.9.3}{References}{chapter.9}% 41
-\BOOKMARK [1][-]{section.9.4}{Writing Equations}{chapter.9}% 42
-\BOOKMARK [1][-]{section.9.5}{Including Graphics}{chapter.9}% 43
-\BOOKMARK [1][-]{section.9.6}{Including Matlab Figures}{chapter.9}% 44
-\BOOKMARK [1][-]{section.9.7}{Including Code in your Document}{chapter.9}% 45
-\BOOKMARK [0][-]{chapter.10}{RPG Notation Style}{}% 46
-\BOOKMARK [1][-]{section.10.1}{Variable styles in LaTeX}{chapter.10}% 47
-\BOOKMARK [1][-]{section.10.2}{Coordinate Systems and Rotations}{chapter.10}% 48
-\BOOKMARK [1][-]{section.10.3}{Measured, estimated and target values}{chapter.10}% 49
-\BOOKMARK [0][-]{chapter.11}{Discussion}{}% 50
-\BOOKMARK [1][-]{section.11.1}{Conclusion}{chapter.11}% 51
-\BOOKMARK [1][-]{section.11.2}{Future Work}{chapter.11}% 52
-\BOOKMARK [0][-]{appendix.A}{Something}{}% 53
+\BOOKMARK [0][-]{chapter.2}{MBZIRC challenge}{}% 5
+\BOOKMARK [1][-]{subsection.2.0.1}{The Arena}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.0.2}{Landing platform}{subsection.2.0.1}% 7
+\BOOKMARK [2][-]{subsection.2.0.3}{Infinity shape path}{subsection.2.0.1}% 8
+\BOOKMARK [1][-]{section.2.1}{Simulation}{chapter.2}% 9
+\BOOKMARK [0][-]{chapter.3}{General Framework}{}% 10
+\BOOKMARK [1][-]{subsection.3.0.1}{SVO \046 MSF}{chapter.3}% 11
+\BOOKMARK [2][-]{subsection.3.0.2}{Base Detection \046 Tracking}{subsection.3.0.1}% 12
+\BOOKMARK [2][-]{subsection.3.0.3}{Area Exploration}{subsection.3.0.1}% 13
+\BOOKMARK [2][-]{subsection.3.0.4}{Trajectory Generation}{subsection.3.0.1}% 14
+\BOOKMARK [2][-]{subsection.3.0.5}{Flight Control \046 Copilot}{subsection.3.0.1}% 15
+\BOOKMARK [0][-]{chapter.4}{Base Detection and Tracking}{}% 16
+\BOOKMARK [1][-]{section.4.1}{Prediction update: non-holonomic model}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.2}{Measurement update}{chapter.4}% 18
+\BOOKMARK [2][-]{subsection.4.2.1}{From high altitude}{section.4.2}% 19
+\BOOKMARK [2][-]{subsection.4.2.2}{From low altitude}{section.4.2}% 20
+\BOOKMARK [2][-]{subsection.4.2.3}{Covariance Estimation}{section.4.2}% 21
+\BOOKMARK [1][-]{section.4.3}{Results of the tracking}{chapter.4}% 22
+\BOOKMARK [2][-]{subsection.4.3.1}{From high altitude}{section.4.3}% 23
+\BOOKMARK [2][-]{subsection.4.3.2}{From low altitude}{section.4.3}% 24
+\BOOKMARK [1][-]{section.4.4}{State Prediction}{chapter.4}% 25
+\BOOKMARK [0][-]{chapter.5}{Area exploration}{}% 26
+\BOOKMARK [1][-]{section.5.1}{Phases}{chapter.5}% 27
+\BOOKMARK [2][-]{subsection.5.1.1}{First phase - Searching for the base}{section.5.1}% 28
+\BOOKMARK [2][-]{subsection.5.1.2}{Second phase - Approaching the base}{section.5.1}% 29
+\BOOKMARK [2][-]{subsection.5.1.3}{Second phase - Following the base}{section.5.1}% 30
+\BOOKMARK [2][-]{subsection.5.1.4}{Second phase - Landing on the base}{section.5.1}% 31
+\BOOKMARK [0][-]{chapter.6}{Trajectory Generator}{}% 32
+\BOOKMARK [1][-]{section.6.1}{Base trajectory prediction}{chapter.6}% 33
+\BOOKMARK [1][-]{section.6.2}{Rapid Trajectory}{chapter.6}% 34
+\BOOKMARK [1][-]{section.6.3}{Results}{chapter.6}% 35
+\BOOKMARK [0][-]{chapter.7}{Experiments}{}% 36
+\BOOKMARK [0][-]{chapter.8}{Discussion}{}% 37
+\BOOKMARK [1][-]{section.8.1}{Conclusion}{chapter.8}% 38
+\BOOKMARK [1][-]{section.8.2}{Future Work}{chapter.8}% 39

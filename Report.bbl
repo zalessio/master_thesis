@@ -1,0 +1,152 @@
+\begin{thebibliography}{10}
+
+\bibitem{saripalli2002vision}
+Srikanth Saripalli, James~F Montgomery, and Gaurav~S Sukhatme.
+\newblock Vision-based autonomous landing of an unmanned aerial vehicle.
+\newblock 3:2799--2804, 2002.
+
+\bibitem{sharp2001vision}
+Courtney~S Sharp, Omid Shakernia, and S~Shankar Sastry.
+\newblock A vision system for landing an unmanned aerial vehicle.
+\newblock 2:1720--1727, 2001.
+
+\bibitem{lange2008autonomous}
+Sven Lange, Niko S{\"u}nderhauf, and Peter Protzel.
+\newblock Autonomous landing for a multirotor uav using vision.
+\newblock pages 482--491, 2008.
+
+\bibitem{herisse2008hovering}
+Bruno Herisse, Francois-Xavier Russotto, Tarek Hamel, and Robert Mahony.
+\newblock Hovering flight and vertical landing control of a vtol unmanned
+  aerial vehicle using optical flow.
+\newblock pages 801--806, 2008.
+
+\bibitem{tang2011uav}
+Daquan Tang, Fei Li, Ning Shen, and Shaojun Guo.
+\newblock Uav attitude and position estimation for vision-based landing.
+\newblock 9:4446--4450, 2011.
+
+\bibitem{jian2012automatic}
+Zhou Jian, Wang Xin-Min, and Wang Xiao-Yan.
+\newblock Automatic landing control of uav based on optical guidance.
+\newblock pages 152--155, 2012.
+
+\bibitem{wenzel2011automatic}
+Karl~Engelbert Wenzel, Andreas Masselli, and Andreas Zell.
+\newblock Automatic take off, tracking and landing of a miniature uav on a
+  moving carrier vehicle.
+\newblock {\em Journal of intelligent \& robotic systems}, 61(1-4):221--238,
+  2011.
+
+\bibitem{lee2012autonomous}
+Daewon Lee, Tyler Ryan, and H~Jin Kim.
+\newblock Autonomous landing of a vtol uav on a moving platform using
+  image-based visual servoing.
+\newblock pages 971--976, 2012.
+
+\bibitem{Kim2016}
+JeongWoon Kim, YeonDeuk Jung, DaSol Lee, and David~Hyunchul Shim.
+\newblock Landing control on a mobile platform for multi-copters using an
+  omnidirectional image sensor.
+\newblock {\em Journal of Intelligent {\&} Robotic Systems}, pages 1--13, 2016.
+
+\bibitem{mellinger2010control}
+Daniel Mellinger, Michael Shomin, and Vijay Kumar.
+\newblock Control of quadrotors for robust perching and landing.
+\newblock pages 205--225, 2010.
+
+\bibitem{vlantis2015quadrotor}
+Panagiotis Vlantis, Panos Marantos, Charalampos~P Bechlioulis, and Kostas~J
+  Kyriakopoulos.
+\newblock Quadrotor landing on an inclined platform of a moving ground vehicle.
+\newblock pages 2202--2207, 2015.
+
+\bibitem{camacho2013model}
+Eduardo~F Camacho and Carlos~Bordons Alba.
+\newblock {\em Model predictive control}.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem{challenge_description}
+MBZIRC.
+\newblock Mbzirc challenge description, 2016.
+
+\bibitem{kalmanfilter}
+Rudolph~Emil Kalman.
+\newblock A new approach to linear filtering and prediction problems.
+\newblock {\em Transactions of the ASME--Journal of Basic Engineering},
+  82(Series D):35--45, 1960.
+
+\bibitem{wiki_runge_kutta}
+Wikipedia.
+\newblock Runge-kutta methods, 2016.
+
+\bibitem{beauchemin1995computation}
+Steven~S. Beauchemin and John~L. Barron.
+\newblock The computation of optical flow.
+\newblock {\em ACM computing surveys (CSUR)}, 27(3):433--466, 1995.
+
+\bibitem{lucas1981iterative}
+Bruce~D Lucas, Takeo Kanade, et~al.
+\newblock An iterative image registration technique with an application to
+  stereo vision.
+\newblock 81(1):674--679, 1981.
+
+\bibitem{weng1992camera}
+Juyang Weng, Paul Cohen, Marc Herniou, et~al.
+\newblock Camera calibration with distortion models and accuracy evaluation.
+\newblock {\em IEEE Transactions on pattern analysis and machine intelligence},
+  14(10):965--980, 1992.
+
+\bibitem{quan1999linear}
+Long Quan and Zhongdan Lan.
+\newblock Linear n-point camera pose determination.
+\newblock {\em IEEE Transactions on pattern analysis and machine intelligence},
+  21(8):774--780, 1999.
+
+\bibitem{kato1999marker}
+Hirokazu Kato and Mark Billinghurst.
+\newblock Marker tracking and hmd calibration for a video-based augmented
+  reality conferencing system.
+\newblock pages 85--94, 1999.
+
+\bibitem{fiala2010designing}
+Mark Fiala.
+\newblock Designing highly reliable fiducial markers.
+\newblock {\em IEEE Transactions on Pattern analysis and machine intelligence},
+  32(7):1317--1324, 2010.
+
+\bibitem{rpgapriltags}
+RPG.
+\newblock Rpg-april-tags ros package, 2014.
+
+\bibitem{apriltagslibrary}
+Jeffrey~Boyland Edwin~Olson, Michael~Kaess David~Touretzky, and Hordur
+  Johannson.
+\newblock April-tags library, 2012.
+
+\bibitem{arsys}
+Salinas Bence~Magyar Hamdi~Sahloul, Rafael~Munoz.
+\newblock Ar-sys ros package, 2014.
+
+\bibitem{artrackalvar}
+Scott Niekum.
+\newblock Ar-track-alvar ros package, 2012.
+
+\bibitem{Aruco2014}
+S.~Garrido-Jurado, R.~Mu\ noz Salinas, F.J. Madrid-Cuevas, and M.J.
+  Mar\'in-Jim\'enez.
+\newblock Automatic generation and detection of highly reliable fiducial
+  markers under occlusion.
+\newblock {\em Pattern Recognition}, 47(6):2280 -- 2292, 2014.
+
+\bibitem{opencv_library}
+G.~Bradski.
+\newblock Opencv library.
+\newblock {\em Dr. Dobb's Journal of Software Tools}, 2000.
+
+\bibitem{belongie1999rodrigues}
+Serge Belongie.
+\newblock Rodrigues rotation formula.
+\newblock {\em MathWorld A Wolfram Web Resource}, 1999.
+
+\end{thebibliography}

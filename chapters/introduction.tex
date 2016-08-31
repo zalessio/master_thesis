@@ -1,0 +1,136 @@
+\chapter{Introduction}\label{chap:introduction}
+Unmanned Aerial Vehicles (UAVs) are, nowadays, accessible to all kind of users and many applications have been trying to use these vehicles in increasingly difficult settings. For many of those scenarios is necessary autonomous landing of the UAV on a small base using only on- board sensors. As a matter of fact, major drawback of current civil Micro Air Vehicles (MAVs) is the limited flight time. Automated landing systems, along with suitable recharging platforms, enable longer term UAV missions with greater autonomy. Furthermore there are several applications in which the landing target is not static, but it is moving w.r.t the world coordinate frame, so the quadrotor must be able to perform a precise landing maneuver over this moving platform, this situation would occur, for example, when landing on a moving ship or car.\\
+
+Highly accurate localization is required in order to allow the MAV to land precisely over the platform. Most of UAVs are provided by a GPS, but this sensor can have errors up to 5 meters radius, and landing with such low-quality state estimation will have an almost certain probability of failure. Fortunately, many applications require the usage of other sensors, such as on- board cameras: vision based approaches, to state estimation, are promising in this respect.\\
+
+In this work we present a complete framework to perform an entire landing task. The main parts of the framework are:
+\begin{itemize}
+\item self localization and state estimation of the UAV
+\item detection, tracking and state estimation of the landing target
+\item dynamic trajectory planning to perform a precise and smooth land
+\end{itemize}
+\section{Related Work}\label{sec:related_work}
+
+During the last 15 years several methods where developed in order to achieve automatic landing for UAVs.
+usually, in these projects calculations are done by the ground station, which allows great processing power, but leads to restrictions in autonomy on the UAV. \\
+
+At the beginning the research was about landing on a static platform. Hardware and tequinques used to achive the succesful completement of the task were various.
+
+Some of them, like Saripalli in \cite{saripalli2002vision}, presents a vision-based autonomous landing algorithm using big vehicles that can carry industrial sensors and high performance processors.
+
+Other works, like Sharp in \cite{sharp2001vision} and Lange in \cite{lange2008autonomous}, are using little UAVs with cameras, but they are estimating the pose of the quadrotor only w.r.t the landing base (that consists on a single tag), so these frameworks are not robust to the loss of the tag and to the measurement noise. Or Herisse in \cite{herisse2008hovering} where only optical flow is used for hovering flight and vertical landing control.
+
+Other papers present promising theoretical algorithm to perform a smooth and precise landing, but only tested in simulation, like Tang in \cite{tang2011uav} where it develop a landing framework based on N-points algorithm and orthogonalization to estimate the state of the aircraft, or like Jiang in \cite{jian2012automatic} where he developed a theoretical optical guided landing control system and its corresponding guidance control law.\\
+
+
+More interesting for the purpose of this thesis, are researches on landing on a moving platform.
+
+Wenzel in \cite{wenzel2011automatic} is performing the following and landing on a moving base with a small quadrotor. All the experiments are in inside environment, because he is using IR camera, sensors not robust to outside conditions, which allows robust tracking of a pattern of IR lights without direct sunlight. It achieve precise and consistent result. The moving platform is not fast, $0.4m/s$, and is moving both in a circular path or emulating a ship turning on water.
+
+Lee in \cite{lee2012autonomous} is using visual servoing to perform the landing maneuver: they develop a feedback control based on the position of the target in the camera image, this idea is interesting because we can always assume that the landing platform has some distinctive features to use to identify the final position where the UAV should go in order to properly land.\\
+Also in this case the landing base is moving slow $0.7m/s$ and is moving always in a straight line. When we estimate the state of the moving base, the knowledge of the type of moment of the platform, can be crucial in order to filter noisy measures and predict where the target will be within $t$ seconds.\\
+To control the quadrotor to the landing site they are using a Sliding Mode Control, this method can deal with non linearity of the dynamics and external modeled noise (like the model of the ground effect force).
+
+Kim in \cite{Kim2016} uses color filter to find the landing target, the platform has a color unique in the environment and this feature can be spoil to find it easily, furthermore he uses an omnidirectional camera to have always the target in the field of view. Given the measurement of the position of the camera he implements an Extended Kalman Filter to filter the noise and predict the future position of the target. Once the future position is calculate a trajectory, in position and velocity, is computed from the initial pose of the quadrotor to the final intersection point. A velocity-attitude control is implement to follow the trajectory, and the precomputed trajectory is followed until the end, without replanning.
+
+Mellinger in \cite{mellinger2010control} is addressing another type of problem: landing on tilted surface in which the quadrotor must pearch. He uses  motion capture system in order to have both UAV and landing base state estimation, and his algorithm consists 
+in a precomputed trajectory followed by a position-altitude control based on the linearized system of the quadrotor.\\
+An interesting part is the subdivision of the task in smaller parts in which trajectories and control are different in order to increase the robustness of the whole maneuver.
+
+Vlantis in \cite{vlantis2015quadrotor} studied the problem of landing a quadrotor on an inclined moving platform. The UAV carries a forward looking camera to detect and observe the landing platform. In order to complete the task he developed a discrete-time non-linear Model Predictive Controller that optimizes both the trajectories and the time horizon, while respecting input and state constraints (not collide with the platform).\\ 
+The cost function of the MPC consists in different factors weighted with dynamic coefficients (function of the relative position between UAV and moving platform). There are classical therms related to the time, the state of the quadrotor (position, orientation, velocity, body-rates), the smoothness and aggressiveness of the control inputs, and other factors regarding the landing task, such as: the alignment between the states of UAV and moving platform (relative position, orientation, velocity, body-rates) and the fact that the center of the platform should be kept within the camera's field of view during the approaching phase.\\
+This method seems really effective, but the major drawback of this approach is that the MPC is computationally very expensive and it is not possible to run the algorithm on-board, it is necessary a ground station that carries the huge amount of calculation that MPC requires.\\
+
+The main conclusions from the analysis of related works is that to design a landing framework we need:
+\begin{itemize}
+\item a good estimation of the UAV's state and platform's state.
+\item a "manager" that considering the state estimations define the current phase in which the system is.
+\item a MPC-like algorithm that increases the robustness updating continuously the future actions that must be applied to the UAV.
+\end{itemize}
+
+
+
+Several papers have been written on MPC \cite{camacho2013model} applied to control of the quadrotor.
+
+
+
+MPC
+Fast Nonlinear MPC for unified trajectory optimization and tracking 
++
+An efficient sequential linear quadratic algorithm for solving nonlinear optimal control problems (algorithm SQL is explained)
+Generate optimal feedforward and feedback control gains
+Resolve unconstrained MPC problem with SLQ algorithm repeatedly
+Closed loop that applies gains calculated previous point
+Cost function with desired state-input ??? (no trajectory I do not understand what they should be, only last is final point )  and waypoints
+Predict the system-> understand if there are time lag between when a policy is calculated and when it is applied
+Initialization SQL or with previous solution or LQR controller 
+H (final state weight) is solution of infinite horizon LQR Ricatti equation
+
+
+
+Real-time MPC for quadrotors
+Contorol
+Low-level control motors
+Mid-level control attitude -> HIGH gain control to track accurately reference angular velocity (dynamic reduction) dynamically extend the thrust command ???
+High-level control trajectory tracking -> Feedback linearization to create a system handleable  with MPC that creates input that will map in input for mid-level control
+MPC in the feedback equivalent system -> input applied on the original system
+ONBOARD
+MPC gives a desired angular velocity, from this we can calculate the derided thrust and then calculate the feedback torque (eq 12)
+Uses desired angular velocity as input
+
+
+
+Mueller in \cite{mueller2013model} and later in \cite{mueller2015computationally} presents a method for rapid generation and feasibility verification of trajectories for quadrocopters. The motion primitives are defined by the quadrotor's initial state (position, velocity, acceleration), the desired motion duration $T$, and any combination of components of the quadrocopter’s
+position, velocity and acceleration at the motion’s end. The trajectory are the solution of the optimization problem which minimize a
+cost function related to input aggressiveness.
+
+Closed form solutions for the primitives are given, which . Computationally
+efficient tests are presented to allow for rapid feasibility verification.
+Conditions are given under which the existence of feasible
+primitives can be guaranteed a priori. The algorithm may be
+incorporated in a high-level trajectory generator, which can then
+rapidly search over a large number of motion primitives which
+would achieve some given high-level goal. It is shown that a
+million motion primitives may be evaluated and compared per
+second on a standard laptop computer. The motion primitive
+generation algorithm is experimentally demonstrated by tasking
+a quadrocopter with an attached net to catch a thrown ball,
+evaluating thousands of different possible motions to catch the
+ball..\\
+
+Generate trajectories from initial and final state
+Formulating trajectory in jerk and then solving convex optimization problem on each decoupled axis
+Feasibility constraint of input 
+Cost functions with jerks is kind of minimizing the product of the inputs
+Using FORCES to solve the optimization problem
+
+
+
+
+This final paper is very promising for our purpose because our problem can be exactly be expressed as the one solved by the algorithm proposed, and also because it is computationally inexpensive and so it is possible to run the entire code directly on-board.
+
+%Nonlinear Tracking and landing controller for quadrotor aerial robots
+%Attitude - velocity controllers
+%Attitude controller: with the desired angles calculate ui* with linear eq and then nonlinear control ui from eq (8) 
+%Velocity control: given desired velocity computes the desired angles and control u1 with nonlinear function (12-15)
+%Model with also gyroscopic torques of the rotors then neglected
+%Dynamic of the angles approximate with roll, pitch and yaw little??
+%Feedback linearize 
+%Landing with two different control-landing (height of base and its velocities considered as disturbances)
+%z direction -> stabilize the uav at a setpoint (approach 5m, then 0m) PD controller linear
+%x,y plane distance -> 0 knowing velocity x-y of the base, distance and angle between the two body frames calculate nonlinear %control  (24-25) that brings system to converge to the desired point, this control are velocity in x-y direction to give to velocity control\\
+
+%Feedback Linearization vs. Adaptive Sliding Mode Control for a Quadrotor Helicopter 
+%Need adaptive control to compensate ground effect (unknown perturbation)
+%Feedback linearization
+%Sliding model control to compensate the ground effect uncertantain
+
+%Precise Quadrotor Autonomous Landing with SRUKF Vision Perception
+%Not very interesting, only estimation part, controller is done with PID without any new stuffs near the ground they only estimate the velocity of the quadrotor and no the position, because the second one is difficult (easy to lose the tag)
+
+%Coordinate landing of a quadrotor on a skid-steered ground vehicle in the presence of time delays
+%Their model of the UAV dynamics are incomplete for the angular accelerations
+%Control both UAV and vehicle on the ground
+%Feedback linearize the system define as output x,y,x,psi
+%Joint decentralized control -> exponential stabilization of the particular set of dynamics to drive relative position error to 0
+

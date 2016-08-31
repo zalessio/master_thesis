@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Report.aux
+The style file: unsrt.bst
+Database file #1: bibtex/references.bib.bib
+Warning--empty journal in saripalli2002vision
+Warning--empty journal in sharp2001vision
+Warning--empty journal in lange2008autonomous
+Warning--empty journal in herisse2008hovering
+Warning--empty journal in tang2011uav
+Warning--empty journal in jian2012automatic
+Warning--empty journal in lee2012autonomous
+Warning--empty journal in mellinger2010control
+Warning--empty journal in vlantis2015quadrotor
+Warning--empty journal in lucas1981iterative
+Warning--empty journal in kato1999marker
+You've used 28 entries,
+            1791 wiz_defined-function locations,
+            605 strings with 8206 characters,
+and the built_in function-call counts, 6680 in all, are:
+= -- 621
+> -- 251
+< -- 8
++ -- 96
+- -- 68
+* -- 406
+:= -- 991
+add.period$ -- 78
+call.type$ -- 28
+change.case$ -- 27
+chr.to.int$ -- 0
+cite$ -- 39
+duplicate$ -- 295
+empty$ -- 654
+format.name$ -- 68
+if$ -- 1510
+int.to.chr$ -- 0
+int.to.str$ -- 28
+missing$ -- 23
+newline$ -- 137
+num.names$ -- 28
+pop$ -- 112
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 182
+stack$ -- 0
+substring$ -- 544
+swap$ -- 85
+text.length$ -- 8
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 11
+while$ -- 73
+width$ -- 30
+write$ -- 278
+(There were 11 warnings)
