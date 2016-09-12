@@ -1,35 +1,322 @@
-\chapter{Trajectory Generator}\label{chap:trajectory_generator}
-We utilize the trajectory planning
-approach in [4] to generate thousands of feasible
-trajectories per second, and then choose the best one to
-follow, with frequent replanning as we follow the trajectory
+\chapter{Trajectory generator}\label{chap:trajectory_generator}
+This section is describe the module that based on the UAV odometry estimation and a final desired target it computes the trajectory between these two states.\\
+From the state machine module we receive a final target or a set of final possible targets that the quad must reach in order to complete a task. This module is calculating the trajectory that connect the current state estimation of the quadrotor with this final target.\\
 
-\section{Base trajectory prediction}
+A trajectory is a sequence of desired states that leads the UAV from an initial condition at $t = t_0 $ to the desired final condition reached at $t = T$. In particular a desired state at time $t_i$ is defined as:
+ \begin{itemize}
+\item $[x_{t_i,des},y_{t_i,des},z_{t_i,des}]$: desired 3D position
+\item $[vx_{t_i,des},vy_{t_i,des},vz_{t_i,des}]$: desired linear velocity
+\item $[ax_{t_i,des},ay_{t_i,des},az_{t_i,des}]$: desired linear acceleration
+\item $[\psi_{t_i,des}]$: desired yaw
+\end{itemize}
+The fact that the desired state of the quadrotor is completely defined by these quantities is because because the quadrotor dynamics are differentially flat \cite{van1997real}: the states and the inputs can be written as algebraic functions of four flat outputs and their derivatives $[x,y,z,\psi]$.\\
 
-\section{Rapid Trajectory}
-how to compute the acceleration...
-comparision between diff imu and thrust
-\subsubsection{Compute the acceleration}
-The Rapid trajectory generator needs an initial and a final state. The initial state is always selected as the current position velocity and acceleration of the quadrotor. From the state estimate of MSF we have the first two information, while we have to compute the acceleration.\\
-There are several ways to make this calculation:
+The desired states for $t_i = t_0$ are available from the state estimation of the quad, while for $t_i = T$ are given from the state machine module. This state can be of different types:
 \begin{itemize}
-\item IMU measurements:
-\item finite difference of velocity:
-\item total thrust:
+\item During the first two stages of the state machine the final state is simply a pose in the world frame with zero velocity and acceleration, the framework is calculating some trajectories from the initial state to this final states with different total times $T$ and takes the best one. The total time $T$ is depending on the distance between initial and final position and the average velocity that the quad should have during the flight.
+\item During the third stage the final state is a pose in the world frame with a velocity equal to the moving platform and zero acceleration, the framework is calculating the trajectories like in the previous point.
+\item In the other parts, in which the UAV has to align and land over the base, the state machine is given to the trajectory generator a set of possible final states with positions and velocities and the time to reach them. This module is calculating all the trajectories for these possible final conditions and we pick the best one.
 \end{itemize}
 
-\begin{figure}[!ht]
+This module is constituted by two threads:
+\begin{itemize}
+\item The first thread is receiving the initial and final conditions and its calculating the best trajectory. Then it samples the trajectory with a given rate $r_{tj}$ and putting these desired states inside a stack. Every time a new trajectory is available the stack is substituted with the new one related.\\ Whenever a new initial or final states are available this thread check if this two belong to the previous trajectory (within an error), only if they do not belong a new trajectory is calculated, otherwise the previous one is kept.
+\item The second thread is popping and publishing the top of the stack of desired states with rate $r_{tj}$. This state will be the input of the high controller module.
+\end{itemize}
+
+In this module we utilize the trajectory planning approach described in \cite{mueller2013model} and \cite{mueller2015computationally} to generate thousands of trajectories per second ($2ms$ each), and then choose the best one to follow, with frequent replanning as we follow the trajectory in order to correct any errors related to the prediction of the final target and the displacement between desired state and actual state of the quadrotor due to the not perfect tracking of the trajectory by the controller.\\
+
+\begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.97\textwidth]{img/comparison_acc.png}
-    \caption{Comparison Acceleration}
-    \label{fig:comparison_acc}
+    \includegraphics[width=0.8\textwidth]{img/trajectory_generation.pdf}
+    \caption{The scheme synthesizes the concept of multiple possible trajectory generated and then pick the best one. The red trajectory are unfeasible (state or input unfeasible), the green trajectory is the best solution found.}
+    \label{fig:traject_gen}
 \end{figure}
 
-\begin{figure}[!ht]
+\section{Rapid Trajectory}
+The algorithm by Mark Mueller  produces trajectories that are the result of an optimal control problem with the goal of computing a thrice differentiable trajectory which guides the quadrotor from an initial state (position, orientation, velocity, acceleration of the UAV) to a final state in a finite time $T$, while minimizing a cost function that can be considered as an upper bound on the average of a product of the inputs to the quadrotor system. Furthermore, the final trajectory takes in account feasibility with input and space constraints.\\
+\subsection{Dynamic model}
+Starting from the classic simplified dynamic model of the quadrotor:
+\begin{align}
+\begin{split}
+\ddot{\boldsymbol{r}} &= \boldsymbol{g} + \boldsymbol{R}_{WB}\boldsymbol{c}  \\[10pt]
+\dot{\boldsymbol{R}}_{WB} &= \boldsymbol{R}_{WB}\hat{\boldsymbol{w}_{WB}}
+\end{split}
+\end{align}
+where 
+\begin{align}
+\hat{\boldsymbol{w}_{WB}} =
+{\begin{bmatrix}
+0 & -\omega_3 & \omega_2 \\[10pt]
+\omega_3 & 0 & -\omega_1 \\[10pt]
+-\omega_2 & \omega_1  & 0
+\end{bmatrix}} \ \ \ \ \ \ \boldsymbol{c} = 
+{\begin{bmatrix}
+0 \\[10pt]
+0 \\[10pt]
+c
+\end{bmatrix}} = \boldsymbol{e}_3c
+\end{align}
+contain the system input are  $c$, the total normalized thrust, and the angular rates $\omega_1,\omega_2,\omega_3$ .\\
+The dynamic is reformulating in therms of jerk:
+\begin{align}
+\begin{split}
+\boldsymbol{j} &= \dddot{\boldsymbol{r}} = \dot{\boldsymbol{R}}_{WB}\boldsymbol{c} + \boldsymbol{R}_{WB}\dot{\boldsymbol{c}}
+\end{split}
+\end{align}
+and making some calculation about the thrust:
+\begin{align}
+\begin{split}
+c^2 &= ||\boldsymbol{c}||^2 =  ||\ddot{\boldsymbol{r}} - \boldsymbol{g}||^2 \\[10pt]
+2c\dot{c} &= 2(\ddot{\boldsymbol{r}} - \boldsymbol{g})^T \boldsymbol{j} = 2 c\boldsymbol{e}_3^T\boldsymbol{R}_{WB}^T \boldsymbol{j}   \\[10pt]
+\dot{c} &= \boldsymbol{e}_3^T\boldsymbol{R}_{WB}^T \boldsymbol{j} 
+\end{split}
+\end{align}
+So fixed the jerk $\boldsymbol{j}$ and the thrust $c$ we find two components of the body rates.
+\begin{align}
+{\begin{bmatrix}
+\omega_1 \\[10pt]
+\omega_2
+\end{bmatrix}}  = \frac{1}{c}
+{\begin{bmatrix}
+1 & 0 & 0  \\[10pt]
+0 & 1 & 0
+\end{bmatrix}}\boldsymbol{R}_{WB}^T \boldsymbol{j}
+\end{align}
+Using these equations the inputs of the system are defined with a degree of freedom in $\omega_3$.\\
+Considering the system input to be the three-dimensional jerk, the quad dynamics become a set of three triple integrators, one in each axis, with states position, velocity and acceleration. 
+
+\subsection{Constraints}
+The trajectory is feasible if $c$ and $||\boldsymbol{\omega}||$ respect the following for all t of the trajectory:
+\begin{align}
+\begin{split}
+0 < c_{min} \leq c &\leq c_{max}\\
+||\boldsymbol{\omega}|| & \leq \omega_{max}
+\end{split}
+\end{align}
+
+This constraints can be rewritten in therm of the state and the three-dimensional jerk.\\
+For the thrust
+\begin{align}
+\begin{split}
+ c_{min}^2 \leq c^2 &\leq c_{max}^2\\
+ c_{min}^2 \leq ||\ddot{\boldsymbol{r}} - \boldsymbol{g}||^2 &\leq c_{max}^2\\
+\end{split}
+\label{eq:feasib_thrust}
+\end{align}
+For the body rates
+\begin{align}
+\begin{split}
+||\boldsymbol{\omega}|| =
+ {\begin{bmatrix}
+\omega_1 & \omega_2
+\end{bmatrix}}
+ {\begin{bmatrix}
+\omega_1 \\[10pt]
+\omega_2
+\end{bmatrix}} + \omega_3^2 = {\begin{bmatrix}
+\omega_1 & \omega_2
+\end{bmatrix}}
+ {\begin{bmatrix}
+\omega_1 \\[10pt]
+\omega_2
+\end{bmatrix}}  \leq \frac{1}{c}||\boldsymbol{j}||  \leq \omega_{max} 
+\end{split}
+\label{eq:feasib_bodyrates}
+\end{align}
+in which we assume that $\omega_3 = 0$
+\subsection{Optimal control problem}
+The trajectory generation is rewritten as a discrete optimal control problem, with boundary conditions defined by the quadrotor initial and (desired) final states. The solution of this problem must minimize a cost function subject to some dynamics and satisfying state and inputs conditions.\\
+
+The dynamics can be spilt  for each decoupled axis:
+\begin{align}
+\begin{split}
+j_k &= \dddot{r}_k\\
+z_k  &= 
+{\begin{bmatrix}
+ r_k \\[10pt]
+ \dot{r}_k \\[10pt]
+ \ddot{r}_k
+\end{bmatrix}} = 
+{\begin{bmatrix}
+1 & dt & \frac{dt^2}{2}  \\[10pt]
+0 & 1 & dt \\[10pt]
+0 & 0 & 1
+\end{bmatrix}}z_{k-1} + 
+{\begin{bmatrix}
+ \frac{dt^3}{6}  \\[10pt]
+ \frac{dt^2}{2} \\[10pt]
+ dt
+\end{bmatrix}}j_{k-1} \\
+z_0 &= z(0) \\
+z_N &= z(T)
+\end{split}
+\end{align}
+The cost function to minimize is chosen as
+\begin{align}
+J = \sum_{k=0}^N j_k^2
+\end{align}
+as a matter of fact this cost function can be interpreted as an upper bound for a product of the input:
+\begin{align}
+c_k^2||\boldsymbol{\omega}_k||^2 \leq ||\boldsymbol{j}_k||
+\end{align}
+
+The solution of this optimal control problem can be found in close form with Pontryagin's minimum principle.
+In the paper \cite{mueller2015computationally} are presented all the calculations.\\
+The final solution requires only the evaluation of a single matrix that depends on the initial and final condition $z(0)$ $z(T)$ and the total time $T$.
+
+\subsection{Feasibility check} \label{feasibility_check}
+To check the feasibility of the trajectory, a fast conservative check is applied.\\
+For the thrust from equation \ref{eq:feasib_thrust} we know that the trajectory is unfeasible if:
+\begin{align}
+\max_{k=[0,N]} {(\ddot{r}_{i,k}- \mathbb{1}_zg)^2} > c_{max}^2 \ \ \ \ \forall i\in\{x,y,z\} \\
+\min_{k=[0,N]} {(\ddot{r}_{i,k} - \mathbb{1}_zg)^2} < c_{min}^2 \ \ \ \ \forall i\in\{x,y,z\}
+\end{align}
+where $\mathbb{1}_z$ is equal to $1$ if we are considering the $z$ axis otherwise it is $0$.\\
+On the other hand trajectory is surely feasible if:
+\begin{align}
+\sum_i{\max_{k=[0,N]} {(\ddot{r}_{i,k}- \mathbb{1}_zg)^2}} \leq c_{max}^2 \ \ \ \ i\in\{x,y,z\}\\
+\sum_i{\min_{k=[0,N]} {(\ddot{r}_{i,k} - \mathbb{1}_zg)^2}} \geq c_{min}^2 \ \ \ \  i\in\{x,y,z\}
+\label{eq:thrust_minmax}
+\end{align}
+If both these checks fails the trajectory is considered interminable.\\
+For the body rates from equation \ref{eq:feasib_bodyrates} we know that the trajectory is feasible only if:
+\begin{align}
+\ddfrac{\sum\limits_{i=1} \  \max\limits_{k=[0,N]} j_{i,k}^2 }{\sum\limits_{i=1} \ {\min\limits_{k=[0,N]} {(\ddot{r}_{i,k} - \mathbb{1}_zg)^2}}} \leq \omega_{max} \ \ \ \ i\in\{x,y,z\}
+\label{eq:body_rates_max}
+\end{align}
+
+If the trajectory is define indeterminable then the feasibility check are repeated separately in the two sub intervals $[1,\frac{N}{2}], [\frac{N}{2},n]$, iteratively. The check stops when all the subset are feasible, or one is unfesible, or if the subdivision has intervals smaller than a threshold.
+
+
+\subsection{Compute the acceleration} \label{subsec:acceleration}
+The rapid trajectory generator needs an initial and a final state. The initial state is always selected as the current position velocity and acceleration of the quadrotor. From the state estimate of MSF we have the first two information, while we have to find a way to estimate the acceleration.\\
+There are several ways to make this estimation:
+\begin{itemize}
+\item IMU: the Inertial unit gives measurements of the 3D linear accelerations when the quad is moving. This measures are really noisy when the quadrotor is flying because the motors are introducing vibrations that are corrupting the data from this unit. So to be used it is necessary to filter the measure with a low pass:
+ \begin{align}
+a_{imu}(t_k) = \Big(1-e^{-\frac{t_k-t_{k-1}}{\tau_{a_{imu}}}}\Big)imu(t_k) + e^{-\frac{t_k-t_{k-1}}{\tau_{imu}}} a_{imu}(t_{k-1})
+\label{eq:imu_acc}
+\end{align}
+\item Finite difference: Having two successive velocity estimation we can calculate the acceleration approximating the derivative of the velocity with a numerical finite difference
+\begin{align}
+\dot{v}(t_k) \simeq \frac{v(t_k)-v(t_{k-1})}{t_k-t_{k-1}}
+\label{eq:finite_difference}
+\end{align}
+Also this method is really sensitive to high frequency noise, and the data must be filter with low pass filter:
+ \begin{align}
+a_{fd}(t_k) =  \Big(1-e^{-\frac{t_k-t_{k-1}}{\tau_{fd}}}\Big)\frac{v(t_k)-v(t_{k-1})}{t_k-t_{k-1}} + e^{-\frac{t_k-t_{k-1}}{\tau_{a_{fd}}}} a_fd(t_{k-1})
+\label{eq:finite_difference}
+\end{align}
+\item Thrust: from the equation of motion of the quadrotor we know that the acceleration of the UAV in a specific moment are completely described by the total thrust $\boldsymbol{c}$ applied and the rotation of the quadrotor $\boldsymbol{R}_{WB}$ :
+\begin{align}
+{\begin{bmatrix}
+\ddot{x} \\[10pt]
+\ddot{y} \\[10pt]
+\ddot{z}
+\end{bmatrix}}=
+{\begin{bmatrix}
+0 \\[10pt]
+0 \\[10pt]
+-g
+\end{bmatrix}} 
++ \boldsymbol{R}_{WB}
+{\begin{bmatrix}
+0 \\[10pt]
+0 \\[10pt]
+c
+\end{bmatrix}}
+\end{align}
+And we also know that:
+ \begin{align}
+c = \frac{1}{m}\sum_{i=1}^{4}{f_i}
+\end{align}
+where $f_i$ is the thrust produced by the propeller $i$.\\
+From the low level controller \ref{eq:thrusts} we have these data and so we can calculate the acceleration vector. It is important to notice that the information from the low level control are the desired thrust for each propeller $\tilde{f}_i$, not the actual one $f_i$. The real produced thrust can be calculated as $\lambda_i\tilde{f}_i$ where $\lambda_i$ is the rotor fitness coefficients.\\
+\end{itemize}
+
+
+In the final implementation we decided to use the thrust, that, even if shows some offset in the z direction (look section \ref{subsec:acceleration_experiments} for more details) w.r.t the other two, it seems more smooth and does not need a filtering.
+
+
+\section{Minimum snap trajectory}
+When the rapid trajectory algorithm fails to find a feasible trajectory, and no previous trajectories are available, we have to find another way to calculate the sequence of desired states.\\
+In this case we are using a minimum snap trajectory \cite{mellinger2011minimum}. This trajectory is the solution of another optimization problem in which the inputs are expressed in function of the fourth derivative of the position: the snap.\\
+
+The problem formulation uses a more complete dynamics of the quad w.r.t the jerk formulation:
+\begin{align}
+\begin{split}
+\ddot{\boldsymbol{r}} &= \boldsymbol{g} + \boldsymbol{R}_{WB}\boldsymbol{c}  \\[10pt]
+\dot{\boldsymbol{R}}_{WB} &= \boldsymbol{R}_{WB}\hat{\boldsymbol{w}_{WB}}  \\[10pt]
+\dot{\boldsymbol{w}}_{WB} &= J^{-1} (\boldsymbol{\tau} - \boldsymbol{w}_{WB} \times J\boldsymbol{w}_{WB})
+\end{split}
+\end{align}
+where $\boldsymbol{\tau}$ are the torques acting on the body causated by the totor thrust \ref{eq:torques}.\\
+Using these dynamics we need a derivative more in order to express the input in therms of the flat outputs.
+Because of that, the states must be described as position, velocity, acceleration and jerk. \\
+In order to compute this type of trajectory we should calculate the initial jerk, but since it is difficult to estimate its value we set the initial and final jerks to be zero (even if this condition it is not correct for the initial state), while the other values of the initial condition are calculated as int the previous section's algorithm.\\
+
+In this new formulation, the optimization problems try to minimize:
+\begin{align}
+J = \sum_{k=0}^N\Big( \mu_r \Big|\Big|\frac{d^{4}\boldsymbol{r}_k}{dt^{4}}\Big|\Big|  +  \mu_{\psi} \Big|\Big|\frac{d^{2}\boldsymbol{\psi}_k}{dt^{2}}\Big|\Big|\Big)
+\end{align}
+that is minimizing the snap (because the thrust and pitch and roll body rates are expressed as functions of the forth derivative of the position $\boldsymbol{r}$), and the yaw angular acceleration for minimizing the input relative (in the paper  \cite{mellinger2011minimum} there are all the calculations to express the inputs as function of the snap).
+
+Since this problem does not have a close form, it is written as a quadratic program:
+\begin{align}
+\begin{split}
+min & \ \ \boldsymbol{x}^T\boldsymbol{H}\boldsymbol{x} + \boldsymbol{h}^T\boldsymbol{x}\\[10pt]
+s.t. &\ \ \boldsymbol{Ax} \leq \boldsymbol{b}
+\end{split}
+\end{align}
+and then solved with optimization algorithms, finding numerically the result.\\ 
+This problem requires more time to be solved ($20ms$) w.r.t. the rapid trajectory, so it is not possible to generate multiple trajectories and select the best one at each control loop.\\
+What we are doing is calculating this trajectory taking, among all the final conditions that the state machine is given as input to this module, the one with longest time $T$ and so producing the trajectory of $T$seconds from the initial state to this point.
+
+\section{Problems with the trajectory generation} \label{sec:trajectory_problem}
+With this trajectory generator there are some issues that must be resolved. Right now we have found temporary solutions that can fix the problems but a more proper and robust answer must be found.\\
+Following we report the main problems of this module:
+\subsection{Last chance solution}
+If both rapid trajectory and minimum snap trajectory do not find a solution we apply this final method.\\
+The solution found can be completely wrong in the last two parts of the state machine in which the quadrotor must be in a precise amount of time in a specific position in order to intersect the moving platform, this is why when we use this type of trajectory we try to change it as soon as possible, hoping that at the next initial condition one of the previous two methods do not fail.\\
+
+This method is using the rapid trajectory algorithm calculated with a final time $T_{feasible}$ such that the trajectory is surely feasible. In the paper \cite{mueller2015computationally} there is a method to calculate $T_{feasible}$ for a trajectory from rest to rest states (initial e final velocity and accelerations equal to 0).\\
+In our case the initial state can also be not static, so what we can do is to enlarge the time $T_{feasible}$, from rest to rest, by a factor $\alpha$ proportional to the initial acceleration and velocity, and using this final time to calculate the rapid trajectory.\\
+
+The minimum time $T_{feasible}$ is define like the maximum between three different final times. The 3 times are calculate to guarantee to maxim thrust feasibility $T_{c_{max}}$, minimum thrust feasibility $T_{c_{min}}$ and body rates feasibility $T_{\omega_{max}}$. \\
+We take $$T_{feasible} = \alpha \max{(T_{c_{max}},T_{c_{min}},T_{\omega_{max}})}$$  because
+if  we calculate a feasible trajectory, from static to static states, with terminal time $T_1$, and we pick $T_2 \geq T_1$ as new terminal then the second trajectory will be surely feasible (this is not always true is initial and final conditions are not resting).\\
+
+The parameters necessary to find these times are: the distance $d$ between initial and final position, $c_{min}$ $c_{max}$ the minimum and maximum thrust and $\omega_{max}$ the maximum body rates.\\ Substituting these variables into the general solution of the optimal control problem, calculating the maximum acceleration that the final trajectory will have, and using \ref{eq:thrust_minmax}
+ and \ref{eq:body_rates_max}, we can find the thee values of time:
+
+\begin{align}
+\begin{split}
+T_{c_{max}} &= \sqrt{\dfrac{10d}{\sqrt{3}(g-c_{min})}} \\
+T_{c_{min}} &= \sqrt{\ddfrac{10d}{\sqrt{3}(c_{max}-g)}} \\
+T_{\omega_{max}} &= \sqrt[3]{\ddfrac{60d}{\omega_{max}c_{min}}}
+\end{split}
+\end{align}
+
+At this point $T_{feasible}$ is defined and we can calculate the rapid trajectory relative. \\ 
+This trajectory is considered a temporal solution, so as soon as a new initial or final condition arrive, we try to substitute it with a new right trajectory. 
+
+\subsection{Too frequent replanning}
+The main drawback of the algorithm used is that in theory it is possible to replan the trajectory at each control loop: in a MPC style, at each loop, we calculate a trajectory from the initial state state to the final one and communicate just the first desired state to the high level control, repeating this procedure at the next loop. On the other hand in practice this is not possible: when we pass the first desired state at the high controller 
+the difference in position, velocity and acceleration are too tiny to actually generate a response from the quadrotor and start a movment. The outcome of this process is that the UAV does not move, as it should, and at the following control loop the initial condition can be only slightly changed, so the quadrotor results static in the initial position.\\
+This behaviour usually does not happen when we have to perform a trajectory in which the altitude is decreasing (small thrust required), but it is a great issue when the $z$ position should remain equal or increasing.\\
+This is why we do not perform a replan at each loop but only when it is necessary.
+
+\begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.97\textwidth]{img/comparison_acc_mass_changed.png}
-    \caption{Comparison Acceleration Different Mass}
-    \label{fig:comparison_acc_mass_changed}
+    \includegraphics[width=0.7\textwidth]{img/frequent_replanning.pdf}
+    \caption{The scheme synthesizes the concept too frequent replanning. The quadrotor at time $dt$ should be in a position but the controller are not able to bring the UAV there. At the next loop the state of the quad is almost not changed, so it remains fixed in its initial state.}
+    \label{fig:freq_replan}
 \end{figure}
 
-\section{Results}
+
+\subsection{Too short final time}
+The rapid trajectory algorithm has another issue: when the final time $T$ is too short all the trajectory calculate result indeterminable. This problem is due to the method used to check the feasibility with respect 
+to the input, \ref{feasibility_check}, but to overcame this problem we can reduce the threshold for which the algorithm stop to recursively control if a piece of the trajectory is feasible.\\
+In this way the generation of the trajectory is slower, but we are able to find feasible trajectory for shorter time.
+

@@ -1,8 +1,8 @@
-\chapter{Base Detection and Tracking}\label{chap:base_tracking}
+\chapter{Base detection and tracking}\label{chap:base_tracking}
 One part of the work is focused on the estimation of the state of the moving platform. This is necessary in order to have a good prediction of the final state that the quadrotor must have in order to proper land on the moving car. \\ With the method described in this section, every time we detect the platform we can estimate its position, orientation and velocity vector in world coordinate frame, so we can predict where the platform will be in $t$ seconds and where the quadrotor should go to successfully complete the mission.\\ 
 
 
-An Extended Kalman Filter  \cite{kalmanfilter} is design in order to have the most reliable value of the state of the platform.\\
+An EKF  \cite{kalmanfilter} is design in order to have the most reliable value of the state of the platform.\\
 Kalman filtering is an algorithm that uses a series of noisy measurements observed over time and produces estimates of unknown variables that tend to be more precise than those based on a single measurement alone, by using Bayesian inference and estimating a joint probability distribution over the variables for each time frame.\\
 The algorithm works in a two-step process:
 \begin{itemize}
@@ -87,6 +87,7 @@ The platform is considered as a car and simulated with a non-holonomic model \re
     \caption{Non-holonomic model}
     \label{fig:nonholonomicmodel}
 \end{figure}
+
 In this model the state is defined as $\boldsymbol{x} = (x, y, z,\theta , v, \phi)$:
 It corresponds to the 3 position in a space $(x,y,z)$ and the yaw angle of the platform $(\theta)$ w.r.t. the world frame, the forward velocity ($v$) and the angle of the front wheels ($\phi$). The system depends on a parameter $L$ that corresponds to the distance between the front and the back wheels.\\
 In this model the control input are the change in velocity $v$ and in the angle of curvature $\phi$. \\
@@ -113,7 +114,7 @@ v sin(\theta) \\[10pt]
 u_1 \\[10pt]
  u_2 
 \end{bmatrix}
-\label{eq:ekfcomponents}
+\label{eq:equation_nonholonomic_continuos}
 \end{align}
 It is possible to discretize these dynamics in $t \in (t_{k-1}, t_k)$ with a first order finite difference:
 \begin{align}
@@ -139,7 +140,7 @@ v_k  \\[10pt]
 v_{k-1} + dt \big(u_{1k}\big) \\[10pt]
 \phi_{k-1} + dt \big(u_{2k}\big) 
 \end{bmatrix}
-\label{eq:realstate}
+\label{eq:equation_nonholonomic_discrete}
 \end{align}
 
 In order to solve the former system, we have anyway to find a numerical solution. For this purpose we use a    
@@ -172,17 +173,119 @@ for $k = 0, 1, 2, 3, ...,$ using
 \end{align}
 Here  $y_{k+1}$ is the RK4 approximation of $y(t_{k+1})$, and it is determined by the present value ($y_{k}$) plus the weighted average of four increments.
 
-\subsubsection{Straight and circular path}
+\subsection{Straight and circular path} \ref{subsec:circularlinearmodel}
 We assume the input $u_1$ and $u_2$  are equal to zero. In this way we can have three type of movement:
 \begin{itemize}
 \item the platform can be static ($v_f(0) = 0$)
 \item it can move in a straight line ($v_f(0) \neq 0$ and $\phi(0) = 0$)
 \item it can move in a circle ($v_f(0) \neq 0$ and $\phi(0) \neq 0$)
 \end{itemize}
-As described in charapter \label{chap:thechallenge}, the final trajectory of the platform is only a composition of a linear and a circular movement (for a given determinate amount of time). So this model can be used also in the final implementation.
+
+\subsection{Infinity shape path}
+As described in charapter \label{chap:thechallenge}, the moving platform will move in an infinity-shape path described in the figure \ref{fig:arenachallenge}. \\
+We need to describe in a mathematical way this shape in order to use this information when we are estimating the state of the platform and to understand the right moment to perform the landing maneuver.\\
+From the specification of the challenge:
+\begin{itemize}
+\item the car is moving with constant velocity $v_{tan}$ along the path
+\item the radius of the circumferences that forms the trajectory is $r_{8}$m
+\item the path is making a cross in the middle that creates 4 angles of $\frac{\pi}{2}$ 
+\end{itemize}
+The easiest way to describe this path is to define how the angle $\theta$ is changing in function of the space. \\
+It easy to see that the shape can be seen as a combination of a cross and two circles.
+The cross is simply defined as the union between the two line:
+\begin{align}
+\begin{split}
+y &= x \\
+y &= -x
+\end{split}
+\end{align}
+while the two circles 
+\begin{align}
+\begin{split}
+y^2 + (x - x_0)^2 &= r_{8}^2 \\
+y^2 + (x + x_0)^2 &= r_{8}^2 
+\end{split}
+\end{align}
+It easy to see that if we want the intersections between these two functions to be exactly in the 4 points we have to choose 
+\begin{align}
+\begin{split}
+x_0 = \frac{\sqrt{2}}{2}r_{8}
+\end{split}
+\end{align}
+That correspond to the 4 intersections coordinate
+\begin{align}
+\begin{split}
+\Big(\frac{\sqrt{2}}{2}r_{8},\frac{\sqrt{2}}{2}r_{8}\Big);
+\Big(\frac{\sqrt{2}}{2}r_{8},-\frac{\sqrt{2}}{2}r_{8}\Big);
+\Big(-\frac{\sqrt{2}}{2}r_{8},-\frac{\sqrt{2}}{2}r_{8}\Big);
+\Big(-\frac{\sqrt{2}}{2}r_{8},\frac{\sqrt{2}}{2}r_{8}\Big)
+\end{split}
+\end{align}
+
+\begin{figure}[!htbp]
+  \centering
+ {\includegraphics[width=0.4\textwidth]{img/constructionshape1_.png}\label{fig:constuctinfinity1}}
+  \hfill
+  {\includegraphics[width=0.4\textwidth]{img/constructionshape2_.png}\label{fig:constuctinfinity2}}
+  \caption{How to construct the infinity-shape path}
+\end{figure}
+
+If we travel over the two circumferences the intersections correspond to angles $\theta = \pm \frac{3\pi}{4}$. \\
+Now it is obvious to see that the path is symmetric and it can be divided in 4 parts and describing how the angle is changing in one of this section, the whole trajectory is defined.\\
+We can observe that:
+\begin{align}
+\theta(x) =
+\begin{cases}
+    -\frac{x}{r_{8}}  &x\in \Big[0,\frac{3\pi}{4}r_{8}\Big] \quad \quad \ \ \  \\[10pt]
+    -\frac{3\pi}{4} &x\in \Big[\frac{3\pi}{4}r_{8} ,\frac{3\pi}{4}r_{8} + r_{8}\Big]
+\end{cases}
+\end{align}
+This function define a quarter of the trajectory \ref{fig:quarter_path} in function of the radius $r_{8}$ of the path.\\
+It is now possible to use it to generate the entire trajectory $( x(t) , y(t) )$ \ref{fig:entire_path}: \\ we know that the length of the path is $$l = 4(\frac{3\pi}{4}r_{8} + r_{8})$$
+and given the constant velocity $v_{tan}$ we can calculate the time to complete the trajectory 
+$$T = \frac{l}{v_{tan}}$$
+and it is simple to define $\theta(t)$ just stretching or shrinking $\theta(x)$ .\\
+So we can now define:
+\begin{align}
+\begin{split}
+\dot{x} &= v_{tan} cos(\theta(t)) \\
+\dot{y} &= v_{tan} sin(\theta(t))
+\end{split}
+\end{align}
+And finally we also need the discretized verison obtain just by forward Euler approximation:
+\begin{align}
+\begin{split}
+x_k &= x_{k-1} + dt \big(v_{tan k-1} cos(\theta_{k-1})\big) \\
+y_k &= y_{k-1} + dt \big(v_{tan k-1} sin(\theta_{k-1})\big)
+\end{split}
+\end{align}
+
+\begin{figure}[!htbp]
+ \centering
+   \begin{subfigure}[b]{0.42\textwidth}
+     \includegraphics[width=\textwidth]{img/angle_x.eps}
+        \caption{Angle in function of the space}
+        \label{fig:quarter_theta}
+   \end{subfigure}
+   \hfill
+   \begin{subfigure}[b]{0.45\textwidth}
+     \includegraphics[width=\textwidth]{img/path_x_quarter.eps}
+        \caption{One quarter of the path}
+       \label{fig:quarter_xy}
+   \end{subfigure}
+   
+   \begin{subfigure}[b]{0.45\textwidth}
+     \includegraphics[width=\textwidth]{img/infinityshapepath.png}
+       \label{fig:entire_xy}
+   \end{subfigure}
+    \caption{The parametrization of the path}
+  \label{fig:path}
+  \end{figure}
+  
+From these calculations we can conclude that the final trajectory of the platform is only a composition of a linear and a circular movement (for a given determinate amount of time). So the model described in \ref{subsec:circularlinearmodel} can be used also in the final implementation.
 
 \section{Measurement update}
-From equation \ref{eq:ekfcomponents} we have the variables that describe the state of the moving car. We have to be able to measure some of these components in order to have the second step of our EKF. \\
+From equation \ref{eq:equation_nonholonomic_discrete} we have the variables that describe the state of the moving car. We have to be able to measure some of these components in order to have the second step of our EKF. \\
 What we are using is a camera with which we are able to identify the moving platform and estimate the relative position and orientation. At this point knowing the position of the camera in the real world we can measure the following vector $\boldsymbol{z} = (x, y, z,\theta)$. It corresponds to the 3 position in a space $(x,y,z)$ and the yaw angle of the platform $\theta$ w.r.t. the world frame.
 The measurement equations are simply:
 \begin{align}
@@ -390,31 +493,6 @@ Once the internal pattern of a marker is brought to a canonical front view one c
     \label{fig:tempplatform}
 \end{figure}
 
-\subsubsection{Implementation}
-In the real world implementation we tried several different tag detector ROS packages, such as  RPG-April-Tags \cite{rpgapriltags} that uses the  AprilTags library \cite{apriltagslibrary}, AR-Sys \cite{arsys} and AR-Track-Alvar \cite{artrackalvar}.
-All of them have some strengths and weaknesses:
-\begin{itemize}
-\item Light conditions: all these methods uses the edge based approach, so the results is similar in different light conditions.
-\item Final pose: all trackers solve a PnP Problem to find the 6dof pose of the camera that minimize the reprojection error of the points on the image. The final result is the transformation between tag and camera. RPG-AprilTag has also the possibility to return a 4dof pose (perfect for our application), saving some computation.
-\item Multiple tags: AR-Sys and AR-Track-Alvar possess the ability to directly track multiple objects and object composed by multiple tags.
-\item Precision:we measure the error at $1m$ distance from the tag
-\begin{itemize}
-\item RPG-April-Tags: $\pm 1 pixel $ 
-\item AR-Sys: $\pm 2 pixel $
-\item AR-Track-Alvar: $\pm 1 pixel $
-\end{itemize}
-\item Frequency: on the quadrotor the performance of the three tracker where quite different
-\begin{itemize}
-\item RPG-April-Tags: $~1Hz$
-\item AR-Sys: $~4Hz$
-\item AR-Track-Alvar: $~1Hz$
-\end{itemize}
-\end{itemize}
-
-\paragraph{AR-Sys}
-In our final implementation we decided to use AR-Sys because its computational efficiency. AR-Sys is 3D pose estimation ROS package that uses ARUco marker boards \cite{Aruco2014}.\\
-This package guarantees a good error correction in the identification of a specific tag, and, more interesting for our application, a solution to the occlusion problem using multiple markers. This package can identify the pose of boards composed by multiple tags considered as a single unit. This guarantees more stable pose estimates and robustness to occlusions. The board is defined in an XML file where all the tag are listed with an ID and the relative position w.r.t. the master tag (the first in the list) that defines the center of the cumulative tag, the pose of the camera is given with respect to this tag. 
-
 \begin{figure}[!htbp]
   \centering
    \begin{subfigure}[b]{0.45\textwidth}
@@ -519,7 +597,7 @@ g(\boldsymbol{\gamma}_k) = \mathrm {A}\boldsymbol{\gamma}_k
 The covariance matrix $\mathrm {\Sigma }_g$ of $g$ is related to $\mathrm {\Sigma }_{\boldsymbol{\gamma}}$, the covariance of the variable $\boldsymbol{\gamma}$, by the equation:
 \begin{align}
 \begin{split}
-Cov(g) &= Cov(\mathrm {A}\boldsymbol{\gamma}_k) = \mathrm {A}Cov(\boldsymbol{\gamma}_k)\mathrm {A} ^{\top} \\ 
+Cov(g) &= Cov(\mathrm {A}\boldsymbol{\gamma}_k) = \mathrm {A}Cov(\boldsymbol{\gamma}_k)\mathrm {A} ^{\top} \\
 \mathrm {\Sigma }_g &=\mathrm {A} \mathrm {\Sigma }_{\boldsymbol{\gamma}}\mathrm {A} ^{\top}
 \end{split}
 \end{align}
@@ -541,7 +619,6 @@ where $J$ is the Jacobian matrix. Since $g(\tilde{\boldsymbol{\gamma}}_{k})$ is 
 
 In our case to have the final measure $\boldsymbol{z}_k$  in the 3D real world coordinate system, we start from a measure in pixel in the image coordinate system. We have the function $g : \mathrm{R}^{6 \times 6} \to \mathrm{R}^{2 \times 2} $ that is converting the real world coordinate in image coordinate, and its Jacobian matrix $J \in \mathrm{R}^{2 \times 6} $.\\
 Now to calculate the covariance of the final pose estimate, $\mathrm {\Sigma }_{RW} \in \mathrm{R}^{6 \times 6} $, from the covariance of the image position  $\mathrm {\Sigma }_{I} \in \mathrm{R}^{2 \times 2} $, we need to invert the equation \ref{eq:errorpropag}:
-
 \begin{align}
 {\displaystyle \mathrm{\Sigma}_{RW} = ( \mathrm{J}^{\top} \mathrm{\Sigma }_{I} \mathrm{J})^{-1} } 
 \label{eq:errorpropag}
@@ -550,96 +627,14 @@ Now to calculate the covariance of the final pose estimate, $\mathrm {\Sigma }_{
 In our implementation we do not have a single function $g$ from image pixel $(u,v)$ to 3D coordinate $(x,y,z,\theta)$. The passage from image to 6dof pose is done using the openCV function $solvePnP$ \cite{opencv_library} that returns a pose expressed as 3D coordinates $(x,y,z)$ and Rodrigues orientation  \cite{belongie1999rodrigues}. To convert the orientation in Euler angles we convert the Rodrigues angles into a rotation matrix and the rotation matrix into finally $(roll,pitch,yaw)$ notation:
 \begin{align}
 \begin{split}
-J_{solvePnP} &= J_0 = \Big[ \frac  {\partial g}{\partial rodrigues},  \frac {\partial g}{\partial xyzpos} \Big] \\
-J_{rodriguesToR} &= J_1 =  \frac  {\partial rodrigues}{\partial R}, \\
-J_{RToEuler} &= J_2 =  \frac  {\partial R}{\partial euler}, \\
+J_{solvePnP} &= J_0 = \Big[ \frac  {\partial g}{\partial rodrigues},  \frac {\partial g}{\partial xyzpos} \Big] \\[10pt]
+J_{rodriguesToR} &= J_1 =  \frac  {\partial rodrigues}{\partial R}, \\[10pt]
+J_{RToEuler} &= J_2 =  \frac  {\partial R}{\partial euler}, \\[10pt]
 J_{Final} &= J = \Big[ \frac  {\partial g}{\partial euler},  \frac {\partial g}{\partial xyzpos} \Big]  = J_{0}{\begin{bmatrix}
 J_{1}J_{2} & 0 \\[10pt]
 0 & I 
 \end{bmatrix}}
 \end{split}
 \end{align}
- 
 
-\section{Results of the tracking}
-Several experiments were performed both in simulation and in the real world to evaluate the performance of the state estimation.
-\subsection{From high altitude}
-We are not requiring that the state estimation from high altitude is very precise, we need a rough estimation of the position of the platform. With the designed  EKF we obtain a reliable estimation with an RMSE error in both $x,y$ coordinate of $40cm$
 
-\begin{figure}[!htbp]
-  \centering
-  \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{img/high_altitude_error_xy.pdf}
-        \caption{Trajectory}
-        \label{fig:one}
-   \end{subfigure} \\
-   \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/high_altitude_error_x.pdf}
-        \caption{x }
-        \label{fig:one}
-   \end{subfigure}\hfill
-   \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/high_altitude_error_y.pdf}
-        \caption{y}
-        \label{fig:two}
-   \end{subfigure}
-  \caption{Comparison}
-  \label{fig:ekf_high_altitude_comparison}
-\end{figure} 
-
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{img/high_altitude_error.pdf}
-      \caption{error}
-    \label{fig:ekf_high_altitude_error}
-\end{figure}
-
-\subsection{From low altitude}
-Very accurate pose estimation is obtain when the AR tags are used. Generally the error in the $x,y$ coordinate is less then $5cm$ while in the $z$ direction is about $3cm$.
-\begin{figure}[!htbp]
-  \centering
-   \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/position_simulation_hot_init.png}
-        \caption{Position }
-        \label{fig:one}
-   \end{subfigure}\hfill
-   \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/velocity_simulation_hot_init.png}
-        \caption{Velocity}
-        \label{fig:two}
-   \end{subfigure}
-  \caption{Simulation test. Comparison between estimate position and velocity with the ground truth values. The velocity is initialized with the right value.}
-  \label{fig:ekf_simulation_hot_init}
-\end{figure} 
-
-\begin{figure}[!htbp]
-  \centering
-   \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/position_simulation.png}
-        \caption{Position }
-        \label{fig:one}
-   \end{subfigure}\hfill
-   \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/velocity_simulation.png}
-        \caption{Velocity}
-        \label{fig:two}
-   \end{subfigure}
-  \caption{Simulation test. Comparison between estimate position and velocity with the ground truth values. The velocity is initialized with 0 value. In this case the filter needs some time to converge to the right value of velocity.}
-  \label{fig:ekf_simulation_hot_init}
-\end{figure}
-
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=0.97\textwidth]{img/position_real_world.png}
-    \caption{Real world test. Comparison between estimate position and ground truth for a platform moving at $1\frac{m}{s}$}
-    \label{fig:ekf_position_real}
-\end{figure}
-
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=0.97\textwidth]{img/position_real_world_fast.png}
-      \caption{Real world test. Comparison between estimate position and ground truth for a platform moving at $2\frac{m}{s}$}
-    \label{fig:ekf_position_real_fast}
-\end{figure}
-
-\section{State Prediction}

@@ -24,7 +24,8 @@
 
 \chapter*{Abstract}
  \addcontentsline{toc}{chapter}{Abstract}
-
+In this thesis we present a complete framework to autonomous landing on a moving platform
+TODO 
   Compress the introduction in a few key sentences. No more than half a page. The abstract should motivate your work, outline the work that you did, and give some insights into its results.
 
  \cleardoublepage
@@ -40,9 +41,13 @@
     \hspace*{1.6cm}   \= \kill
     $\mathbf{J}$       \> Jacobian \\[0.5ex]
     $\mathbf{H}$       \> Hessian \\[0.5ex]
+    $\boldsymbol{r}$  \> position of the frame $B$ with respect to frame $W$ \\[0.5ex]
     $\mathbf{T}_{WB}$  \> coordinate transformation from frame $B$ to frame $W$ \\[0.5ex]
     $\mathbf{R}_{WB}$  \> orientation of $B$ with respect to $W$ \\[0.5ex]
     $_W\mathbf{t}_{WB}$\> translation of $B$ with respect to $W$, expressed in coordinate system $W$ \\[0.5ex]
+    $\hat{\boldsymbol{w}_{WB}}$ \> skew symmetric matrix \\[0.5ex]
+    $\boldsymbol{c}$  \> thrust vector with respect to frame $B$ \\[0.5ex]
+    $\boldsymbol{g}$  \> gravity with respect to frame $W$ \\[0.5ex]
   \end{tabbing}
   
 Scalars are written in lower case letters ($a$), vectors in lower case bold letters ($\mathbf{a}$) and matrices in upper case bold letters ($\mathbf{A}$).
@@ -51,10 +56,16 @@ Scalars are written in lower case letters ($a$), vectors in lower case bold lett
   \begin{tabbing}
     \hspace*{1.6cm}  \= \kill
     RPG     \> Robotics and Perception Group \\[0.5ex]
-    DoF     \> Degree of Freedom \\[0.5ex]
-    IMU     \> Inertial Measurement Unit \\[0.5ex]
+    UAV     \> Unmanned Aerial Vehicle \\[0.5ex]
+    UGV     \> Unmanned Ground Vehicle \\[0.5ex]
     MAV     \> Micro Aerial Vehicle \\[0.5ex]
     ROS     \> Robot Operating System \\[0.5ex]
+    DoF     \> Degree of Freedom \\[0.5ex]
+    IMU     \> Inertial Measurement Unit \\[0.5ex]
+    EKF   \> Extended Kalman Filter \\[0.5ex]
+    SVO   \> Semidirect Visual Odometry \\[0.5ex]
+    MSF   \> Multi Sensor Fusion \\[0.5ex]
+    MBZIRC    \> Mohamed Bin Zayed International Robotics Challenge \\[0.5ex]
   \end{tabbing}
 
 \clearpage

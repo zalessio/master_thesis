@@ -66,9 +66,61 @@ Eduardo~F Camacho and Carlos~Bordons Alba.
 \newblock {\em Model predictive control}.
 \newblock Springer Science \& Business Media, 2013.
 
+\bibitem{neunertfast}
+Michael Neunert, C{\'e}dric de~Crousaz, Fadri Furrer, Mina Kamel, Farbod
+  Farshidian, Roland Siegwart, and Jonas Buchli.
+\newblock Fast nonlinear model predictive control for unified trajectory
+  optimization and tracking.
+
+\bibitem{sideris2005efficient}
+Athanasios Sideris and James~E Bobrow.
+\newblock An efficient sequential linear quadratic algorithm for solving
+  nonlinear optimal control problems.
+\newblock {\em IEEE transactions on automatic control}, 50(12):2043--2047,
+  2005.
+
+\bibitem{bangura2014real}
+Moses Bangura and Robert Mahony.
+\newblock Real-time model predictive control for quadrotors.
+\newblock {\em IFAC Proceedings Volumes}, 47(3):11773--11780, 2014.
+
+\bibitem{mueller2013model}
+Mark~W Mueller and Raffaello D'Andrea.
+\newblock A model predictive controller for quadrocopter state interception.
+\newblock pages 1383--1389, 2013.
+
+\bibitem{mueller2015computationally}
+Mark~W Mueller, Markus Hehn, and Raffaello D'Andrea.
+\newblock A computationally efficient motion primitive for quadrocopter
+  trajectory generation.
+\newblock {\em IEEE Transactions on Robotics}, 31(6):1294--1310, 2015.
+
 \bibitem{challenge_description}
 MBZIRC.
 \newblock Mbzirc challenge description, 2016.
+
+\bibitem{ros}
+Morgan Quigley, Ken Conley, Brian~P. Gerkey, Josh Faust, Tully Foote, Jeremy
+  Leibs, Rob Wheeler, and Andrew~Y. Ng.
+\newblock Ros: an open-source robot operating system.
+\newblock 2009.
+
+\bibitem{forster2014svo}
+Christian Forster, Matia Pizzoli, and Davide Scaramuzza.
+\newblock Svo: Fast semi-direct monocular visual odometry.
+\newblock pages 15--22, 2014.
+
+\bibitem{lynen2013robust}
+Simon Lynen, Markus~W Achtelik, Stephan Weiss, Margarita Chli, and Roland
+  Siegwart.
+\newblock A robust and modular multi-sensor fusion approach applied to mav
+  navigation.
+\newblock pages 3923--3929, 2013.
+
+\bibitem{bell1993iterated}
+Bradley~M Bell and Frederick~W Cathey.
+\newblock The iterated kalman filter update as a gauss-newton method.
+\newblock {\em IEEE Transactions on Automatic Control}, 38(2):294--297, 1993.
 
 \bibitem{kalmanfilter}
 Rudolph~Emil Kalman.
@@ -115,6 +167,46 @@ Mark Fiala.
 \newblock {\em IEEE Transactions on Pattern analysis and machine intelligence},
   32(7):1317--1324, 2010.
 
+\bibitem{opencv_library}
+G.~Bradski.
+\newblock Opencv library.
+\newblock {\em Dr. Dobb's Journal of Software Tools}, 2000.
+
+\bibitem{belongie1999rodrigues}
+Serge Belongie.
+\newblock Rodrigues rotation formula.
+\newblock {\em MathWorld A Wolfram Web Resource}, 1999.
+
+\bibitem{van1997real}
+Michael~J Van~Nieuwstadt and Richard~M Murray.
+\newblock Real time trajectory generation for differentially flat systems.
+\newblock 1997.
+
+\bibitem{mellinger2011minimum}
+Daniel Mellinger and Vijay Kumar.
+\newblock Minimum snap trajectory generation and control for quadrotors.
+\newblock pages 2520--2525, 2011.
+
+\bibitem{clearpathrobotics}
+Clearpath Robotics.
+\newblock Clearpath robotics, 2009.
+
+\bibitem{gazebosimulator}
+Dave~Coleman John~Hsu, Nate~Koenig.
+\newblock Gazebo simulator, 2002.
+
+\bibitem{rotors2016}
+Fadri Furrer, Michael Burri, Markus Achtelik, and Roland Siegwart.
+\newblock Robot operating system (ros): The complete reference (volume 1).
+\newblock pages 595--625, 2016.
+
+\bibitem{RobotsHusky}
+Clearpath Robotics.
+\newblock Robots husky ros package.
+
+\bibitem{optitrack}
+Optitrack motion caption system.
+
 \bibitem{rpgapriltags}
 RPG.
 \newblock Rpg-april-tags ros package, 2014.
@@ -139,14 +231,12 @@ S.~Garrido-Jurado, R.~Mu\ noz Salinas, F.J. Madrid-Cuevas, and M.J.
   markers under occlusion.
 \newblock {\em Pattern Recognition}, 47(6):2280 -- 2292, 2014.
 
-\bibitem{opencv_library}
-G.~Bradski.
-\newblock Opencv library.
-\newblock {\em Dr. Dobb's Journal of Software Tools}, 2000.
+\bibitem{teraranger}
+Tera bee.
+\newblock Teraranger sensor.
 
-\bibitem{belongie1999rodrigues}
-Serge Belongie.
-\newblock Rodrigues rotation formula.
-\newblock {\em MathWorld A Wolfram Web Resource}, 1999.
+\bibitem{wiki_lqr}
+Wikipedia.
+\newblock Linear-quadratic regulator, 2016.
 
 \end{thebibliography}

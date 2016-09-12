@@ -1,37 +1,32 @@
-\chapter{Area exploration}\label{chap:area_exploration}
-different time exploration
-imu to switch off
-time following
+\chapter{State machine}\label{chap:area_exploration}
+This section describes the module that, based on UAV and moving platform odometry estimations, decides in which state the quadrotor is, and which is the desired state that it must reach in order to complete the mission.\\
+This module is implementing a state machine and the flow diagram can be seen in figure     \ref{fig:area_exploration_state_machine}. It consists in 5 main parts in which the quadrotor has to complete a particular task in order to proceed with the successive stage. \\
+
+In the following sections we will describe in detail all these phases and explain the computation that we must perform in order to decide where the UAV must go and when the stage is considered concluded.
 
 
-jksdbkvbdsjg\\
- jksdbkvbdsjg\\
-jksdbkvbdsjg\\
- jksdbkvbdsjg\\
-jksdbkvbdsjg\\
- jksdbkvbdsjg\\
-jksdbkvbdsjg\\
- jksdbkvbdsjg\\
-jksdbkvbdsjg\\
- jksdbkvbdsjg\\
-jksdbkvbdsjg\\
- jksdbkvbdsjg\\
-jksdbkvbdsjg\\
- %TODO
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{img/area_exploration_state_machine.png}
-    \caption{Area Exploration}
+    \includegraphics[width=1.1\textwidth]{img/state_machine.pdf}
+    \caption{State machine flow chart}
     \label{fig:area_exploration_state_machine}
 \end{figure}
 
-\section{Phases}
-\subsection{First phase - Searching for the base}
-In this phase the quadrotor starts from a given position and has to find the moving car.
-Given the rectangle in which the platform can move the UAV follows a list of way-points in order to span the whole area at high altitude. In this way the downward camera can collect information from a large section of the space and the searching task can be performed faster.\\
+\section{Takeoff and searching for the base}
+In this stage the quadrotor starts from a static position and has to explore a given area from high altitude until the platform is found.\\
 
-\subsubsection{Understand type of movement}
-From the challenge description \ref{fig:arenachallenge} we know that the car is moving in a shape composed by straight lines and circumference sectors. We need to understand in which part is the platform at a given time: this information is important in order to calculate properly where the platform will be in $t$ seconds and because we want to proceed with the following phases, and finally perform the landing maneuver, when the platform is going straight.\\
+At the begging the quad is close to the ground in hovering, then a vertical takeoff is performed until it reaches a given altitude ( this operation is performed at anytime in which the pipeline fails and we have to restart the state machine).\\
+Now given the area that must be explored to find the target, in our case the arena in which the platform can move, we calculate a list of way-points the UAV must reach in order to span the whole surface. While the quadrotor is moving the downward camera can collect information from a large section of the space and the searching task of the target can be performed faster.\\
+There are many ways to sample these way-points in order to maximize the spanned area. In our case we try to maximize the probability to find the moving platform so we are moving from one side to the other, along the main axis of the 8 shape path.\\
+As soon as the moving platform is found the state machine proceeds with the next stage.
+
+\section{Following the base}
+In this stage the quadrotor has to following the moving platform until the right moment for landing arrives.\\
+
+The quadrotor is moving at high altitude reaching the desire points given by the previous stage.  As soon as there is an estimation of the target odometry we perform some computations in order to complete the task required in this phase.
+
+\subsection{Understand type of movement}
+From the challenge description \ref{fig:arenachallenge} we know that the car is moving in a shape composed by straight lines and circumference sectors. We need to understand,at a given time, in which part is the platform: this information is important in order to calculate properly where the platform will be in $t$ seconds and because we want to proceed with the following phases, and finally perform the landing maneuver, when the platform is going straight.\\
 To understand the trajectory of the moving base we collect all the estimated positions of the base, and we perform a linear regression on the last $n$ estimations: the platform is moving in a straight line if the linear regression is a good approximation of the data trends otherwise it driving in a curve.\\
 
 
@@ -54,8 +49,8 @@ The parameters $m$ and $q$ of the model, are found where $e_{tot}^2$ is minimize
 It is easy to demonstrate that the solution of \ref{eq:mandq1} is:
 \begin{align}
 \begin{split}
-m &= \frac{n\sum_{i=1}^{n}{x_iy_i} - \sum_{i=1}^{n}{x_i}\sum_{i=1}^{n}{y_i}}{n\sum_{i=1}^{n}{x_i^2} -( \sum_{i=1}^{n}{x_i})^2} \\
-q &= \frac{ \sum_{i=1}^{n}{y_i}}{n} - m\frac{ \sum_{i=1}^{n}{x_i}}{n}\\
+m &= \frac{n\sum_{i=1}^{n}{x_iy_i} - \sum_{i=1}^{n}{x_i}\sum_{i=1}^{n}{y_i}}{n\sum_{i=1}^{n}{x_i^2} -( \sum_{i=1}^{n}{x_i})^2} \\[10pt]
+q &= \frac{ \sum_{i=1}^{n}{y_i}}{n} - m\frac{ \sum_{i=1}^{n}{x_i}}{n}
 \end{split}
 \label{eq:mandq}
 \end{align}
@@ -78,12 +73,11 @@ When we receive a pose at time $t_i$ we store it and we perform the linear regre
 When we perform the linear regression on the measured data, the average residual square is 
 \begin{align}
 \begin{split}
-<\tilde{e_i}^2> &= \\
-<(\tilde{y_i} - (mx_i + q))^2>  &= \\
-<\tilde{y_i}^2 - 2\tilde{y_i}(mx_i + q) + (mx_i + q)^2> &= \\
-<\tilde{y_i}^2> - 2<\tilde{y_i}>(mx_i + q) + (mx_i + q)^2 &= \\
-\sigma_e^2 + y_i^2  - 2y_i(mx_i + q) + (mx_i + q)^2 &=  \\
-\sigma_e^2 + e_i^2 
+<\tilde{e_i}^2> &= <(\tilde{y_i} - (mx_i + q))^2>  \\
+&= <\tilde{y_i}^2 - 2\tilde{y_i}(mx_i + q) + (mx_i + q)^2>  \\
+&= <\tilde{y_i}^2> - 2<\tilde{y_i}>(mx_i + q) + (mx_i + q)^2 \\
+&=  \sigma_e^2 + y_i^2  - 2y_i(mx_i + q) + (mx_i + q)^2  \\
+&=  \sigma_e^2 + e_i^2 
 \end{split}
 \end{align}
 
@@ -104,8 +98,8 @@ $$e_i = \rho\sin{\theta_i} - (m\rho\cos{\theta_i} + q)$$
 To find $m$ and $q$ we use equation \ref{eq:mandq}, but we want a general approximation of these values. To do so, we have  to consider all the sums in the equations as integrals, using the relation \ref{eq:integralsandsums}
 \begin{align}
 \begin{split}
-\lim_{n \to \infty} { \frac{b-a}{n} \sum_{i=0}^{n}{f(x_i)}} =   \int_a^b{f(x )\mathrm  {d}x} \\
- \sum_{i=0}^{n}{f(x_i)} \simeq \frac{n}{b-a} \int_a^b{f(x )\mathrm  {d}x}
+\lim_{n \to \infty} { \frac{b-a}{n} \sum_{i=0}^{n}{f(x_i)}} &=   \int_a^b{f(x )\mathrm  {d}x} \\[10pt]
+ \sum_{i=0}^{n}{f(x_i)} &\simeq \frac{n}{b-a} \int_a^b{f(x )\mathrm  {d}x}
 \end{split}
 \label{eq:integralsandsums}
 \end{align} 
@@ -113,16 +107,21 @@ So now if we calculate this approximation for our values we have:
 \begin{align}
 \begin{split}
 \sum_{i=1}^{n}{x_iy_i} &= \sum_{i=1}^{n}{\rho^2\cos{\theta_i}\sin{\theta_i}} \\
-& \simeq  \frac{n}{\theta_2 - \theta_1}  \rho^2 \int_{\theta_1}^{\theta_2}{\cos{x}\sin{x} \mathrm  {d}x} =  \frac{n}{\theta_2 - \theta_1}  \frac{ \rho^2}{2} \Big[-\cos^2{x} \Big]_{\theta_2}^{\theta_2} \\
+& \simeq  \frac{n}{\theta_2 - \theta_1}  \rho^2 \int_{\theta_1}^{\theta_2}{\cos{x}\sin{x} \mathrm  {d}x} \\
+&=  \frac{n}{\theta_2 - \theta_1}  \frac{ \rho^2}{2} \Big[-\cos^2{x} \Big]_{\theta_2}^{\theta_2} \\[10pt]
  \sum_{i=1}^{n}{x_i} &= \sum_{i=1}^{n}{\rho\cos{\theta_i}} \\
-&\simeq  \frac{n}{\theta_2 - \theta_1}  \rho \int_{\theta_1}^{\theta_2}{\cos{x}\mathrm  {d}x} = \frac{n}{\theta_2 - \theta_1}  \rho \Big[\sin{x} \Big]_{\theta_2}^{\theta_2}\\
+&\simeq  \frac{n}{\theta_2 - \theta_1}  \rho \int_{\theta_1}^{\theta_2}{\cos{x}\mathrm  {d}x} \\
+&= \frac{n}{\theta_2 - \theta_1}  \rho \Big[\sin{x} \Big]_{\theta_2}^{\theta_2}\\[10pt]
  \sum_{i=1}^{n}{y_i} &= \sum_{i=1}^{n}{\rho\sin{\theta_i}} \\
-& \simeq  \frac{n}{\theta_2 - \theta_1}  \rho \int_{\theta_1}^{\theta_2}{\sin{x}\mathrm  {d}x} = \frac{n}{\theta_2 - \theta_1}  \rho \Big[-\cos{x} \Big]_{\theta_2}^{\theta_2}\\
+& \simeq  \frac{n}{\theta_2 - \theta_1}  \rho \int_{\theta_1}^{\theta_2}{\sin{x}\mathrm  {d}x} \\
+&= \frac{n}{\theta_2 - \theta_1}  \rho \Big[-\cos{x} \Big]_{\theta_2}^{\theta_2}\\[10pt]
  \sum_{i=1}^{n}{x_i^2} &= \sum_{i=1}^{n}{\rho^2\cos^2{\theta_i}} \\
-& \simeq  \frac{n}{\theta_2 - \theta_1}  \rho^2 \int_{\theta_1}^{\theta_2}{\cos^2{x}\mathrm  {d}x} =  \frac{n}{\theta_2 - \theta_1}  \frac{ \rho^2}{2} \Big[ x+\cos{x} \sin{x}\Big]_{\theta_2}^{\theta_2}\\
+& \simeq  \frac{n}{\theta_2 - \theta_1}  \rho^2 \int_{\theta_1}^{\theta_2}{\cos^2{x}\mathrm  {d}x} \\
+&=  \frac{n}{\theta_2 - \theta_1}  \frac{ \rho^2}{2} \Big[ x+\cos{x} \sin{x}\Big]_{\theta_2}^{\theta_2}
 \end{split}
 \label{eq:mandqintegralsoncircum}
 \end{align}
+
 In our case we consider pieces of curve with length $l_{curve}$ \ref{eq:lengthcurve}, that corresponds to a circumference arch with:
 \begin{align}
 \rho = r_{8}  \ \ \ \ \ \ \ \ \ \ \ \ \ 
@@ -134,7 +133,7 @@ We can now calculate the approximate values of $m$ and $q$ using \ref{eq:mandq} 
 
 \begin{align}
 \begin{split}
-m &= \frac{nr_{8}^2\frac{n}{\pi} - r_{8}\frac{n2\sqrt{2}}{\pi} r_{8}\frac{n2(2-\sqrt{2})}{\pi} }{n\frac{nr_{8}^2(2+\pi)}{2\pi} -(r_{8}\frac{n2\sqrt{2}}{\pi})^2} = \frac{2\pi - 16\sqrt{2} + 16}{\pi^2 + 2\pi - 16}  \\
+m &= \frac{nr_{8}^2\frac{n}{\pi} - r_{8}\frac{n2\sqrt{2}}{\pi} r_{8}\frac{n2(2-\sqrt{2})}{\pi} }{n\frac{nr_{8}^2(2+\pi)}{2\pi} -(r_{8}\frac{n2\sqrt{2}}{\pi})^2} = \frac{2\pi - 16\sqrt{2} + 16}{\pi^2 + 2\pi - 16}  \\[10pt]
 q &= \frac{ r_{8}\frac{n2(2-\sqrt{2})}{\pi} }{n} - m\frac{ r_{8}\frac{n2\sqrt{2}}{\pi}}{n} = r_{8} \frac{4-2\sqrt{2}(m+1)}{\pi} = r_{8}\bar{q} \\
 \end{split}
 \label{eq:mandqcirum}
@@ -162,20 +161,21 @@ The figure \ref{fig:error_regression} shows the typical evolution of the total r
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=1.0\textwidth]{img/following_platform_for_long_position_base_error.pdf}
+    \includegraphics[width=0.9\textwidth, height=0.5\textwidth]{img/following_platform_for_long_position_base_error.pdf}
     \caption{Evolution of the total residual during this first phase (in blue). The vertical lines are the real moments in which the car changes movement types: green a linear phase starts, red a circular phase begins. The horizontal lines are the thresholds for the detection of the two different regimes. The cross are the moment in which the algorithm understands the change.}
     \label{fig:error_regression}
 \end{figure}
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/following_platform_for_long_map_simple.pdf}
-    \caption{Map of the estimated position of the car in blue. The cross are the moments in which the algorithm understands the change. Red crosses from line to curve. Green crosses from curve to line.}
+    \includegraphics[width=0.8\textwidth]{img/following_platform_for_long_map_simple.pdf}
+    \caption{Map of the estimated positions of the platform in blue. The crosses are the moments in which the algorithm understands the change. Red crosses from line to curve. Green crosses from curve to line.}
     \label{fig:error_regression_map}
 \end{figure}
 
+\newpage
 
-\subsubsection{Calculate future position}
+\subsection{Calculate future position}
 Now knowing the platform regime of movement at a specific time we can estimate correctly where it will be after $t_s$ seconds and proceed with the following phases when it starts a straight portion of the trajectory.\\
 Thanks to the algorithm described before we can estimate that at the moment $t_0$ the car is at position $(x_0,y_0)$ with a direction angle of $\theta_0$ and forward velocity of $v_{tan}$, so at time $t_1 = t_0 + t_s$ seconds the car will be at position $(x_1,y_1)$ with an angle  $\theta_1$, and it has traveled  $v_{tan}t_s$.
 
@@ -187,6 +187,7 @@ x_1 &= x_0 + v_{tan}t_s\cos{\theta_0}\\
 y_1 &= y_0 + v_{tan}t_s\sin{\theta_0}\\
 \theta_1 &= \theta_0
 \end{cases}
+\label{eq:line_future_pose}
 \end{align}
 \item When a movement in the circumference is detected we have to perform some calculations in order to find the final state of the platform.\\ 
 First of all we use the relation 
@@ -249,6 +250,15 @@ y_1^b &= y_0 + l_{chord}\sin{\Big(\theta_0 - \frac{|\beta_s|}{2}\Big) }\\
 In order to understand which is the correct state we can calculate the distance between the two possible final points and a point of the trajectory estimated at time $ t_{-\alpha} < t_0$. For sure the state with smaller distance will be the right final state, because the wrong one leads to a position further away.\\
 The images  \ref{fig:sequence_find_next_position_circumference} show all the passages we perform to find the right final state.
 
+The image \ref{fig:map_waypoints} shows where the algorithm calculates the way points for the quadrotor in order to following the moving car.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/following_platform_long_map_waypoints.pdf}
+    \caption{Map of the estimated positions of the platform in blue.  Stars positions in which the quadrotor should go to following the base until a proper moment to proceed with the following stage is detected. }
+    \label{fig:map_waypoints}
+\end{figure}
+
 \begin{figure}[!htbp]
   \centering
    \begin{subfigure}[b]{0.45\textwidth}
@@ -298,16 +308,8 @@ The images  \ref{fig:sequence_find_next_position_circumference} show all the pas
   \label{fig:sequence_find_next_position_circumference}
 \end{figure} 
 \end{itemize}
-The image \ref{fig:map_waypoints} shows where the algorithm calculates the way points for the quadrotor in order to following the moving car.
 
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=1.0\textwidth]{img/following_platform_long_map_waypoints.pdf}
-    \caption{Data from the first phase of the area exploration. Blue circles position of the base estimate. Stars the position in which the quadrotor should go to following the base until a proper moment to proceed with the following phases is detected. }
-    \label{fig:map_waypoints}
-\end{figure}
-
-\subsubsection{Following the base and proceed with following phase}
+\subsection{Select moment to land}
 At this point we can use the predict position of the platform to control the quadrotor in order to following the base and at the right moment proceed with the other phases.\\
 The right moment to perform the landing is at the start of a line segment:
 \begin{itemize}
@@ -335,9 +337,21 @@ y_{intersection}^b &= y_{changing} + \sqrt{2}r_8\sin{\Big(\theta_{line} - \frac{
 \label{eq:finalstatecurveb}
 \end{cases}
 \end{align}
+
 and select the right one with minimum distance with the current estimate position of the platform.
-The images  \ref{fig:sequence_find_next_intersection} show all the passages we perform to find the right intersection point.
 \end{itemize}
+The images  \ref{fig:sequence_find_next_intersection} show all the passages we perform to find the right intersection point.\\
+The image \ref{fig:map_intersections} shows where the algorithm calculates the intersection points for the quadrotor in order to understand when is the right moment to approach the base.
+\end{itemize}
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/following_platform_normal_map_intersection.pdf}
+    \caption{Map of the estimated positions of the platform in blue.  Yellow crosses the position where the quadrotor should go in order to intersect the platform when is about to start a line phase.}
+    \label{fig:map_intersections}
+\end{figure}
+
 Now that we know where the next change of regime will be, we can follow the base and continue with the following phases when the base is close to the intersection point.
 
 \begin{figure}[!htbp]
@@ -373,19 +387,144 @@ Now that we know where the next change of regime will be, we can follow the base
   \label{fig:sequence_find_next_intersection}
 \end{figure} 
 
-\end{itemize}
 
+
+\section{Approaching the base}
+In this stage the quadrotor has to decrease its altitude keeping the platform in the fov until a better state estimation (from the low altitude EKF) is available.\\
+
+The quadrotor is following the base and at high altitude. As soon as the platform start a straight line sector, the UAV must approach the target reducing its altitude and keeping the platform in the fov of the camera.\\
+In this phase the desired final $x-y$ coordinates of the quadrotor  are calculate with the same equations of the previous stage when a line movement of the platform is detected \ref{eq:line_future_pose}. 
+The main difference are about the $z$ coordinate and the $x-y$ final velocities that the quad has to assume.\\
+We set the final velocity identical to estimate velocity of the base:
+\begin{align}
+\begin{cases}
+vx_1 &= v_{tan}\cos{\theta_0}\\
+vy_1 &= v_{tan}\sin{\theta_0}
+\label{eq:finalstavelocity}
+\end{cases}
+\end{align}
+While the final altitude:
+\begin{align}
+z_1 = \alpha z_0 + (1 - \alpha) z_{0,target}
+\label{eq:finalz}
+\end{align}
+Where $\alpha <  1$ is a parameter to be tuned in order to have a right balance between fastness of this stage and aggressiveness of the maneuver. As a matter of fact if the quad approaches too quickly the target, it is very easy to lose the platform from the fov of the camera: the closer we are to the base the less area we can cover with the camera, so the more precise we must be in order to still have tracking. If we set the final state of the quad with the state estimation of the moving base we have from high altitude ($\alpha = 0$) 
+the UAV could approach a final position that is not the right one and so it can loose the platform. It is necessary to have some intermediate stages in which the quad is getting closer to the platform, so it can refines and correct the final target, but the area spanned by the camera is large enough to detect the base.\\
+
+With this approach the platform can stay in the fov of the down-looking camera much easier because the quadrotor is going ahead of the base, with a direction that is the same of the target, and correcting the estimate position of the moving platform. \\
+If we loose the platform this stage failed and we have to restart the state machine.\\
+
+\begin{figure}[!htbp]
+ \centering
+   \begin{subfigure}[b]{0.8\textwidth}
+     \includegraphics[width=\textwidth]{img/approach_platform_lose.pdf}
+        \caption{If we set $z_1$ too close to the platform we can loose the tracking because the position estimation of the moving base is not good enough from high altitude.}
+        \label{fig:loose_platform}
+   \end{subfigure}
+   
+   \begin{subfigure}[b]{0.8\textwidth}
+     \includegraphics[width=\textwidth]{img/approach_platform.pdf}
+        \caption{With intermediate steps, instead, it is more difficult to loose the platform and we can correct the state estimation.}
+        \label{fig:not_loose_platform}
+   \end{subfigure}
+    \caption{The scheme describe a situation in which intermediate steps, while approaching he moving platform from high altitude, are necessary to not loose the platform.  }
+    \label{fig:approach_platform}
+\end{figure}
+
+As soon as we are close enough to have a more precise state estimation from the low altitude EKF we proceed with the next stage.
+
+\newpage 
+\section{Align with the base}
+In this stage the quadrotor is flying close to the platform and before proceeding with the landing maneuver it has to align its direction with the base to be in the best position to proceed with the final step.\\
+
+When a state estimation of the base from the precise EKF is available the quad can relay on this information
+to align its movement with the base. The estimation is good enough to predict the future states of the moving platform even if we loose tracking. As a matter of fact in this stage we know that the platform is moving in a straight line, we now its initial position, direction and velocity, so it is easy to predict where it will be in $t$ seconds.\\
+
+Given the current state of the platform and of the UAV we can calculate the distance $d$ between the two. This segment can be covered by the quadrotor with an maximum relative speed and in a time:
+\begin{align}
+\begin{split}
+v_{max,rel} &= v_{max,quad} - v_{base}\\
+t &= \frac{d}{||v_{max,rel}||}
+\label{eq:relative_distance}
+\end{split}
+\end{align}
+In this period of time we know that the platform is moving to a different place, and we have to predict where it will be. We can see from equation \ref{eq:relative_distance} that if the maximum velocity of the quadrotor  is equal in magnitude and opposite direction with respect to the velocity of the platform the time $t$ to reach the platform is infinite.\\
+To predict the future position we are using the model used also in the EKF \ref{eq:equation_nonholonomic_discrete}.\\
+With this model we do not just predict where the platform will be after $t$ seconds, but we estimate its state for discrete moments in a window of time around $t$: $[t-t_1,t+t_2]$. In this way we have a set of possible future position that the quadrotor should be able to reach perfectly in time to intersect the platform.\\
+This window of future state estimate is used by the trajectory generator module to calculate different possible alternatives to reach the platform.\\
+The final target of the quadrotor will be one of these odometry estimations with $x,y$ position and velocity equal to the platform and $z$ position set a proper height $h_{align}$.\\
+It is also possible to bring the quad ahead of the platform simply requiring to reach a state of the window in less time.\\
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=1.0\textwidth]{img/following_platform_normal_map_intersection.pdf}
-    \caption{Data from the first phase of the area exploration. Blue circles position of the base estimate. Red cross the points in which the algorithm detect a passage from a line phase to a curve. Green cross from a curve to a line. Yellow cross the position where the quadrotor should go in order to intersect the platform when is about to start a line phase.}
-    \label{fig:map_intersections}
+    \includegraphics[width=0.8\textwidth]{img/prediction_platform.pdf}
+    \caption{The scheme synthesizes the algorithm performed in this stage to find the possible final states in which the quadrotor should reach in order to intercept the base. }
+    \label{fig:align_platform}
 \end{figure}
 
+As soon as the quadrotor reach the final target state, in which it is align with the moving platform, we proceed with the final stage.
+\newpage
+\section{Landing on the base}
+In this final stage the quadrotor is very close to the platform and is moving in the same direction. It has to decreases its altitude until it touch the platform and then switch off the motors in order to conclude the whole task.\\
 
-\subsection{Second phase - Approaching the base}
+The way to calculate the final target is equal to the previous stage of the state machine: we predict possibles intersection points that can be reachable by the quadrotor, and the final states of the UAV will be one of these states.\\
+It is possible also to add a velocity and/or acceleration in the $z$ direction in order to have a slightly more aggressive vertical landing.\\
 
-\subsection{Second phase - Following the base}
+Furthermore because the visual odometry can fails when we are really close to the platform we introduce the possibility of a blind landing, in which we are not using the state estimation of the quadrotor to control the UAV, but we control the thrust in an open loop: when we are at $h_{blind}$ over the platform we start to apply a thrust $c_{quad}$ such that $||c_{quad}|| < g$ in order to decrease the altitude of the quadrotor until it touches the platform. In particular the quad in this phase is moving in the z axis with the following kinematics:
+\begin{align}
+\begin{split}
+z(t) = z_{quad,0} + vz_{quad,0}t + \frac{(c_{quad,z} - g)t}{2}
+\label{eq:z_dynamics}
+\end{split}
+\end{align}
+If the quad starts from $z_{quad,0} = h_{blind}$after a time $t_{blind}$ we want $z(t_{blind}) = 0$. furthermore we consider the initial velocity in $vz_{quad,0}$ really little, so it can be neglect. We can then easily calculate the time $t_{blind}$:
+\begin{align}
+\begin{split}
+t_{blind} = \sqrt{\frac{2h_{blind}}{g-c_{quad,z}}}
+\label{eq:z_dynamics}
+\end{split}
+\end{align}
 
-\subsection{Second phase - Landing on the base}
+We now that in this time $t_{blind}$ the platform has changed its position, in particular it is moving in a straight line, so its coordinates will be :
+\begin{align}
+\begin{cases}
+x_{base}(t_{blind}) &= x_{base}(0) + v_{tan}t_{blind}\cos{(\theta_{base})}\\[10pt]
+y_{base}(t_{blind}) &= y_{base}(0) + v_{tan}t_{blind}\sin{(\theta_{base})}
+\end{cases}
+\label{eq:future_pose_blind}
+\end{align}
+So we know that if we have selected the coordinates $\tilde{x},\tilde{y}$ as intersection points where we will start the blind landing over the platform, the quad must be at these coordinates $t_{blind}$ seconds before the platform in order to properly land over it (notice that if $h_{blind} \rightarrow 0$ also $t_{blind} \rightarrow 0$ and so the quad arrives at the intersection point with the moving base).\\
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/blind_landing.pdf}
+    \caption{The scheme synthesizes the concept of the final blind landing. }
+    \label{fig:align_platform}
+\end{figure}
+
+In order to detect when the quad is touching the platform we check the data from the IMU. This unit is given different measurements, among which the value of the linear accelerations along the 3 axes. \\
+Using this data we can calculate the magnitude of the acceleration and we know that when the UAV is hitting a surface this quantity is showing a big pick, so with a simple threshold on the acceleration norm we can detect when the quadrotor is landing.\\
+This solution does not take in account that data from the IMU are usually corrupted by noise (see \ref{subsec:acceleration}) and so we could confuse a noisy measurement with a bump. \\
+To make this detection more robust we can filter the data with a low pass filter:
+\begin{align}
+imu_{filt}(t_k) =  (1-e^{-\frac{t_k-t_{k-1}}{\tau_{imu}}})imu_{raw}(t_k) + e^{-\frac{t_k-t_{k-1}}{\tau_{imu}}} imu_{filt}(t_{k-1})
+\label{eq:imu_filtered}
+\end{align} 
+
+The filter eliminates the noise but it slows down the response to changes, so the detection of the bump is done with some delay: the parameter $\tau_{imu}$ is deciding the cut frequency of the filter, so tuning this quantity can lead to a final filtered data with the right balance between smoothness and sensibility to changes.\\  
+
+These methods that consider the absolute value of the acceleration do not take in consideration that the quadrotor could assume a very high acceleration in the normal fly, and so this acceleration 
+could exceed the threshold and be detected as a bump.\\
+
+Another solution to have a robust and fast bump detector is to compare the raw data from the IMU with the filtered one: the bump creates a big change that the filter cannot follow instantaneously, so the difference between the two version of the data will be very high only in this occasion.\\
+The figure \ref{fig:imu_landing} shows the data used by the bump detector in order to find when the quad is touching the platform and switch off the motors.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/imu_landing.pdf}
+    \caption{Data used by the bump detector: difference between the norms of the raw data from the imu and the filtered version of the same. The difference is growing really fast only when the UAV bumps on the surface.}
+    \label{fig:imu_landing}
+\end{figure}
+ 
+If something goes wrong and in this phase the quadrotor reaches a $z_{quad} < z_{base}$, then the landing failed and we have to restart the state machine.
+

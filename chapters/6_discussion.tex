@@ -1,11 +1,38 @@
 \chapter{Discussion}\label{chap:discussion}
 
+TODO
 Explain both the advantages and limitations of your approach.
 
 \section{Conclusion}\label{sec:conclusion}
-
-Summarize your work and what came out of it.
+In this thesis we presented a complete framework to permits a quadrotor to find, approach and land on a moving platform. We explained all the modules that make up the system, showing in detail the computation we perform in order to complete the assigned task. \\
+Several experiments were carried in simulation and in the real world to demonstrate the functionality of our system. From these experiments we demonstrate robustness of the framework up to a certain velocity, after which the trajectory generation and the self state estimation modules start to fail.\\
 
 \section{Future Work}\label{sec:future_work}
+There are several upgrades that can be done to this frameworks. The major problems are related to the not always robust state estimation and the issues with the trajectory generator ( described in \ref{sec:trajectory_problem}).\\
+ Following we describe what solution can be applied in future to solve these problems.
 
-How would you extend the work? Can you propose another approach?
+\subsection{State estimation using also GPS and Teraranger}
+A future upgrade that we should do is to fuse multiple sensor to have a more robust and precise state estimation.\\
+As a matter of fact MSF can combine easily different sources of data, filtering them with the IMU information.
+The main two sensor we can add for this upgrade can be:
+\begin{itemize}
+\item GPS: it gives a 3D absolute position with not a high accuracy, but are always available in outside environment, and can be useful to have a continue state estimation used to initialized (and reinitialized if it fails) the visual odometry. Of course the uncertainty related to this measure will be much more higher w.r.t the one from SVO, but it is MSF's duty taking in account these information and filtering the data in the right way.
+\item Teraranger \cite{teraranger}: it is distance sensor for robotics, it can operate both in inside and outside environment, it is very light and can be really useful to have an estimation of the height of the quadrotor. It is in fact well known that both VO and GPS systems have much more error in the depth component, so the data from this sensor can be correct all the wrong estimations from the other two sources. 
+\end{itemize}
+
+\subsection{Change the controller}
+As describe before the trajectory generator has some issues that must be resolved \label{sec:trajectory_problem}}. The approach to solve these problems can be:
+\begin{itemize}
+\item make the flight controller more sensitive: right now the replanning does not work because the first desired state of the trajectory is too close to the current state to generate a correct control action. Making the controller more response at little variation can solve this problem.\\
+A method to increase the sensitivity is tuning the controller gains, but this can lead to a unstable behavior, so further studies must be done.
+\item change both the trajectory and the contorller: implementing a new contorller like a LQR controller \cite{wiki_lqr} that takes in account both the dynamic of the quad and the platform and directly calculate the control actions necessary to arrive at a certain final state.\\  In this case the state machine should not predict in advance where the platform will be in $T$ seconds because this prediction is directly done by the LQR controller. The main problem with this type of controller is tuning the weights in the cost function to have a nice and smooth flight. \\ 
+Furthermore we can implement a continuous replanning of the control actions of the LQR, leading with an MPC framework. This solution, as described in the introduction of the thesis, is really computational expensive and before implementing it, we must understand if it can run onboard on our quadrotor.
+\end{itemize} 
+
+\subsection{Cross detector}
+In the final challenge the moving platform will be signed with the marker in figure \ref{fig:finalplatform}. \\
+In order to have a measurement update in the low-altitude EKF we have to implement a cross detector: instead of estimating the 4dof pose of the platform from the AR-tag detection, we must be able to extract the same information from the cross mark.\\
+
+The detector itself should not be really hard to implement  (it consists in a new Pnp problem) the only problem can be due to the symmetry of the cross that does not allow to detect a unique solution for the yaw orientation. On the other end once we are estimating the initial yaw angle we are able to detect correctly the changing in orientation, as far as between two consecutive measures the platform rotates a few degrees: we cannot distinguish between rotations of $k90^o$, but we know that two measures close in time has also close degree because the angular velocity of the platform is not really high.\\
+
+From the point of view of our framework we can simply substitute the detection module and everything still working: this new detector should provide the same data of the AR-tag detector used in this thesis, and so it can directly be used as update step on the EKF already implemented.\\

@@ -2,38 +2,65 @@
 \BOOKMARK [0][-]{chapter*.3}{Nomenclature}{}% 2
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
 \BOOKMARK [1][-]{section.1.1}{Related Work}{chapter.1}% 4
-\BOOKMARK [0][-]{chapter.2}{MBZIRC challenge}{}% 5
-\BOOKMARK [1][-]{subsection.2.0.1}{The Arena}{chapter.2}% 6
-\BOOKMARK [2][-]{subsection.2.0.2}{Landing platform}{subsection.2.0.1}% 7
-\BOOKMARK [2][-]{subsection.2.0.3}{Infinity shape path}{subsection.2.0.1}% 8
-\BOOKMARK [1][-]{section.2.1}{Simulation}{chapter.2}% 9
-\BOOKMARK [0][-]{chapter.3}{General Framework}{}% 10
-\BOOKMARK [1][-]{subsection.3.0.1}{SVO \046 MSF}{chapter.3}% 11
-\BOOKMARK [2][-]{subsection.3.0.2}{Base Detection \046 Tracking}{subsection.3.0.1}% 12
-\BOOKMARK [2][-]{subsection.3.0.3}{Area Exploration}{subsection.3.0.1}% 13
-\BOOKMARK [2][-]{subsection.3.0.4}{Trajectory Generation}{subsection.3.0.1}% 14
-\BOOKMARK [2][-]{subsection.3.0.5}{Flight Control \046 Copilot}{subsection.3.0.1}% 15
-\BOOKMARK [0][-]{chapter.4}{Base Detection and Tracking}{}% 16
-\BOOKMARK [1][-]{section.4.1}{Prediction update: non-holonomic model}{chapter.4}% 17
-\BOOKMARK [1][-]{section.4.2}{Measurement update}{chapter.4}% 18
-\BOOKMARK [2][-]{subsection.4.2.1}{From high altitude}{section.4.2}% 19
-\BOOKMARK [2][-]{subsection.4.2.2}{From low altitude}{section.4.2}% 20
-\BOOKMARK [2][-]{subsection.4.2.3}{Covariance Estimation}{section.4.2}% 21
-\BOOKMARK [1][-]{section.4.3}{Results of the tracking}{chapter.4}% 22
-\BOOKMARK [2][-]{subsection.4.3.1}{From high altitude}{section.4.3}% 23
-\BOOKMARK [2][-]{subsection.4.3.2}{From low altitude}{section.4.3}% 24
-\BOOKMARK [1][-]{section.4.4}{State Prediction}{chapter.4}% 25
-\BOOKMARK [0][-]{chapter.5}{Area exploration}{}% 26
-\BOOKMARK [1][-]{section.5.1}{Phases}{chapter.5}% 27
-\BOOKMARK [2][-]{subsection.5.1.1}{First phase - Searching for the base}{section.5.1}% 28
-\BOOKMARK [2][-]{subsection.5.1.2}{Second phase - Approaching the base}{section.5.1}% 29
-\BOOKMARK [2][-]{subsection.5.1.3}{Second phase - Following the base}{section.5.1}% 30
-\BOOKMARK [2][-]{subsection.5.1.4}{Second phase - Landing on the base}{section.5.1}% 31
-\BOOKMARK [0][-]{chapter.6}{Trajectory Generator}{}% 32
-\BOOKMARK [1][-]{section.6.1}{Base trajectory prediction}{chapter.6}% 33
-\BOOKMARK [1][-]{section.6.2}{Rapid Trajectory}{chapter.6}% 34
-\BOOKMARK [1][-]{section.6.3}{Results}{chapter.6}% 35
-\BOOKMARK [0][-]{chapter.7}{Experiments}{}% 36
-\BOOKMARK [0][-]{chapter.8}{Discussion}{}% 37
-\BOOKMARK [1][-]{section.8.1}{Conclusion}{chapter.8}% 38
-\BOOKMARK [1][-]{section.8.2}{Future Work}{chapter.8}% 39
+\BOOKMARK [1][-]{section.1.2}{MBZIRC challenge}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.2.1}{The Arena}{section.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.2.2}{Landing platform}{section.1.2}% 7
+\BOOKMARK [0][-]{chapter.2}{General Framework}{}% 8
+\BOOKMARK [1][-]{section.2.1}{SVO \046 MSF}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.1.1}{SVO}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.2}{MSF}{section.2.1}% 11
+\BOOKMARK [1][-]{section.2.2}{High \046 low level controls}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.1}{High part}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.2}{Low part}{section.2.2}% 14
+\BOOKMARK [1][-]{section.2.3}{Base detection \046 tracking}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.4}{State machine}{chapter.2}% 16
+\BOOKMARK [1][-]{section.2.5}{Trajectory generation}{chapter.2}% 17
+\BOOKMARK [0][-]{chapter.3}{Base detection and tracking}{}% 18
+\BOOKMARK [1][-]{section.3.1}{Prediction update: non-holonomic model}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.1.1}{Straight and circular path}{section.3.1}% 20
+\BOOKMARK [2][-]{subsection.3.1.2}{Infinity shape path}{section.3.1}% 21
+\BOOKMARK [1][-]{section.3.2}{Measurement update}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.2.1}{From high altitude}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.2}{From low altitude}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.3}{Covariance Estimation}{section.3.2}% 25
+\BOOKMARK [0][-]{chapter.4}{State machine}{}% 26
+\BOOKMARK [1][-]{section.4.1}{Takeoff and searching for the base}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.2}{Following the base}{chapter.4}% 28
+\BOOKMARK [2][-]{subsection.4.2.1}{Understand type of movement}{section.4.2}% 29
+\BOOKMARK [2][-]{subsection.4.2.2}{Calculate future position}{section.4.2}% 30
+\BOOKMARK [2][-]{subsection.4.2.3}{Select moment to land}{section.4.2}% 31
+\BOOKMARK [1][-]{section.4.3}{Approaching the base}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.4}{Align with the base}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.5}{Landing on the base}{chapter.4}% 34
+\BOOKMARK [0][-]{chapter.5}{Trajectory generator}{}% 35
+\BOOKMARK [1][-]{section.5.1}{Rapid Trajectory}{chapter.5}% 36
+\BOOKMARK [2][-]{subsection.5.1.1}{Dynamic model}{section.5.1}% 37
+\BOOKMARK [2][-]{subsection.5.1.2}{Constraints}{section.5.1}% 38
+\BOOKMARK [2][-]{subsection.5.1.3}{Optimal control problem}{section.5.1}% 39
+\BOOKMARK [2][-]{subsection.5.1.4}{Feasibility check}{section.5.1}% 40
+\BOOKMARK [2][-]{subsection.5.1.5}{Compute the acceleration}{section.5.1}% 41
+\BOOKMARK [1][-]{section.5.2}{Minimum snap trajectory}{chapter.5}% 42
+\BOOKMARK [1][-]{section.5.3}{Problems with the trajectory generation}{chapter.5}% 43
+\BOOKMARK [2][-]{subsection.5.3.1}{Last chance solution}{section.5.3}% 44
+\BOOKMARK [2][-]{subsection.5.3.2}{Too frequent replanning}{section.5.3}% 45
+\BOOKMARK [2][-]{subsection.5.3.3}{Too short final time}{section.5.3}% 46
+\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 47
+\BOOKMARK [1][-]{section.6.1}{Real world hardware}{chapter.6}% 48
+\BOOKMARK [2][-]{subsection.6.1.1}{Quadrotor}{section.6.1}% 49
+\BOOKMARK [2][-]{subsection.6.1.2}{Moving platform}{section.6.1}% 50
+\BOOKMARK [1][-]{section.6.2}{Simulation}{chapter.6}% 51
+\BOOKMARK [1][-]{section.6.3}{SVO}{chapter.6}% 52
+\BOOKMARK [2][-]{subsection.6.3.1}{Front looking vs down looking}{section.6.3}% 53
+\BOOKMARK [2][-]{subsection.6.3.2}{Drifting}{section.6.3}% 54
+\BOOKMARK [1][-]{section.6.4}{Base detection}{chapter.6}% 55
+\BOOKMARK [2][-]{subsection.6.4.1}{From high altitude}{section.6.4}% 56
+\BOOKMARK [2][-]{subsection.6.4.2}{From low altitude}{section.6.4}% 57
+\BOOKMARK [1][-]{section.6.5}{Trajectory generation}{chapter.6}% 58
+\BOOKMARK [2][-]{subsection.6.5.1}{Acceleration estimation}{section.6.5}% 59
+\BOOKMARK [1][-]{section.6.6}{Landing precision}{chapter.6}% 60
+\BOOKMARK [0][-]{chapter.7}{Discussion}{}% 61
+\BOOKMARK [1][-]{section.7.1}{Conclusion}{chapter.7}% 62
+\BOOKMARK [1][-]{section.7.2}{Future Work}{chapter.7}% 63
+\BOOKMARK [2][-]{subsection.7.2.1}{State estimation using also GPS and Teraranger}{section.7.2}% 64
+\BOOKMARK [2][-]{subsection.7.2.2}{Different trajectory or other controller}{section.7.2}% 65
+\BOOKMARK [2][-]{subsection.7.2.3}{Cross detector}{section.7.2}% 66

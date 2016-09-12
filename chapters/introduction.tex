@@ -54,60 +54,19 @@ Several papers have been written on MPC \cite{camacho2013model} applied to contr
 
 
 
-MPC
-Fast Nonlinear MPC for unified trajectory optimization and tracking 
-+
-An efficient sequential linear quadratic algorithm for solving nonlinear optimal control problems (algorithm SQL is explained)
-Generate optimal feedforward and feedback control gains
-Resolve unconstrained MPC problem with SLQ algorithm repeatedly
-Closed loop that applies gains calculated previous point
-Cost function with desired state-input ??? (no trajectory I do not understand what they should be, only last is final point )  and waypoints
-Predict the system-> understand if there are time lag between when a policy is calculated and when it is applied
-Initialization SQL or with previous solution or LQR controller 
-H (final state weight) is solution of infinite horizon LQR Ricatti equation
+In \cite{neunertfast} Neunert et.al. present a framework for real-time, unconstrained, nonlinear MPC. The algorithm combines trajectory optimization and tracking control in a unified approach. It solves the MPC problem using repeatedly a method colled Sqeuqntial Linear Quadratic (explain in \cite{sideris2005efficient}), generating feedforward and feedback controls actions. This method allows agile flight maneuvers with accurate tracking. All the calculations are made on an on-board i7 CPU achieving a rate slightly below 40Hz. The major drawback for us is that we have also perform many other computations on the on-board computer, so it is not possible to reach this frequency.
+
+In the paper \cite{bangura2014real} Bangura presents a solution to on-board trajectory tracking control of quadrotors. The
+proposed approach combines a standard control paradigm for attitude and a high-level trajectory tracking with a MPC strategy. 
+In order to reduce the complexity the system is feedback linearized obtaining an equivalent linear model to which the MPC framework can be applied. Also in this case only the computation related to MPC are computed onboard.
+
+Mueller in \cite{mueller2013model} and later in \cite{mueller2015computationally} presents a method for rapid generation and feasibility verification of trajectories for quadrocopters. The motion primitives are defined by the quadrotor's initial state, at time $t$ (position, velocity, acceleration), the desired motion duration $T$, and any combination of components of the quadrocopter's
+position, velocity and acceleration at time $t+T$. The trajectory are the solution of the optimization problem which minimize a
+cost function related to input aggressiveness, and checks if it is feasible both to input and state constraints. Million motion primitives may be evaluated and compared per second, and so the best feasible one can be picked and followed.\\
 
 
-
-Real-time MPC for quadrotors
-Contorol
-Low-level control motors
-Mid-level control attitude -> HIGH gain control to track accurately reference angular velocity (dynamic reduction) dynamically extend the thrust command ???
-High-level control trajectory tracking -> Feedback linearization to create a system handleable  with MPC that creates input that will map in input for mid-level control
-MPC in the feedback equivalent system -> input applied on the original system
-ONBOARD
-MPC gives a desired angular velocity, from this we can calculate the derided thrust and then calculate the feedback torque (eq 12)
-Uses desired angular velocity as input
-
-
-
-Mueller in \cite{mueller2013model} and later in \cite{mueller2015computationally} presents a method for rapid generation and feasibility verification of trajectories for quadrocopters. The motion primitives are defined by the quadrotor's initial state (position, velocity, acceleration), the desired motion duration $T$, and any combination of components of the quadrocopter’s
-position, velocity and acceleration at the motion’s end. The trajectory are the solution of the optimization problem which minimize a
-cost function related to input aggressiveness.
-
-Closed form solutions for the primitives are given, which . Computationally
-efficient tests are presented to allow for rapid feasibility verification.
-Conditions are given under which the existence of feasible
-primitives can be guaranteed a priori. The algorithm may be
-incorporated in a high-level trajectory generator, which can then
-rapidly search over a large number of motion primitives which
-would achieve some given high-level goal. It is shown that a
-million motion primitives may be evaluated and compared per
-second on a standard laptop computer. The motion primitive
-generation algorithm is experimentally demonstrated by tasking
-a quadrocopter with an attached net to catch a thrown ball,
-evaluating thousands of different possible motions to catch the
-ball..\\
-
-Generate trajectories from initial and final state
-Formulating trajectory in jerk and then solving convex optimization problem on each decoupled axis
-Feasibility constraint of input 
-Cost functions with jerks is kind of minimizing the product of the inputs
-Using FORCES to solve the optimization problem
-
-
-
-
-This final paper is very promising for our purpose because our problem can be exactly be expressed as the one solved by the algorithm proposed, and also because it is computationally inexpensive and so it is possible to run the entire code directly on-board.
+This final paper is very promising for our purpose because our problem can be exactly be expressed as the one solved by the algorithm proposed, and also because it is computationally inexpensive and so it is possible to run the entire code directly on-board. Furthermore it is possible to use this code in an MPC-style: we have a controller with rate 
+$\frac{1}{dt}$, at initial time $t_0$ the entire trajectory (from $t_0$ to $t_0 + T$) is calculated but only the first desired state of the trajectory (related to time $t_0+dt$) is considered, then at the next control cycle we repeat the procedure calculating the trajectory from $t_0 + dt$ to $t_0 + T$, and so on.
 
 %Nonlinear Tracking and landing controller for quadrotor aerial robots
 %Attitude - velocity controllers
@@ -133,4 +92,50 @@ This final paper is very promising for our purpose because our problem can be ex
 %Control both UAV and vehicle on the ground
 %Feedback linearize the system define as output x,y,x,psi
 %Joint decentralized control -> exponential stabilization of the particular set of dynamics to drive relative position error to 0
+
+
+\section{MBZIRC challenge}\label{chap:thechallenge}
+The Mohamed Bin Zayed International Robotics Challenge (MBZIRC) is an international robotics competition, held every two years \cite{challenge_description}. MBZIRC provides an ambitious and technologically demanding set of challenges, that aim to inspire the future of robotics through innovative solutions and technological excellence.\\
+Robotics is poised to have a transformative impact in a variety of new markets and on various human social aspects. These include robot applications in disaster response, oil and gas, manufacturing, construction and household chores. Enabling technologies for such applications include robots working more autonomously in dynamic, unstructured environments, while collaborating and interacting with other robots and humans. \\
+The competition consists in 3 challenges and this thesis consist in developing a framework to complete challenge number 1 that requires an UAV to land on a moving ground vehicle. 
+The specifications of the challenge are:
+\begin{itemize}
+\item Duration: 20 minutes.
+\item UAV initial condition: the participating team positions the UAV in stationary mode on the ground at the start location.
+\item UGV initial condition: the ground vehicle is driven into the arena and placed at a random location on the track.
+\end{itemize}
+
+ 
+
+\subsection{The Arena}
+The challenge will be performed in an arena with the following specifications (see figure \ref{fig:arenachallenge}):
+\begin{itemize}
+\item Outdoor open arena with GPS access.
+\item Dimension: approximate  $100m \times 60m$.
+\item Track: width 3m, in the shape of a figure 8 (of infinity shape), with boundary marked with white paint.
+\item Terrain: relatively smooth and relatively level. 
+\item UAV initial start location: 10m away from the arena.
+\end{itemize}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1.1\textwidth]{img/arena.png}
+    \caption{Arena of the challenge}
+    \label{fig:arenachallenge}
+\end{figure}
+
+\subsection{Landing platform}
+The landing platform is mounted on a ground vehicle of approximate dimensions $2.5m \times 1.5m \times 1.5m$ (length, width, height). The moving car starts at a constant speed of $15km/h$, it reduces the speed to $10km/h$ after 6 minutes and to $5 Km/h$ after 12 minutes.\\
+The landing platform will be made of a ferrous surface to enable docking using magnetic or suction or other means.
+It will be a square of dimensions $1.5m \times 1.5m$, and approximately $1.5m$ above ground, positioned on the vehicle. 
+The landing zone inside the landing area is a circle of diameter $1m$. The center of the circle is indicated by an X. The landing area, the landing zone and the marker X are shown in Figure \ref{fig:finalplatform}.
+A successful landing is when a point of contact of the UAV is within the landing circle, with propulsion off and rotors not spinning.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/base.pdf}
+    \caption{Design of the platform in which the quadrotor must land on}
+    \label{fig:finalplatform}
+\end{figure}
+
 

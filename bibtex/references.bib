@@ -110,7 +110,7 @@ doi={10.1007/s10846-016-0339-y}
 
 @article{mueller2013model,
   title={A model predictive controller for quadrocopter state interception},
-  author={Mueller, Mark W and D’Andrea, Raffaello},
+  author={Mueller, Mark W and D'Andrea, Raffaello},
   booktitle={European Control Conference},
   pages={1383--1389},
   year={2013}
@@ -127,7 +127,69 @@ doi={10.1007/s10846-016-0339-y}
   publisher={IEEE}
 };
 
+@article{neunertfast,
+  title={Fast Nonlinear Model Predictive Control for Unified Trajectory Optimization and Tracking},
+  author={Neunert, Michael and de Crousaz, C{\'e}dric and Furrer, Fadri and Kamel, Mina and Farshidian, Farbod and Siegwart, Roland and Buchli, Jonas}
+};
 
+@article{sideris2005efficient,
+  title={An efficient sequential linear quadratic algorithm for solving nonlinear optimal control problems},
+  author={Sideris, Athanasios and Bobrow, James E},
+  journal={IEEE transactions on automatic control},
+  volume={50},
+  number={12},
+  pages={2043--2047},
+  year={2005},
+  publisher={IEEE}
+};
+
+@article{bangura2014real,
+  title={Real-time model predictive control for quadrotors},
+  author={Bangura, Moses and Mahony, Robert},
+  journal={IFAC Proceedings Volumes},
+  volume={47},
+  number={3},
+  pages={11773--11780},
+  year={2014},
+  publisher={Elsevier}
+};
+
+@article{forster2014svo,
+  title={SVO: Fast semi-direct monocular visual odometry},
+  author={Forster, Christian and Pizzoli, Matia and Scaramuzza, Davide},
+  booktitle={2014 IEEE International Conference on Robotics and Automation (ICRA)},
+  pages={15--22},
+  year={2014},
+  organization={IEEE}
+}
+
+@article{lynen2013robust,
+  title={A robust and modular multi-sensor fusion approach applied to mav navigation},
+  author={Lynen, Simon and Achtelik, Markus W and Weiss, Stephan and Chli, Margarita and Siegwart, Roland},
+  booktitle={2013 IEEE/RSJ International Conference on Intelligent Robots and Systems},
+  pages={3923--3929},
+  year={2013},
+  organization={IEEE}
+}
+
+@article {ros,
+	title = {ROS: an open-source Robot Operating System},
+	booktitle = {ICRA Workshop on Open Source Software},
+	year = {2009},
+	attachments = {http://www.willowgarage.com/sites/default/files/icraoss09-ROS.pdf},
+	author = {Morgan Quigley and Ken Conley and Brian P. Gerkey and Josh Faust and Tully Foote and Jeremy Leibs and Rob Wheeler and Andrew Y. Ng}
+}
+
+@article{bell1993iterated,
+  title={The iterated Kalman filter update as a Gauss-Newton method},
+  author={Bell, Bradley M and Cathey, Frederick W},
+  journal={IEEE Transactions on Automatic Control},
+  volume={38},
+  number={2},
+  pages={294--297},
+  year={1993},
+  publisher={Institute of Electrical and Electronics Engineers}
+};
 
 
 @article{Daly2011, 
@@ -193,12 +255,68 @@ month={Sept}
  author = {S. Garrido-Jurado and R. Mu\~noz-Salinas and F.J. Madrid-Cuevas and M.J. Mar\'in-Jim\'enez}
 };
 
+@article{van1997real,
+  title={Real time trajectory generation for differentially flat systems},
+  author={Van Nieuwstadt, Michael J and Murray, Richard M},
+  year={1997},
+  publisher={California Institute of Technology}
+};
+
+@article{mellinger2011minimum,
+  title={Minimum snap trajectory generation and control for quadrotors},
+  author={Mellinger, Daniel and Kumar, Vijay},
+  booktitle={Robotics and Automation (ICRA), 2011 IEEE International Conference on},
+  pages={2520--2525},
+  year={2011},
+  organization={IEEE}
+}
+
+@article{rotors2016,
+author="Furrer, Fadri and Burri, Michael and Achtelik, Markus and Siegwart, Roland",
+editor="Koubaa, Anis",
+chapter="RotorS---A Modular Gazebo MAV Simulator Framework",
+title="Robot Operating System (ROS): The Complete Reference (Volume 1)",
+year="2016",
+publisher="Springer International Publishing",
+address="Cham",
+pages="595--625",
+isbn="978-3-319-26054-9",
+doi="10.1007/978-3-319-26054-9_23",
+url="http://dx.doi.org/10.1007/978-3-319-26054-9_23"
+}
+
+@misc{teraranger,
+   author = {Tera bee},
+   title = {Teraranger sensor},
+   url = {\url{http://www.teraranger.com/}}
+ };
+
+@misc{gazebosimulator,
+   author = {John Hsu, Nate Koenig, Dave Coleman},
+   title = {Gazebo Simulator},
+   year = {2002},
+   url = {\url{http://gazebosim.org/}}
+ };
+ 
+ @misc{optitrack,
+   title = {Optitrack motion caption system},
+   url = {\url{http://optitrack.com/}}
+ };
+ 
+
 @misc{wiki_runge_kutta,
    author = {Wikipedia},
    title = {Runge-Kutta methods},
    year = {2016},
    url = {\url{https://en.wikipedia.org/w/index.php?title=Runge%E2%80%93Kutta_methods&oldid=736063753}}
  };
+ 
+  @misc{wiki_lqr,
+   author = "Wikipedia",
+   title = "Linear-quadratic regulator",
+   year = "2016",
+   url = "\url{https://en.wikipedia.org/w/index.php?title=Linear-quadratic_regulator&oldid=726653066}",
+ }
  
  @misc{challenge_description,
    author = {MBZIRC},
@@ -215,12 +333,26 @@ month={Sept}
    url = {\url{http://wiki.ros.org/ar_sys}}
  };
  
+ @misc{RobotsHusky,
+   author = {Clearpath Robotics},
+   title = {Robots Husky ROS package},
+   url = {\url{ http://wiki.ros.org/Robots/Husky}}
+ };
+ 
  @misc{artrackalvar,
    author = {Scott Niekum},
    title = {AR-Track-Alvar ROS package},
    year = {2012},
    url = {\url{http://wiki.ros.org/ar_track_alvar}}
  };
+ 
+  @misc{clearpathrobotics,
+   author = {Clearpath Robotics},
+   title = {Clearpath Robotics},
+   year = {2009},
+   url = {\url{ https://www.clearpathrobotics.com}}
+ };
+
  
  @misc{rpgapriltags,
    author = {RPG},
