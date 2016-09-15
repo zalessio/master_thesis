@@ -35,32 +35,33 @@
 \BOOKMARK [0][-]{chapter.5}{Trajectory generator}{}% 35
 \BOOKMARK [1][-]{section.5.1}{Rapid Trajectory}{chapter.5}% 36
 \BOOKMARK [2][-]{subsection.5.1.1}{Dynamic model}{section.5.1}% 37
-\BOOKMARK [2][-]{subsection.5.1.2}{Constraints}{section.5.1}% 38
-\BOOKMARK [2][-]{subsection.5.1.3}{Optimal control problem}{section.5.1}% 39
-\BOOKMARK [2][-]{subsection.5.1.4}{Feasibility check}{section.5.1}% 40
-\BOOKMARK [2][-]{subsection.5.1.5}{Compute the acceleration}{section.5.1}% 41
-\BOOKMARK [1][-]{section.5.2}{Minimum snap trajectory}{chapter.5}% 42
-\BOOKMARK [1][-]{section.5.3}{Problems with the trajectory generation}{chapter.5}% 43
-\BOOKMARK [2][-]{subsection.5.3.1}{Last chance solution}{section.5.3}% 44
-\BOOKMARK [2][-]{subsection.5.3.2}{Too frequent replanning}{section.5.3}% 45
-\BOOKMARK [2][-]{subsection.5.3.3}{Too short final time}{section.5.3}% 46
-\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 47
-\BOOKMARK [1][-]{section.6.1}{Real world hardware}{chapter.6}% 48
-\BOOKMARK [2][-]{subsection.6.1.1}{Quadrotor}{section.6.1}% 49
-\BOOKMARK [2][-]{subsection.6.1.2}{Moving platform}{section.6.1}% 50
-\BOOKMARK [1][-]{section.6.2}{Simulation}{chapter.6}% 51
-\BOOKMARK [1][-]{section.6.3}{SVO}{chapter.6}% 52
-\BOOKMARK [2][-]{subsection.6.3.1}{Front looking vs down looking}{section.6.3}% 53
-\BOOKMARK [2][-]{subsection.6.3.2}{Drifting}{section.6.3}% 54
-\BOOKMARK [1][-]{section.6.4}{Base detection}{chapter.6}% 55
-\BOOKMARK [2][-]{subsection.6.4.1}{From high altitude}{section.6.4}% 56
-\BOOKMARK [2][-]{subsection.6.4.2}{From low altitude}{section.6.4}% 57
-\BOOKMARK [1][-]{section.6.5}{Trajectory generation}{chapter.6}% 58
-\BOOKMARK [2][-]{subsection.6.5.1}{Acceleration estimation}{section.6.5}% 59
-\BOOKMARK [1][-]{section.6.6}{Landing precision}{chapter.6}% 60
-\BOOKMARK [0][-]{chapter.7}{Discussion}{}% 61
-\BOOKMARK [1][-]{section.7.1}{Conclusion}{chapter.7}% 62
-\BOOKMARK [1][-]{section.7.2}{Future Work}{chapter.7}% 63
-\BOOKMARK [2][-]{subsection.7.2.1}{State estimation using also GPS and Teraranger}{section.7.2}% 64
-\BOOKMARK [2][-]{subsection.7.2.2}{Different trajectory or other controller}{section.7.2}% 65
-\BOOKMARK [2][-]{subsection.7.2.3}{Cross detector}{section.7.2}% 66
+\BOOKMARK [2][-]{subsection.5.1.2}{Optimal control problem}{section.5.1}% 38
+\BOOKMARK [2][-]{subsection.5.1.3}{Cost function}{section.5.1}% 39
+\BOOKMARK [2][-]{subsection.5.1.4}{Constraints}{section.5.1}% 40
+\BOOKMARK [2][-]{subsection.5.1.5}{Feasibility check}{section.5.1}% 41
+\BOOKMARK [2][-]{subsection.5.1.6}{Compute the acceleration}{section.5.1}% 42
+\BOOKMARK [1][-]{section.5.2}{Minimum snap trajectory}{chapter.5}% 43
+\BOOKMARK [1][-]{section.5.3}{Problems with the trajectory generation}{chapter.5}% 44
+\BOOKMARK [2][-]{subsection.5.3.1}{Last chance solution}{section.5.3}% 45
+\BOOKMARK [2][-]{subsection.5.3.2}{Too frequent replanning}{section.5.3}% 46
+\BOOKMARK [2][-]{subsection.5.3.3}{Too short final time}{section.5.3}% 47
+\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 48
+\BOOKMARK [1][-]{section.6.1}{Real world hardware}{chapter.6}% 49
+\BOOKMARK [2][-]{subsection.6.1.1}{Quadrotor}{section.6.1}% 50
+\BOOKMARK [2][-]{subsection.6.1.2}{Moving platform}{section.6.1}% 51
+\BOOKMARK [1][-]{section.6.2}{Simulation}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.3}{SVO}{chapter.6}% 53
+\BOOKMARK [2][-]{subsection.6.3.1}{Front looking vs down looking}{section.6.3}% 54
+\BOOKMARK [2][-]{subsection.6.3.2}{Drifting}{section.6.3}% 55
+\BOOKMARK [2][-]{subsection.6.3.3}{Very fast flight}{section.6.3}% 56
+\BOOKMARK [1][-]{section.6.4}{Base detection and tracking}{chapter.6}% 57
+\BOOKMARK [2][-]{subsection.6.4.1}{From high altitude}{section.6.4}% 58
+\BOOKMARK [2][-]{subsection.6.4.2}{From low altitude}{section.6.4}% 59
+\BOOKMARK [1][-]{section.6.5}{Trajectory generation}{chapter.6}% 60
+\BOOKMARK [2][-]{subsection.6.5.1}{Acceleration estimation}{section.6.5}% 61
+\BOOKMARK [0][-]{chapter.7}{Discussion}{}% 62
+\BOOKMARK [1][-]{section.7.1}{Conclusion}{chapter.7}% 63
+\BOOKMARK [1][-]{section.7.2}{Future Work}{chapter.7}% 64
+\BOOKMARK [2][-]{subsection.7.2.1}{State estimation using also GPS and Teraranger}{section.7.2}% 65
+\BOOKMARK [2][-]{subsection.7.2.2}{Change the controller}{section.7.2}% 66
+\BOOKMARK [2][-]{subsection.7.2.3}{Cross detector}{section.7.2}% 67

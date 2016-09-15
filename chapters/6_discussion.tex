@@ -21,7 +21,7 @@ The main two sensor we can add for this upgrade can be:
 \end{itemize}
 
 \subsection{Change the controller}
-As describe before the trajectory generator has some issues that must be resolved \label{sec:trajectory_problem}}. The approach to solve these problems can be:
+As describe before the trajectory generator has some issues that must be resolved \label{sec:trajectory_problem}. The approach to solve these problems can be:
 \begin{itemize}
 \item make the flight controller more sensitive: right now the replanning does not work because the first desired state of the trajectory is too close to the current state to generate a correct control action. Making the controller more response at little variation can solve this problem.\\
 A method to increase the sensitivity is tuning the controller gains, but this can lead to a unstable behavior, so further studies must be done.

@@ -143,11 +143,13 @@ For example the data set showed inf figure \ref{fig:svo_position_driftind} is re
   \label{fig:svo_position_driftind}
 \end{figure} 
 
-The reasons for this behavior can be related to the poverty of features that the vertical walls in the flyingroom has. As a matter of fact if there are no enough distinctive features the visual odometry can drift. TODO 
+The reasons for this behavior can be related to the poverty of features that the vertical walls in the flyingroom has. As a matter of fact if there are no enough distinctive features the visual odometry can drift. TODO ???
+
+\subsection{Very fast flight}
+In the final challenge the moving car will move at $15\frac{km}{h}$ that means $4.17\frac{m}{s}$. IN order the quadrotor to be able to follow and land on the platform it must flight faster then this velocity. We made some experiments to understand if the state estimation with the front looking camera it is precise at this high speed. TODO complete
 
 
-
-\section{Base detection}
+\section{Base detection and tracking}
 Several experiments were performed both in simulation and in the real world to evaluate the performance of the state estimation.
 \subsection{From high altitude}
 We are not requiring that the state estimation from high altitude is very precise, we need a rough estimation of the position of the platform. The performance of the estimation are depending on the altitude from which the quadrotor is tracking the base, but anyway, with the designed  EKF we obtain a reliable estimation of the base state.\\
@@ -208,60 +210,59 @@ In our final implementation we decided to use AR-Sys because its computational e
 This package guarantees a good error correction in the identification of a specific tag, and, more interesting for our application, a solution to the occlusion problem using multiple markers. This package can identify the pose of boards composed by multiple tags considered as a single unit. This guarantees more stable pose estimates and robustness to occlusions. The board is defined in an XML file where all the tag are listed with an ID and the relative position w.r.t. the master tag (the first in the list) that defines the center of the cumulative tag, the pose of the camera is given with respect to this tag. 
 
 \subsubsection{Results}
-Very accurate pose estimation is obtain when the AR tags are used. Generally the error in the $x,y$ coordinate is less then $5cm$ while in the $z$ direction is about $3cm$.\\
+Very accurate pose estimation is obtain when the AR tags are used. Generally the error in the $x,y$ coordinate is less then $10cm$ while in the $z$ direction is about $3cm$.\\
 The following figures show different experiments in the real world and in the simulation with different velocities and initial values.\\
 
 \begin{figure}[!htbp]
   \centering
    \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/estimate_position_static_platform.pdf}
+        \includegraphics[width=\textwidth]{img/tag_static_real_world_pos.pdf}
         \caption{Position }
         \label{fig:one_ekf_real_world_static}
    \end{subfigure}\hfill
    \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/estimate_velocity_static_platform.pdf}
+        \includegraphics[width=\textwidth]{img/tag_static_real_world_vel.pdf}
         \caption{Velocity}
         \label{fig:two_ekf_real_world_static}
    \end{subfigure}
-  \caption{Real world experiment. Comparison between estimate position and velocity with the ground truth values for a static platform. The estimate position has a RMSE of $1.5cm$ in $x,y$ and $2.5cm$ in $z$.}
+  \caption{Real world experiment. Comparison between estimate position and velocity with the ground truth values for a static platform. The estimate position has a RMSE of $5cm$ in $x,y$ and $2.5cm$ in $z$.}
   \label{fig:ekf_real_world_static}
 \end{figure} 
 
-
-TODO make new graph
-
 \begin{figure}[!htbp]
   \centering
    \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/position_simulation_hot_init.png}
+        \includegraphics[width=\textwidth]{img/tag_2ms_simulation_pos.pdf}
         \caption{Position }
-        \label{fig:one}
+        \label{fig:one_ekf_simulation_2ms}
    \end{subfigure}\hfill
    \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/velocity_simulation_hot_init.png}
+        \includegraphics[width=\textwidth]{img/tag_2ms_simulation_vel.pdf}
         \caption{Velocity}
-        \label{fig:two}
+        \label{fig:two_ekf_simulation_2ms}
    \end{subfigure}
-  \caption{Simulation test. Comparison between estimate position and velocity with the ground truth values. The velocity is initialized with the right value.}
-  \label{fig:ekf_simulation_hot_init}
+  \caption{Simulation test. Comparison between estimate position and velocity with the ground truth values. The velocity is initialized with a wrong value of 1m/s but the filter needs few steps to converge to the right value of 2m/s. The estimate position has a RMSE of $10cm$ in $x,y$ and $2cm$ in $z$.}
+  \label{fig:ekf_simulation_2ms}
 \end{figure} 
 
-\begin{figure}[!htbp]
-  \centering
-   \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/position_simulation.png}
-        \caption{Position }
-        \label{fig:one}
-   \end{subfigure}\hfill
-   \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/velocity_simulation.png}
-        \caption{Velocity}
-        \label{fig:two}
-   \end{subfigure}
-  \caption{Simulation test. Comparison between estimate position and velocity with the ground truth values. The velocity is initialized with 0 value. In this case the filter needs some time to converge to the right value of velocity.}
-  \label{fig:ekf_simulation_hot_init}
-\end{figure}
 
+%\begin{figure}[!htbp]
+%  \centering
+%   \begin{subfigure}[b]{0.45\textwidth}
+%        \includegraphics[width=\textwidth]{img/tag_2ms_simulation_pos.pdf}
+%        \caption{Position }
+%        \label{fig:one}
+%   \end{subfigure}\hfill
+%   \begin{subfigure}[b]{0.45\textwidth}
+%        \includegraphics[width=\textwidth]{img/tag_2ms_simulation_vel.pdf}
+%        \caption{Velocity}
+%        \label{fig:two}
+%   \end{subfigure}
+%  \caption{Simulation test. Comparison between estimate position and velocity with the ground truth values. The velocity is initialized with 0 value. In this case the filter needs some time to converge to the right value of velocity.}
+%  \label{fig:ekf_simulation_hot_init}
+%\end{figure}
+
+TODO images from real world moving platform
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.7\textwidth]{img/position_real_world.png}
@@ -325,10 +326,6 @@ To understand how the raw data looks like, the figure \ref{fig:comparison_acc} o
 It is easy to notice that only the raw data from the thrust can be considered a good approximation of the acceleration, while the other two signals needs some filtering. On the other side, the comparison of the filtered data more sense. Even in this case the estimation computed with the thrust sill more smooth compared to the other. It is possible to filter more the data from IMU and finite difference, but this will cause a delay in the signal.\\
 
 In the $z$ direction the acceleration estimation computed with the thrust shows an offset with respect to the other two signal. This could be caused by a wrong estimation of the rotor fitness factors. TODO???
-
-\section{Landing precision}
-TODO
-
 
 
 %\begin{figure}[h]

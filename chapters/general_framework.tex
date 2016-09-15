@@ -1,18 +1,18 @@
 \chapter{General Framework}\label{chap:general_framework}
-Our framework consists in several parts, each one is computing a different task and they are communicating one with the other in order to achieve the final task of landing on a moving platform. Figure \ref{fig:pipeline_diagram} shows the principal components of our framework. In this chapter we are giving a brief introduction on each part and in the following chapters we will discuss in detail the parts developed in this thesis.
+Our framework consists in several parts, each one is computing a different sub-task and they are communicating one with the other in order to achieve the final mission of landing on a moving platform. Figure \ref{fig:pipeline_diagram} shows the principal components of our framework. In this chapter we are giving a brief introduction on each part and in the following chapters we will discuss in detail the parts developed in this thesis.
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=1.0\textwidth]{img/pipeline_diagram.pdf}
-    \caption{Pipeline}
+    \caption{Pipeline of the framework. In blue the modules already implemented we add to the work of this thesis. In green the steps developed in this work.}
     \label{fig:pipeline_diagram}
 \end{figure}
 
-The modular system developed, utilize the Robot Operating System (ROS) \cite{ros} for interprocess communication. The platforms used in this project are capable of autonomous, vision-based flight utilizing only their on-board hardware resources, they do not need to rely on external communication infrastructure to perform their behaviors. In a field robotics scenario with uncertain communication reliability like the MBZIRC, this is of critical importance, and our approach enables our platforms to perform their tasks
+The modular system developed, utilize the Robot Operating System (ROS) \cite{ros} for interprocess communication. The platforms used in this project are capable of autonomous, vision-based flight utilizing only their on-board hardware resources, they do not need to rely on external communication infrastructure to accomplish their tasks. In a field robotics scenario with uncertain communication reliability like the MBZIRC, this is of critical importance, and our approach enables our platforms to perform their missions
 autonomously without any dependence on external communication.
 
 \section{SVO \& MSF} \label{sec:state_estimation}
-The backbone of our system is accurate state estimation provided by our visual odometry algorithm, Semidirect Monocular Visual Odometry (SVO) \cite{forster2014svo}. It provides a precise and robust pose estimate, and it runs at up to 55 frames per second on the onboard embedded computer of our flying robots. This vision-based state estimate is fused with inertial data and gravity aligned using the Multi-Sensor Fusion framework (MSF) \cite{lynen2013robust}.\\
-The fusion of visual and inertial information provides a full state estimate of the UAV.\\
+The backbone of our system is an accurate state estimation provided by the visual odometry algorithm: Semidirect Monocular Visual Odometry (SVO) \cite{forster2014svo}. It provides a precise and robust pose estimate (3D positiona and orientation), and it runs at up to 55 frames per second on the onboard embedded computer of our flying robots. This vision-based state estimate is fused with inertial data and gravity aligned using the Multi-Sensor Fusion framework (MSF) \cite{lynen2013robust}.\\
+The fusion of visual and inertial information provides a full state estimate of the UAVs.\\
 
 
 \subsection{SVO}
@@ -39,20 +39,21 @@ A new 3D point is insert in the set used for motion estimation when its depth un
 %Precise and high frame-rate motion estimation brings increased robustness in scenes of little, repetitive, and high-frequency texture.
 
 \subsection{MSF}
-MSF implements an Iterated Extended Kalman Filter (IEKF) \cite{bell1993iterated} over variable sized windows of updates. In the IEKF  the state prediction is driven by IMU data, while the update step can be of any nature, in our case we use the absolute pose given by SVO.\\
+MSF implements an Iterated Extended Kalman Filter (IEKF) \cite{bell1993iterated} over variable sized windows of updates. In the IEKF  the state prediction is driven by IMU data, while the update step can be of any nature, in our case we use the pose given by SVO.\\
 MSF has a modular structure that can support and marge an unlimited number of sensors that give relative or absolute measurements (pose, position, pressure, etc). Furthermore it estimates the calibration states between sensors and tracks the cross covariance terms for relative updates. It also has an outlier rejection module for the update measures.\\
-MSF can compensate for unknown and changing delays implementing further propagation: the state is predicted with IMU data and whenever it receives an update step (usually in the past) it collocates this measurement in a ring-buffer that considers the moment this data was taken. Then it propagates this in time in order to update the current estimation and covariance based on the past data. With this function the framework can give state estimation at prediction step rate and without delay.
+MSF can compensate for unknown and changing delays implementing further propagation: the state is predicted with IMU data and whenever it receives an update step (usually in the past because of delays) it collocates this measurement in a ring-buffer that considers the moment this data was taken. Then it propagates this measure in time in order to update the current estimation and covariance based on the past data. With this function the framework can give state estimation at IMU rate and without delay.
 
 
 \section{High \& low level controls}
-The controller is split into a high-level part and a low-level part: the former enables the tracking of a desired  pose and velocity and gives the input to the letter that tracks a desired thrust and body rates.\\
+To control the flight of the quadrotor we need an algorithm that given the current state of the UAV and a final desired state it calculate the input that bring and stabilize the quad on the desired final condition.\\
+The controller of the quadrotor is split into a high-level part and a low-level part: the former enables the tracking of a desired  pose and velocity and gives the input to the letter that tracks a desired thrust and body rates.\\
 
 \subsection{High part}\label{sec:high_control}
 
 The high level control takes as input: 
 \begin{itemize}
 \item $([\hat{x},\hat{y},\hat{z}],[\hat{\phi},\hat{\theta},\hat{\psi}],[\hat{vx},\hat{vy},\hat{vz}],[\hat{p},\hat{q},\hat{r}])$: the current state estimate (position, orientation, velocity, angular velocity) , calculate in the previous module
-\item $([x_{ref},y_{ref},z_{ref}],[vx_{ref},vy_{ref},vz_{ref}],[ax_{ref},ay_{ref},az_{ref}],[\psi_{ref}])$: a reference state (position, velocity, acceleration, yaw) , that can be sampled from a trajectory, calculate in another module, that the UAV should follow to perform a task
+\item $([x_{ref},y_{ref},z_{ref}],[vx_{ref},vy_{ref},vz_{ref}],[ax_{ref},ay_{ref},az_{ref}],[\psi_{ref}])$: a reference state (position, velocity, acceleration, yaw) , that can be sampled from a trajectory, calculate in another module, that the UAV should track to perform a task
 \end{itemize}
 and gives in output:
 \begin{itemize}
@@ -202,20 +203,22 @@ Depending on the chosen orientation of the body frame we have a different map be
 \end{figure}
 
 \section{Base detection \& tracking}\label{sec:base_estimation}
-In order to land on the the moving platform it is necessary to know where the base is at a specific time $t$. To do so we are using images from the down looking camera to localize where the platform is w.r.t the quadrotor. Then, given the position of the UAV w.r.t the world frame (estimate by the module \ref{sec:state_estimation}), we can reconstruct the pose of the moving base in the global coordinate frame. \\
-Now if we know how the platform should move in the world frame we can combine the noisy information from the measurements with the theoretical pose to have a better estimation of the state of the platform.  \\
+In order to land on the the moving platform it is necessary to know where the base is at a specific time $t$. To do so we are using images from the camera to localize where the platform is w.r.t the quadrotor. Then, given the position of the UAV w.r.t the world frame (estimate by the module \ref{sec:state_estimation}), we can reconstruct the pose of the moving base in the global coordinate frame. \\
+Now if we know how the platform should move in the world frame we can combine the noisy information from the measurements with the theoretical pose  that it should have, in order to compute a better estimation of the state of the platform.  \\
 Furthermore we can predict where the platform will be in the future and use this information to plan in advance where the quadrotor must go to complete the task.\\
 
 This module will be discussed extensively in chapter \ref{chap:base_tracking}, with explanation on all the steps we perform to have the final estimation of the base's state.
 
 \section{State machine} \label{sec:area_exploration}
-A state machine is required to differentiate the behavior of the quadrotor in the various phases of the framework. This module implements the manager that decides in which phase the UAV is, based on its pose (estimate by the module \ref{sec:state_estimation}), the position of the base (from the module \ref{sec:base_estimation}), and other inputs.\\
-The main output of this module is a final desired target that the quadrotor should reach to complete the current phase.\\
+A state machine is required to differentiate the behavior of the quadrotor in the various phases of the framework. This module implements the manager that decides in which stage the UAV is, based on its pose (estimate by the module \ref{sec:state_estimation}), the position of the base (from the module \ref{sec:base_estimation}), and other inputs.\\
+The main output of this module is a final desired target that the quadrotor must reach to complete the current stage and the time $T$ it should spend to arrive there.\\
+
 This module will be discussed extensively in chapter \ref{chap:area_exploration}.
 
 
 \section{Trajectory generation}
-This module of the framework is taking as inputs the quadrotor state estimation (from the module \ref{sec:state_estimation}) and the final state that it has to reach (calculate by the module \ref{sec:area_exploration}) and calculate the trajectory that the UAV must follow to reach the final state.\\
-The trajectories are a sequence of desired positions, velocities and accelerations that the quadrotor has to reach. These desired states are given with a fixed rate to the high-controller module \ref{sec:high_control}.
+This module of the framework is taking as inputs the quadrotor state estimation (from the module \ref{sec:state_estimation}) and the final state that it has to reach (calculate by the module \ref{sec:area_exploration}) and calculate the trajectory that the UAV must track to reach the final state in $T$ seconds.\\
+The trajectories are a sequence of desired positions, velocities and accelerations that the quadrotor has to reach. These desired states are given with a fixed rate to the high-controller module \ref{sec:high_control}.\\
+Furthermore this module is continuously replanning the trajectories in order to compensate errors related to wrong final conditions or wrong trajectory tracking.\\  
 
 This module will be discussed extensively in chapter \ref{chap:trajectory_generator}.

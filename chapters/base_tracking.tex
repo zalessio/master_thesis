@@ -1,12 +1,12 @@
 \chapter{Base detection and tracking}\label{chap:base_tracking}
-One part of the work is focused on the estimation of the state of the moving platform. This is necessary in order to have a good prediction of the final state that the quadrotor must have in order to proper land on the moving car. \\ With the method described in this section, every time we detect the platform we can estimate its position, orientation and velocity vector in world coordinate frame, so we can predict where the platform will be in $t$ seconds and where the quadrotor should go to successfully complete the mission.\\ 
-
+One part of the work is focused on the estimation of the odometry of the moving platform. This is necessary in order to have a good prediction of the final state that the quadrotor must have in order to proper land on the moving car. \\ 
+With the method described in this section, every time we detect the platform we can estimate its position, orientation and velocity vector in world coordinate frame, so we can predict where the platform will be in $t$ seconds.\\
 
 An EKF  \cite{kalmanfilter} is design in order to have the most reliable value of the state of the platform.\\
-Kalman filtering is an algorithm that uses a series of noisy measurements observed over time and produces estimates of unknown variables that tend to be more precise than those based on a single measurement alone, by using Bayesian inference and estimating a joint probability distribution over the variables for each time frame.\\
+Kalman filtering consists in an algorithm that uses a series of noisy measurements observed over time and produces estimates of unknown variables that are more precise and smooth than those based on measurement alone. This filter is done using Bayesian inference and estimating a joint probability distribution over the variables for each time frame.\\
 The algorithm works in a two-step process:
 \begin{itemize}
-\item In the prediction step, the Kalman filter produces estimates of the current state variables, along with their uncertainties, based on a model of the system:
+\item In the prediction step, the KF produces estimates of the current state variables, along with their uncertainties, based on a model of the system:
 \begin{align}
 \boldsymbol{x}_k = f(\boldsymbol{x}_{k-1},\boldsymbol{u}_k) + \boldsymbol{w}_k
  \label{eq:ekf1}
@@ -18,40 +18,43 @@ The algorithm works in a two-step process:
 \end{align}
 these estimates are updated using a weighted average, with more weight being given to estimates with higher certainty.
 \end{itemize}
-In the extended Kalman filter, the state transition and observation models don't need to be linear functions of the state but may instead be differentiable functions.\\
-($\boldsymbol{w}_k$ and $\boldsymbol{v}_k$ are the process and observation noises which are both assumed to be zero mean multivariate Gaussian noises with covariance $\boldsymbol{Q}_k$ and $\boldsymbol{R}_k$ respectively. $\boldsymbol{u}_k$ is the control vector).
+In these equations $\boldsymbol{x}_k$ is the state, $\boldsymbol{z}_k$ the measure, $\boldsymbol{u}_k$ is the control input, $f$ the state dynamics, $h$ the measure model, $\boldsymbol{w}_k$ and $\boldsymbol{v}_k$ are the process and observation noises which are both assumed to be zero mean multivariate Gaussian noises with covariance $\boldsymbol{Q}_k$ and $\boldsymbol{R}_k$ respectively. \\
+In the EKF, the state transition $f$ and observation models  $h$ do not need to be linear functions of the state but may instead be differentiable functions.\\
 
-The algorithm is recursive. It can run in real time, using only the present input measurements and the previously calculated state and its uncertainty matrix; no additional past information is required.\\
-The Kalman filter does not require any assumption that the errors are Gaussian. However, the filter yields the exact conditional probability estimate in the special case that all errors are Gaussian-distributed.\\
+The algorithm is recursive and it can run in real time, using only the present input measurements and the previously calculated state and its uncertainty matrix, no additional past information is required.\\
+The KF does not require any assumption that the errors are Gaussian. However, the filter yields the exact conditional probability estimate in the special case that all errors are Gaussian distributed.\\
+
+Following we summarize the mathematical passages we have to perform in order to calculate the final estimation. We consider the case in which the prediction and the update models are discrete in time.\\
+%Initialization
+%\begin{align}
+%\begin{split}
+%\boldsymbol{x}_{0|0} = x_0\\
+%\boldsymbol{P}_{0|0} = P_0
+%\end{split}
+%\end{align}
+%For the prediction step of the EKF we have to solve:
+%\begin{align}
+%\begin{split}
+%\boldsymbol{\dot{\hat{x}}}(t) &= f(\boldsymbol{\hat{x}}(t),\boldsymbol{u}(t)) \\
+%\boldsymbol{\dot{P}}(t) &= \boldsymbol{F}(t) \boldsymbol{P}(t) + \boldsymbol{P}(t)\boldsymbol{F}(t)^{\top } + \boldsymbol{Q}(t)
+%\end{split}
+%\end{align}
+%for $t \in (t_{k-1}, t_k)$ where
+%\begin{align}
+%\begin{split}
+%\boldsymbol{\hat{x}}(t_{k-1}) &= \hat{x}_{k-1|k-1} \\
+%\boldsymbol{P}(t_{k-1}) &= P_{k-1|k-1}
+%\\
+%{\boldsymbol{F}}(t)&=\left.{\frac  {\partial f}{\partial {\boldsymbol{x}}}}\right\vert _{{{\hat  {{\boldsymbol{x}}}}(t),{\boldsymbol{u}}(t)}}  \\
+%\boldsymbol{\hat{x}}_{k|k-1} &= \boldsymbol{\hat{x}}(t_{k}) \\
+%\boldsymbol{P}_{k|k-1} &= \boldsymbol{P}(t_{k})
+%\end{split}
+%\end{align}
+
 Initialization
 \begin{align}
 \begin{split}
-\boldsymbol{x}_{0|0} = x_0\\
-\boldsymbol{P}_{0|0} = P_0
-\end{split}
-\end{align}
-In this case the prediction equations are continuous in time, so for the prediction step of the EKF we have to solve:
-\begin{align}
-\begin{split}
-\boldsymbol{\dot{\hat{x}}}(t) &= f(\boldsymbol{\hat{x}}(t),\boldsymbol{u}(t)) \\
-\boldsymbol{\dot{P}}(t) &= \boldsymbol{F}(t) \boldsymbol{P}(t) + \boldsymbol{P}(t)\boldsymbol{F}(t)^{\top } + \boldsymbol{Q}(t)
-\end{split}
-\end{align}
-for $t \in (t_{k-1}, t_k)$ where
-\begin{align}
-\begin{split}
-\boldsymbol{\hat{x}}(t_{k-1}) &= \hat{x}_{k-1|k-1} \\
-\boldsymbol{P}(t_{k-1}) &= P_{k-1|k-1}
-\\
-{\boldsymbol{F}}(t)&=\left.{\frac  {\partial f}{\partial {\boldsymbol{x}}}}\right\vert _{{{\hat  {{\boldsymbol{x}}}}(t),{\boldsymbol{u}}(t)}}  \\
-\boldsymbol{\hat{x}}_{k|k-1} &= \boldsymbol{\hat{x}}(t_{k}) \\
-\boldsymbol{P}_{k|k-1} &= \boldsymbol{P}(t_{k})
-\end{split}
-\end{align}
-In order to save some computation we can discretize the dynamicin order to have shorter computation during the prediction step of the EKF:
-\begin{align}
-\begin{split}
-\boldsymbol{\hat{x}}_{k|k-1} &= f(\boldsymbol{\hat{x}}_{k-1|k-1},\boldsymbol{u}_k) \\
+\boldsymbol{\hat{x}}_{k|k-1} &= f(\boldsymbol{\hat{x}}_{k-1|k-1},\boldsymbol{u}_k) \\[10pt]
 \boldsymbol{P}_{k|k-1} &= \boldsymbol{F}_{k-1} \boldsymbol{P}_{k-1|k-1}\boldsymbol{F}_{k-1}^{\top } + \boldsymbol{Q}_{k}
 \end{split}
 \end{align}
@@ -61,18 +64,17 @@ where the state transition matrix is defined to be the following Jacobians:
 \boldsymbol{F}_{k-1}&= \left.{\frac{\partial f}{\partial {\boldsymbol{x}}}} \right \vert_{\hat{\boldsymbol{x}}_{k-1|k-1},\boldsymbol{u}_{k}} 
 \end{split}
 \end{align}
-While the update equations are discrete in time and they yield to the following update step: 
+While the update equations yield to the following update step: 
 \begin{align}
 \begin{split}
 \boldsymbol{K}_{k} &= \boldsymbol{P}_{k|k-1} \boldsymbol{H}_{k}^{\top }(\boldsymbol{H}_{k} \boldsymbol{P}_{k|k-1} \boldsymbol{H}_{k}^{\top }+ \boldsymbol{R}_{k})^{-1}
-\\
+\\[10pt]
 \hat{\boldsymbol{x}}_{k|k} &= \hat{\boldsymbol{x}}_{k|k-1} + \boldsymbol{K}_{k} (\boldsymbol{z}_{k}-h(\hat{\boldsymbol{x}}_{k|k-1}))
-\\
+\\[10pt]
 \boldsymbol{P}_{k|k} &=(\boldsymbol{I}-\boldsymbol{K}_{k}\boldsymbol{H}_{k})\boldsymbol{P}_{k|k-1}
 \end{split}
 \end{align}
 where the observation matrix is defined to be the following Jacobian:
-
 \begin{align}
 \begin{split}
 \boldsymbol{H}_{k} = \left.{\frac{\partial h}{\partial {\boldsymbol{x}}}} \right \vert_{\hat{\boldsymbol{x}}_{k|k-1}}
@@ -80,7 +82,9 @@ where the observation matrix is defined to be the following Jacobian:
 \end{align}
 
 \section{Prediction update: non-holonomic model}
-The platform is considered as a car and simulated with a non-holonomic model \ref{fig:nonholonomicmodel}. 
+The platform is considered as a car and simulated with a non-holonomic model \ref{fig:nonholonomicmodel}. In this model the state is defined as $\boldsymbol{x} = (x, y, z,\theta , v_{tan}, \phi)$:
+It corresponds to the 3 position in a space $(x,y,z)$ and the yaw angle of the platform $(\theta)$ w.r.t. the world frame, the forward velocity ($v_{tan}$) and the angle of the front wheels ($\phi$). The system depends on a parameter $L$ that corresponds to the distance between the front and the back wheels.\\
+In this model the control input are the change in velocity $u_1 = \dot{v}_{tan}$ and in the angle of curvature $u_2 = \dot{\phi}$. \\
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.5\textwidth]{img/non_holonomic_model.png}
@@ -88,39 +92,34 @@ The platform is considered as a car and simulated with a non-holonomic model \re
     \label{fig:nonholonomicmodel}
 \end{figure}
 
-In this model the state is defined as $\boldsymbol{x} = (x, y, z,\theta , v, \phi)$:
-It corresponds to the 3 position in a space $(x,y,z)$ and the yaw angle of the platform $(\theta)$ w.r.t. the world frame, the forward velocity ($v$) and the angle of the front wheels ($\phi$). The system depends on a parameter $L$ that corresponds to the distance between the front and the back wheels.\\
-In this model the control input are the change in velocity $v$ and in the angle of curvature $\phi$. \\
 The equation of motion in continuous time are:
 \begin{align}
-\boldsymbol{\dot{x}} = f(\boldsymbol{x},\boldsymbol{u}) \nonumber
-\end{align}
-\begin{align}
-\boldsymbol{\dot{x}} = 
+\begin{split}
+\boldsymbol{\dot{x}} \ \ &= \ \ \ \  f(\boldsymbol{x},\boldsymbol{u}) \\[10pt]
 \begin{bmatrix}
 \dot{x}  \\[10pt]
 \dot{y}  \\[10pt]
 \dot{z} \\[10pt]
 \dot{\theta} \\[10pt]
-\dot{v}  \\[10pt]
+\dot{v_{tan}}  \\[10pt]
 \dot{\phi}
 \end{bmatrix}
-= 
+&= 
 \begin{bmatrix}
-v cos(\theta) \\[10pt]
-v sin(\theta) \\[10pt]
+v_{tan} cos(\theta) \\[10pt]
+v_{tan} sin(\theta) \\[10pt]
  0 \\[10pt]
-\frac{v}{L}tan(\phi)\\[10pt]
+\frac{v_{tan}}{L}tan(\phi)\\[10pt]
 u_1 \\[10pt]
  u_2 
 \end{bmatrix}
 \label{eq:equation_nonholonomic_continuos}
+\end{split}
 \end{align}
-It is possible to discretize these dynamics in $t \in (t_{k-1}, t_k)$ with a first order finite difference:
+It is possible to discretize these dynamics in $t \in [t_{k-1}, t_k]$ with a first order finite difference:
 \begin{align}
-\boldsymbol{\dot{x}} \approx \frac{\boldsymbol{x}_k - \boldsymbol{x}_{k-1} }{dt} \approx f(\boldsymbol{x}_{k-1},\boldsymbol{u}_k) \nonumber
+\boldsymbol{\dot{x}} \approx \frac{\boldsymbol{x}(t_k)- \boldsymbol{x}(t_{k-1}) }{ t_k - t_{k-1}} = \frac{\boldsymbol{x}_k - \boldsymbol{x}_{k-1} }{dt} \approx f(\boldsymbol{x}_{k-1},\boldsymbol{u}_k) \nonumber
 \end{align}
-with $\boldsymbol{x}_k = \boldsymbol{x}(t_k)$, $\boldsymbol{x}_{k-1} = \boldsymbol{x}(t_{k-1})$, $dt = t_k - t_{k-1}$
 \begin{align}
 \boldsymbol{x_k} = 
 \begin{bmatrix}
@@ -128,17 +127,17 @@ x_k  \\[10pt]
 y_k  \\[10pt]
 z_k \\[10pt]
 \theta_k \\[10pt]
-v_k  \\[10pt]
+v_{tan,k}  \\[10pt]
 \phi_k
 \end{bmatrix}
 = 
 \begin{bmatrix}
- x_{k-1} + dt \big(v_{k-1} cos(\theta_{k-1})\big) \\[10pt]
- y_{k-1} + dt \big(v_{k-1} sin(\theta_{k-1})\big) \\[10pt]
+ x_{k-1} + dt \big(v_{tan,k-1} cos(\theta_{k-1})\big) \\[10pt]
+ y_{k-1} + dt \big(v_{tan,k-1} sin(\theta_{k-1})\big) \\[10pt]
  z_{k-1} \\[10pt]
  \theta_{k-1} + dt\Big(\frac{v_{k-1}}{L}tan(\phi_{k-1}) \Big)\\[10pt]
-v_{k-1} + dt \big(u_{1k}\big) \\[10pt]
-\phi_{k-1} + dt \big(u_{2k}\big) 
+v_{tan,k-1} + dt \big(u_{1,k}\big) \\[10pt]
+\phi_{k-1} + dt \big(u_{2,k}\big) 
 \end{bmatrix}
 \label{eq:equation_nonholonomic_discrete}
 \end{align}
@@ -149,37 +148,38 @@ In numerical analysis, the Runge-Kutta methods are a family of implicit and expl
 The most widely known member of the Runge-Kutta family is generally referred to as RK4.\\
 Let an initial value problem be specified as follows:
 \begin{align}
-\begin{split}
-{\dot {y}}&=f(t,y) \\
-y(t_{0})&=y_{0}
-\end{split}
+\begin{cases}
+\boldsymbol{\dot {y}} =f(\boldsymbol{y},t) \\[10pt]
+\boldsymbol{y}(t_{0}) =\boldsymbol{y}_{0}
+\end{cases}
 \end{align}
-$y$ is an unknown function (scalar or vector) of time $t$, which we would like to approximate and the function $f$ and the data $t_{0}$, $y_{0}$ are given.\\
+$\boldsymbol{y}$ is an unknown function of time $t$, which we would like to approximate and the function $f$ and the data $t_{0}$, $\boldsymbol{y}_{0}$ are given.\\
 Now pick a step-size $h > 0$ and define
 \begin{align}
 \begin{split}
-y_{k+1}&=y_{k}+{\tfrac {h}{6}}\left(\alpha_{1}+2\alpha_{2}+2\alpha_{3}+\alpha_{4}\right),\\
+\boldsymbol{y}_{k+1}&=\boldsymbol{y}_{k}+{\tfrac {h}{6}}\left(\alpha_{1}+2\alpha_{2}+2\alpha_{3}+\alpha_{4}\right),\\[10pt]
 t_{k+1}&=t_{k}+h
 \end{split}
 \end{align}
-for $k = 0, 1, 2, 3, ...,$ using
+for $k = 0, 1, 2, 3, ..., N$ using
 \begin{align}
 \begin{split}
-\alpha_{1}&=f(t_{k},y_{k}),\\
-\alpha_{2}&=f(t_{k}+{\frac {h}{2}},y_{k}+{\frac {h}{2}}\alpha_{1}),\\
-\alpha_{3}&=f(t_{k}+{\frac {h}{2}},y_{k}+{\frac {h}{2}}\alpha_{2}),\\
-\alpha_{4}&=f(t_{k}+h,y_{k}+h\alpha_{3}).
+\alpha_{1}&=f\Big(\boldsymbol{y}_{k},t_{k}\Big)\\[10pt]
+\alpha_{2}&=f\Big(\boldsymbol{y}_{k}+{\frac {h}{2}}\alpha_{1},t_{k}+{\frac {h}{2}}\Big)\\[10pt]
+\alpha_{3}&=f\Big(\boldsymbol{y}_{k}+{\frac {h}{2}}\alpha_{2},t_{k}+{\frac {h}{2}}\Big)\\[10pt]
+\alpha_{4}&=f\Big(\boldsymbol{y}_{k}+h\alpha_{3},t_{k}+h\Big)
 \end{split}
 \end{align}
-Here  $y_{k+1}$ is the RK4 approximation of $y(t_{k+1})$, and it is determined by the present value ($y_{k}$) plus the weighted average of four increments.
+Here  $\boldsymbol{y}_{k+1}$ is the RK4 approximation of $\boldsymbol{y}(t_{k+1})$, and it is determined by the present value ($\boldsymbol{y}_{k}$) plus the weighted average of four increments.
 
-\subsection{Straight and circular path} \ref{subsec:circularlinearmodel}
-We assume the input $u_1$ and $u_2$  are equal to zero. In this way we can have three type of movement:
+\subsection{Straight and circular path} \label{subsec:circularlinearmodel}
+If we assume that the input $u_{1,k}$ and $u_{2,k}$  are equal to zero $\forall k$ we can have three types of movement:
 \begin{itemize}
-\item the platform can be static ($v_f(0) = 0$)
-\item it can move in a straight line ($v_f(0) \neq 0$ and $\phi(0) = 0$)
-\item it can move in a circle ($v_f(0) \neq 0$ and $\phi(0) \neq 0$)
+\item the platform can be static ($v_{tan,0} = 0$)
+\item it can move in a straight line ($v_{tan,0} \neq 0$ and $\phi_0 = 0$)
+\item it can move in a circle ($v_{tan,0} \neq 0$ and $\phi_0 \neq 0$)
 \end{itemize}
+A combination of these models, even if they are really simple, can incorporates a large set of possible trajectories.
 
 \subsection{Infinity shape path}
 As described in charapter \label{chap:thechallenge}, the moving platform will move in an infinity-shape path described in the figure \ref{fig:arenachallenge}. \\
@@ -187,48 +187,56 @@ We need to describe in a mathematical way this shape in order to use this inform
 From the specification of the challenge:
 \begin{itemize}
 \item the car is moving with constant velocity $v_{tan}$ along the path
-\item the radius of the circumferences that forms the trajectory is $r_{8}$m
+\item the radius of the circumferences that forms the trajectory is $\rho_{8}$m
 \item the path is making a cross in the middle that creates 4 angles of $\frac{\pi}{2}$ 
 \end{itemize}
 The easiest way to describe this path is to define how the angle $\theta$ is changing in function of the space. \\
 It easy to see that the shape can be seen as a combination of a cross and two circles.
-The cross is simply defined as the union between the two line:
-\begin{align}
-\begin{split}
-y &= x \\
-y &= -x
-\end{split}
-\end{align}
+The cross is simply defined as the union between the two line, without loss of generality we consider this intersection the origin:
+\begin{align*}
+\begin{cases}
+y = x \\[10pt]
+y = -x
+\end{cases}
+\end{align*}
 while the two circles 
-\begin{align}
-\begin{split}
-y^2 + (x - x_0)^2 &= r_{8}^2 \\
-y^2 + (x + x_0)^2 &= r_{8}^2 
-\end{split}
-\end{align}
+\begin{align*}
+\begin{cases}
+y^2 + (x - x_0)^2 = \rho_{8}^2 \\[10pt]
+y^2 + (x + x_0)^2 = \rho_{8}^2 
+\end{cases}
+\end{align*}
 It easy to see that if we want the intersections between these two functions to be exactly in the 4 points we have to choose 
-\begin{align}
+\begin{align*}
 \begin{split}
-x_0 = \frac{\sqrt{2}}{2}r_{8}
+x_0 = \frac{\sqrt{2}}{2}\rho_{8}
 \end{split}
-\end{align}
+\end{align*}
 That correspond to the 4 intersections coordinate
-\begin{align}
+\begin{align*}
 \begin{split}
-\Big(\frac{\sqrt{2}}{2}r_{8},\frac{\sqrt{2}}{2}r_{8}\Big);
-\Big(\frac{\sqrt{2}}{2}r_{8},-\frac{\sqrt{2}}{2}r_{8}\Big);
-\Big(-\frac{\sqrt{2}}{2}r_{8},-\frac{\sqrt{2}}{2}r_{8}\Big);
-\Big(-\frac{\sqrt{2}}{2}r_{8},\frac{\sqrt{2}}{2}r_{8}\Big)
+\Big(\frac{\sqrt{2}}{2}\rho_{8},\frac{\sqrt{2}}{2}\rho_{8}\Big);
+\Big(\frac{\sqrt{2}}{2}\rho_{8},-\frac{\sqrt{2}}{2}\rho_{8}\Big);
+\Big(-\frac{\sqrt{2}}{2}\rho_{8},-\frac{\sqrt{2}}{2}\rho_{8}\Big);
+\Big(-\frac{\sqrt{2}}{2}\rho_{8},\frac{\sqrt{2}}{2}\rho_{8}\Big)
 \end{split}
-\end{align}
+\end{align*}
 
 \begin{figure}[!htbp]
-  \centering
- {\includegraphics[width=0.4\textwidth]{img/constructionshape1_.png}\label{fig:constuctinfinity1}}
-  \hfill
-  {\includegraphics[width=0.4\textwidth]{img/constructionshape2_.png}\label{fig:constuctinfinity2}}
-  \caption{How to construct the infinity-shape path}
-\end{figure}
+ \centering
+   \begin{subfigure}[b]{0.45\textwidth}
+     \includegraphics[width=\textwidth]{img/constructionshape1_.png}
+        \label{fig:constuctinfinity1}
+   \end{subfigure}
+   \hfill
+   \begin{subfigure}[b]{0.45\textwidth}
+     \includegraphics[width=\textwidth]{img/constructionshape2_.png}
+       \label{fig:constuctinfinity2}
+   \end{subfigure}
+   \caption{How to construct the infinity-shape path}
+ \end{figure} 
+  
+
 
 If we travel over the two circumferences the intersections correspond to angles $\theta = \pm \frac{3\pi}{4}$. \\
 Now it is obvious to see that the path is symmetric and it can be divided in 4 parts and describing how the angle is changing in one of this section, the whole trajectory is defined.\\
@@ -236,28 +244,37 @@ We can observe that:
 \begin{align}
 \theta(x) =
 \begin{cases}
-    -\frac{x}{r_{8}}  &x\in \Big[0,\frac{3\pi}{4}r_{8}\Big] \quad \quad \ \ \  \\[10pt]
-    -\frac{3\pi}{4} &x\in \Big[\frac{3\pi}{4}r_{8} ,\frac{3\pi}{4}r_{8} + r_{8}\Big]
+    -\frac{x}{\rho_{8}}  &x\in \Big[0,\frac{3\pi}{4}\rho_{8}\Big] \quad \quad \ \ \  \\[10pt]
+    -\frac{3\pi}{4} &x\in \Big[\frac{3\pi}{4}\rho_{8} ,\frac{3\pi}{4}\rho_{8} + \rho_{8}\Big]
 \end{cases}
 \end{align}
-This function define a quarter of the trajectory \ref{fig:quarter_path} in function of the radius $r_{8}$ of the path.\\
-It is now possible to use it to generate the entire trajectory $( x(t) , y(t) )$ \ref{fig:entire_path}: \\ we know that the length of the path is $$l = 4(\frac{3\pi}{4}r_{8} + r_{8})$$
-and given the constant velocity $v_{tan}$ we can calculate the time to complete the trajectory 
-$$T = \frac{l}{v_{tan}}$$
+This function define a quarter of the trajectory \ref{fig:quarter_xy} in function of the radius $\rho_{8}$ of the path.\\
+It is now possible to use it to generate the entire trajectory $( x(t) , y(t) )$ \ref{fig:entire_xy2}.\\
+We know that the length of the path is 
+\begin{align*}
+l = 4\Big(\frac{3\pi}{4}\rho_{8} + \rho_{8}\Big)
+\end{align*}
+
+And given the constant velocity $v_{tan}$ we can calculate the time to complete the trajectory 
+\begin{align*}
+T = \frac{l}{v_{tan}}
+\end{align*}
 and it is simple to define $\theta(t)$ just stretching or shrinking $\theta(x)$ .\\
+
 So we can now define:
 \begin{align}
-\begin{split}
-\dot{x} &= v_{tan} cos(\theta(t)) \\
-\dot{y} &= v_{tan} sin(\theta(t))
-\end{split}
+\begin{cases}
+\dot{x} = v_{tan} cos\big(\theta(t)\big) \\[10pt]
+\dot{y} = v_{tan} sin\big(\theta(t)\big)
+\end{cases}
 \end{align}
+
 And finally we also need the discretized verison obtain just by forward Euler approximation:
 \begin{align}
-\begin{split}
-x_k &= x_{k-1} + dt \big(v_{tan k-1} cos(\theta_{k-1})\big) \\
-y_k &= y_{k-1} + dt \big(v_{tan k-1} sin(\theta_{k-1})\big)
-\end{split}
+\begin{cases}
+x_k = x_{k-1} + dt \Big(v_{tan,k-1} cos\big(\theta_{k-1}\big)\Big) \\[10pt]
+y_k = y_{k-1} + dt \Big(v_{tan,k-1} sin\big(\theta_{k-1}\big)\Big)
+\end{cases}
 \end{align}
 
 \begin{figure}[!htbp]
@@ -276,39 +293,59 @@ y_k &= y_{k-1} + dt \big(v_{tan k-1} sin(\theta_{k-1})\big)
    
    \begin{subfigure}[b]{0.45\textwidth}
      \includegraphics[width=\textwidth]{img/infinityshapepath.png}
-       \label{fig:entire_xy}
+        \caption{The whole the path}
+       \label{fig:entire_xy2}
    \end{subfigure}
     \caption{The parametrization of the path}
   \label{fig:path}
   \end{figure}
   
-From these calculations we can conclude that the final trajectory of the platform is only a composition of a linear and a circular movement (for a given determinate amount of time). So the model described in \ref{subsec:circularlinearmodel} can be used also in the final implementation.
+From these calculations we can conclude that the final trajectory of the platform is only a composition of a linear and a circular movement (for a given determinate amount of time). So the model described in \ref{subsec:circularlinearmodel} can be used also to express this trajectory.
 
+\newpage
 \section{Measurement update}
 From equation \ref{eq:equation_nonholonomic_discrete} we have the variables that describe the state of the moving car. We have to be able to measure some of these components in order to have the second step of our EKF. \\
-What we are using is a camera with which we are able to identify the moving platform and estimate the relative position and orientation. At this point knowing the position of the camera in the real world we can measure the following vector $\boldsymbol{z} = (x, y, z,\theta)$. It corresponds to the 3 position in a space $(x,y,z)$ and the yaw angle of the platform $\theta$ w.r.t. the world frame.
-The measurement equations are simply:
+What we are using is a camera with which we are able to identify the moving platform and estimate its relative position and orientation. At this point knowing the position of the camera in the real world we can measure:
 \begin{align}
-\boldsymbol{z_k} = 
+\begin{split}
+\boldsymbol{z}_k &= h(\boldsymbol{x}_k) \\[10pt]
+\boldsymbol{z}_k &=
 \begin{bmatrix}
+1 & 0 & 0 & 0 & 0 & 0 \\[10pt]
+0 & 1 & 0 & 0 & 0 & 0  \\[10pt]
+0 & 0 & 1 & 0 & 0 & 0 \\[10pt]
+0 & 0 & 0 & 1 & 0 & 0
+\end{bmatrix} 
+\begin{bmatrix}
+x_k \\[5pt]
+y_k  \\[5pt]
+z_k \\[5pt]
+\theta_k \\[5pt]
+v_{tan,k} \\[5pt]
+\phi_k
+\end{bmatrix} = \begin{bmatrix}
 x_k  \\[10pt]
 y_k  \\[10pt]
 z_k \\[10pt]
 \theta_k
 \end{bmatrix}
 \label{eq:realmeasure}
+\end{split}
 \end{align}
+It corresponds to the 3 position in a space $(x,y,z)$ and the yaw angle of the platform $\theta$ w.r.t. the world frame.
+Notice that the observation model $h$, in this case, is a linear function.
 
-In the different phases we have to use different methods measure  $\boldsymbol{z}$ detecting and tracking the base:
+
+In the chapter \ref{chap:area_exploration} we will see in order to complete the task the quadrotor goes through various stages. In these different phases the relative distance between camera and moving platform is changing a lot, so we have to use different methods to measure $\boldsymbol{z}$:
 \begin{itemize}
-\item to be able to find the platform in the minimum amount of time, at the beginning, we need to inspect the area from a very high altitude. From this height we can see just a few features of the moving car and then the pose estimation are noisy. Furthermore we do not have any assumption on the initial condition of the platform, we just know the magnitude of constant forward velocity $|v_{tan}|$, so we do not know before if at a certain time $t$ the car is moving in a straight line or in a curve, we have to estimate it, and this is possible only tracking the platform for several seconds. 
-\item after knowing the type of movement and a rough pose estimation of the moving car, we can use these information to improve our state estimation: getting close to the platform without loosing the tracking, starting a more precise measure (base on tag detection), and filtering the measurements with a theoretical model of the movement.
+\item to be able to find the platform in the minimum amount of time, at the beginning, we need to inspect the area from a very high altitude. From this height we can see just a few features of the moving car and then the pose estimation are really noisy. Furthermore we do not have any assumption on the initial condition of the platform, we just know the magnitude of constant forward velocity $|v_{tan}|$, so we do not know before if at a certain time $t$ the car is moving in a straight line or in a curve, we have to estimate it, and this is possible only tracking the platform for several seconds. 
+\item after knowing the type of movement and a rough pose estimation of the moving car, we can use these information to improve our state estimation: getting close to the platform without loosing the tracking, starting a more precise measure (base on tag detection), and filtering the measurements with the correct theoretical model of the movement.
 \end{itemize}
-\subsection{From high altitude}
-To find the car we assume that the platform is the only white square moving on the arena.
-Base on this assumption, we analyze the images from the down looking camera to find a moving white square and calculate its optical flow to predict its future position.
 
-We perform the following passages:
+\subsection{From high altitude}
+To find the car we assume that the platform is the only white square moving on the arena.\\
+Base on this assumption, we analyze the images the camera to find a moving white square and calculate its optical flow to predict its future position.\\
+To find the base we perform the following passages:
 \begin{itemize}
 \item threshold the image in order to find the white features.
 \item find all the close shapes in the image.
@@ -340,41 +377,51 @@ which results in
 \begin{align}
  I_{x}V_x+I_{y}V_y+I_{t}= 0
 \end{align}
-where $V_x,V_y$ are the $x$ and $y$ components of the velocity or optical flow of $I(x,y,t)$ and $I_{x}$, $I_{y}$, $I_{t}$ are the derivatives of the image at $(x,y,t)$ in the corresponding directions.\\
-Thus:
+where $V_x,V_y$ are the $x$ and $y$ components of the velocity, or optical flow, of $I(x,y,t)$ and $I_{x}$, $I_{y}$, $I_{t}$ are the derivatives of the image at $(x,y,t)$ in the corresponding directions.\\
+Thus in a compact form:
 \begin{align}
  \nabla I^T\cdot\vec{V} = -I_t
 \end{align}
 This is an equation in two unknowns and cannot be solved as such. This is known as the aperture problem of the optical flow algorithms. To find the optical flow another set of equations is needed, given by some additional constraint. All optical flow methods introduce additional conditions for estimating the actual flow.\\
-In our implementation we use the Lucas-Kanade method \cite{lucas1981iterative}.
-This method assumes that the displacement of the image contents between two nearby frames is small and approximately constant within a neighborhood of the point p under consideration. Thus the optical flow equation can be assumed to hold for all pixels within a window centered at $p$. Namely, the local image flow vector $(V_{x},V_{y})$ must satisfy:
-
+In our implementation we use the Lucas-Kanade method \cite{lucas1981iterative}.\\
+This method assumes that the displacement of the image contents between two nearby frames is small and approximately constant within a neighborhood of the point $p$ under consideration. Thus the optical flow equation can be assumed to hold for all pixels within a window centered at $p$. Namely, the local image flow vector $(V_{x},V_{y})$ must satisfy:
 \begin{align}
-\begin{split}
-I_{x}(q_{1})V_{x}+I_{y}(q_{1})V_{y}=-I_{t}(q_{1})  \\
-I_{x}(q_{2})V_{x}+I_{y}(q_{2})V_{y}=-I_{t}(q_{2})  \\
-\vdots \\
+\begin{cases}
+I_{x}(q_{1})V_{x}+I_{y}(q_{1})V_{y}=-I_{t}(q_{1})  \\[10pt]
+I_{x}(q_{2})V_{x}+I_{y}(q_{2})V_{y}=-I_{t}(q_{2})  \\[10pt]
+\ \ \ \ \ \vdots \\[10pt]
 I_{x}(q_{n})V_{x}+I_{y}(q_{n})V_{y}=-I_{t}(q_{n}) 
-\end{split}
+\end{cases}
 \end{align}
 
-Where $q_{1},q_{2},\dots ,q_{n}$ are the pixels inside the window, and $I_{x}(q_{i}),I_{y}(q_{i}),I_{t}(q_{i})$ are the partial derivatives of the image $I$ I with respect to position x, y and time t, evaluated at the point $q_{i}$ and at the current time.\\
+Where $q_{1},q_{2},\dots ,q_{n}$ are the pixels inside the window, and $I_{x}(q_{i}),I_{y}(q_{i}),I_{t}(q_{i})$ are the partial derivatives of the image $I$ with respect to position $x, y$ and time $t$, evaluated at the point $q_{i}$ and at the current time.\\
 These equations can be written in matrix form $Av=b$, where
 \begin{align}
-A={\begin{bmatrix}I_{x}(q_{1})&I_{y}(q_{1})\\[10pt]I_{x}(q_{2})&I_{y}(q_{2})\\[10pt]\vdots &\vdots \\[10pt]I_{x}(q_{n})&I_{y}(q_{n})\end{bmatrix}},\quad \quad v={\begin{bmatrix}V_{x}\\[10pt]V_{y}\end{bmatrix}},\quad {\mbox{and}}\quad b={\begin{bmatrix}-I_{t}(q_{1})\\[10pt]-I_{t}(q_{2})\\[10pt]\vdots \\[10pt]-I_{t}(q_{n})\end{bmatrix}}
+A={\begin{bmatrix}I_{x}(q_{1})&I_{y}(q_{1})\\[10pt]I_{x}(q_{2})&I_{y}(q_{2})\\[10pt]\vdots &\vdots \\[10pt]I_{x}(q_{n})&I_{y}(q_{n})\end{bmatrix}} \quad \quad v={\begin{bmatrix}V_{x}\\[10pt]V_{y}\end{bmatrix}} \quad \quad b={\begin{bmatrix}-I_{t}(q_{1})\\[10pt]-I_{t}(q_{2})\\[10pt]\vdots \\[10pt]-I_{t}(q_{n})\end{bmatrix}}
 \end{align}
 
-This system has more equations than unknowns and thus it is usually over-determined. The Lucas-Kanade method obtains a compromise solution by the least squares principle. Namely, it solves the $2\times2$ system:
+This system has more equations than unknowns and thus it is usually over-determined. The Lucas-Kanade method obtains a compromise solution by the least squares principle:
 \begin{align}
 \begin{split}
-A^{T}Av=A^{T}b\\
+A^{T}Av=A^{T}b\\[10pt]
 {\mathrm  {v}}=(A^{T}A)^{{-1}}A^{T}b
 \end{split}
 \end{align}
 \begin{align}
-{\begin{bmatrix}V_{x}\\[10pt]V_{y}\end{bmatrix}}={\begin{bmatrix}\sum _{i}I_{x}(q_{i})^{2}&\sum _{i}I_{x}(q_{i})I_{y}(q_{i})\\[10pt]\sum _{i}I_{y}(q_{i})I_{x}(q_{i})&\sum _{i}I_{y}(q_{i})^{2}\end{bmatrix}}^{{-1}}{\begin{bmatrix}-\sum _{i}I_{x}(q_{i})I_{t}(q_{i})\\[10pt]-\sum _{i}I_{y}(q_{i})I_{t}(q_{i})\end{bmatrix}}
+{\begin{bmatrix}
+V_{x}\\[10pt]
+V_{y}\end{bmatrix}}
+=
+{\begin{bmatrix}
+\sum _{i}I_{x}(q_{i})^{2}&\sum _{i}I_{x}(q_{i})I_{y}(q_{i})\\[10pt]
+\sum _{i}I_{y}(q_{i})I_{x}(q_{i})&\sum _{i}I_{y}(q_{i})^{2}
+\end{bmatrix}}^{{-1}}
+{\begin{bmatrix}
+-\sum _{i}I_{x}(q_{i})I_{t}(q_{i})\\[10pt]
+-\sum _{i}I_{y}(q_{i})I_{t}(q_{i})
+\end{bmatrix}}
 \end{align}
-With this method we can track the interesting points from frame to frame, calculate direction and velocity of the car and so predict where it will be after a time $t$.\\
+
 \begin{figure}[!htbp]
   \centering
   {\includegraphics[width=0.45\textwidth]{img/18730previousImage.png}\label{fig:original}}
@@ -400,19 +447,18 @@ With this method we can track the interesting points from frame to frame, calcul
   \label{fig:optical_folw_sequence}
 \end{figure} 
 
+With this method we can track the interesting points, the platform corners, from frame to frame and calculate the direction and velocity of their movement. We need now a method to convert this position in the image in the correspondent pose in the real world.
+
 \subsubsection{From images to real world}
 After tracking the platform in the images, we have to find its position in the 3D real world. This position is calculate using the pinhole model of the camera \cite{weng1992camera}:
 \begin{align}
-wm = A [R|t]M
- \label{eq:pinholemodel}
-\end{align}
-In expanded form:
-\begin{align}
-{w\begin{bmatrix}
+\begin{split}
+\omega m \ \ & = A [R|t]M \\[10pt]
+{\omega \begin{bmatrix}
 u \\[10pt]
 v  \\[10pt]
 1
-\end{bmatrix}}=
+\end{bmatrix}} & =
 {\begin{bmatrix}\
 f_x & 0 & c_x \\[10pt]
 0 & f_y &c_y \\[10pt]
@@ -424,18 +470,20 @@ r_{21} & r_{22} & r_{23} & t_{y} \\[10pt]
 r_{31} & r_{32} & r_{33} & t_{z}
 \end{bmatrix}}
 {\begin{bmatrix}
-X \\[10pt]
-Y \\[10pt]
-Z \\[10pt]
+X \\[5pt]
+Y \\[5pt]
+Z \\[5pt]
 1
 \end{bmatrix}}
+\end{split}
+ \label{eq:pinholemodel}
 \end{align}
 Where:
 \begin{itemize}
- \item $m$ homogeneous coordinate of the projection point in pixel.
-  \item $M$ homogeneous coordinate of a 3D point in the world coordinate frame.
- \item $A$ is the camera matrix or the matrix of intrinsic parameters. It is Composed by $f_x,f_y$ the focal lengths and $c_x,c_y$ the principal point.
- \item $[R|t]$ is the joint rotation-translation matrix or matrix of extrinsic parameters. It express the camera motion around the static scene. This matrix denote the coordinate system transformations from 3D world coordinates to 3D camera coordinates. The position $C$ of the camera expressed in world coordinates is $C=-R^{{-1}}t=-R^{T}t$.
+ \item $m$: is the homogeneous coordinate of the point in the image expressed in pixel.
+  \item $M$: is the homogeneous coordinate of the correspondent 3D point in the world coordinate frame.
+ \item $A$: is the camera matrix, or the matrix of intrinsic parameters. It is Composed by $f_x,f_y$ the focal lengths and $c_x,c_y$ the principal point.
+ \item $[R|t]$: is the joint rotation-translation matrix, or matrix of extrinsic parameters. It express the camera motion around the static scene. This matrix denote the coordinate system transformations from 3D world coordinates to 3D camera coordinates. In particular we have to notice that the position $C$ of the camera expressed in world coordinates is $C=-R^{{-1}}t=-R^{T}t$.
 \end{itemize}
 
 We can calculate the depth of the platform using the known dimension of the base: given the length $l_w$ of the square in the real world and the average dimension of the edges in the image $l_i$, we can calculate the depth with respect to the camera frame 
@@ -447,15 +495,17 @@ To calculate the dimension $l_i$ we need at least 3 corner of the base and we ca
 \item if we have 4 corners there are 6 different distances: 4 of which equal to $l_i$ and 2 $\sqrt{2}l_i$
 \item if we have 3 corners there are 3 different distances: 2 of which equal to $l_i$ and 1 $\sqrt{2}l_i$
 \end{itemize}
-This approximation is not really precise when we see the platform with a camera not perpendicular to the base, but we need just a rough approximation of the height in this first phase.
+
 \begin{figure}[!htbp]
   \centering
-  {\includegraphics[width=0.3\textwidth]{img/platform_4_edges.pdf}\label{fig:4_corners}}
+  {\includegraphics[width=0.2\textwidth]{img/platform_4_edges.pdf}\label{fig:4_corners}}
   \hspace{5em}
-  {\includegraphics[width=0.3\textwidth]{img/platform_3_edges.pdf}\label{fig:3_corners}}
+  {\includegraphics[width=0.2\textwidth]{img/platform_3_edges.pdf}\label{fig:3_corners}}
   \caption{Model of the square platform detected on the image. Red crosses corner detected. Blue lines edges with length $l_i$. Green lines edges with length $\sqrt{2}l_i$ }
   \label{fig:platform_profile}
 \end{figure} 
+
+This approximation is not really precise when we see the platform with a camera not perpendicular to the base, but we need just a rough approximation of the height in this first phase, and since the distance between camera and platform are very high, this assumption can hold.\\
 
 If this depth $z!=0$ we can  solve the system of equation \ref{eq:pinholemodel} finding an unique solution using the following equivalent equations:
 \begin{align}
@@ -475,23 +525,28 @@ Z
 \end{split}
 \end{align}
 
-A better method to find the position of the platform, without the approximation of the depth $z$ is to resolve a Perspective-n-Point problem  \cite{quan1999linear}
-that estimates the pose of a camera given a set of n 3D points in the world and their corresponding 2D projections in the image. The only issue is that to solve this problem without ambiguity the minimum number of points is 4, and sometimes we can track only 3 corners of the base, but when all the 4 points are available we solve the correspondent PnP problem to find a better estimation of the base position.\\
+As we said this method it is not really precise, because we are assuming that the platform surface and the image are parallel.\\
+A better method to find the position of the platform, without the approximation of the depth $z$ is to resolve a Perspective-n-Point problem  \cite{quan1999linear} that estimates the pose of a camera given a set of $n$ 3D points in the world and their corresponding 2D projections in the image. This method find the pose that minimize the reprojection error of the 3D points in the image plane.\\
+The main issue is that to solve this problem, without ambiguity, the minimum number of points is 4, and sometimes we can track only 3 corners of the base, so when all the 4 points are available we solve the correspondent PnP problem to find a better estimation of the base position otherwise we use the former method.\\
+
+At this point, with this algorithm, we can track the interesting points from frame to frame, calculate direction, velocity and the correspondent 3D pose of the car.\\
 
 \subsection{From low altitude}
 When the quadrotor is closer to the landing platform more features can be seen from the camera. This allow to design a base that helps the measure of the pose of the moving car.\\
-In the final challenge \label{chap:thechallenge} the platform will be as depicted in figure \ref{fig:finalplatform}, while for the first testing another design is considered \ref{fig:tempplatform}, in order to use preexisting algorithm that allow pose estimation with respect to the camera. The platform we are using is decorated with Augmented-Reality Tags. AR Tags are planar markers used to easily make virtual objects and animations appear to enter the real world. They also allows video tracking capabilities that calculate the real camera position and orientation relative to square physical markers in real time. \\
-To reduce the sensitivity to lightning conditions and camera settings planar marker systems typically use bitonal markers (black and white), so there is no need to identify shades of gray, and the decision made per pixel is reduced to a threshold decision. The markers consist of a square black border and a pattern in the interior to an unique identification, when more the one marker is used in the application.\\
-There are several methods to detect and calculate the pose of the markers. Some methods (as ARToolKit \cite{kato1999marker}), use a fixed global threshold to detect squares, but these methods are very sensitive to varying lighting conditions. On the other hand, other algorithms (as ARTag \cite{fiala2010designing}), use an edge based approach, so one need not to deal with thresholds under different illumination conditions and the algorithm can cope with broken sides and missing corners to a certain extent. 
-Both algorithms find on the image the contour of the marker, the four corners of every potential marker are used to calculate a homography in order to remove the perspective distortion. This perspective undistortion is done solving a Perspective-n-Point problem \cite{quan1999linear}.\\
-Once the internal pattern of a marker is brought to a canonical front view one can sample a grid of $N \times N$ (typically $5 \times 5$ or $6 \times 6$) points in order to understand the code related to the tag identified, and the orientation of the tag.
-
+In the final challenge \label{chap:thechallenge} the platform will be as depicted in figure \ref{fig:finalplatform}, while for the first testing another design is considered \ref{fig:tempplatform}, in order to use preexisting algorithm that allow pose estimation with respect to the camera.\\
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{img/tempbase.png}
+    \includegraphics[width=0.3\textwidth]{img/tempbase.png}
     \caption{Design of the platform, we are using, in which the quadrotor must land on}
     \label{fig:tempplatform}
 \end{figure}
+
+The platform we are using is decorated with Augmented-Reality Tags. AR Tags are planar markers used to easily make virtual objects and animations appear to enter the real world. They also allows video tracking capabilities that calculate the real camera position and orientation relative to the square physical markers in real time. \\
+To reduce the sensitivity to lightning conditions and camera settings planar marker systems typically use bitonal markers (black and white), so there is no need to identify shades of gray, and the decision made per pixel is reduced to a threshold decision. The markers consist of a square black border and a pattern in the interior to an unique identification, when more the one marker is used in the application.\\
+
+There are several methods to detect and calculate the pose of the markers. Some methods (as ARToolKit \cite{kato1999marker}), use a fixed global threshold to detect squares, but these methods are very sensitive to varying lighting conditions. On the other hand, other algorithms (as ARTag \cite{fiala2010designing}), use an edge based approach, so one need not to deal with thresholds under different illumination conditions and the algorithm can cope with broken sides and missing corners to a certain extent. 
+Both algorithms find on the image the contour of the marker, then the four corners of every potential marker are used to calculate a homography in order to remove the perspective distortion, solving a Perspective-n-Point problem \cite{quan1999linear}.\\
+Once the internal pattern of a marker is brought to a canonical front view one can sample a grid of $N \times N$ (typically $5 \times 5$ or $6 \times 6$) points in order to understand the code related to the tag identified, and the orientation of the tag.
 
 \begin{figure}[!htbp]
   \centering
@@ -532,11 +587,11 @@ Once the internal pattern of a marker is brought to a canonical front view one c
   \label{fig:arsys}
 \end{figure} 
 
-
+\newpage
 \subsection{Covariance Estimation}
-In the practical implementation of the Kalman Filter is crucial to find a good estimate of the noise covariance matrices $Q_k$ and $R_k$ for the prediction and the measurement steps. \\
-When a manual tuning is required, these matrices are considered diagonal, such as each component of the state vector is corrupted by a Gaussian processes that is independent with respect to all the other coordinates. It is easy to give a physical interpretation to the components of the diagonal, so it is easy to find correct values for them.\\
-The equations \ref{eq:ekf1} is the general matrix formulation of the system corrupted by a multivariable Gaussian noise $\boldsymbol{w}_k$. Now, if we consider the covariance matrix $Q_k$ diagonal we can split the equation  \ref{eq:ekf1} into:
+In the practical implementation of the Kalman Filter it is crucial to find a good estimate of the noise covariance matrices $Q_k$ and $R_k$ for the prediction and the measurement steps. \\
+When a manual tuning is required these matrices are considered diagonal, such as each component of the state vector is corrupted by a Gaussian processes that is independent with respect to all the other coordinates. It is easy to give a physical interpretation to the components of the diagonal, so it is easy to find meaningful values for them.\\
+The equations \ref{eq:ekf1} is the general matrix formulation of the system corrupted by a multivariable Gaussian noise $\boldsymbol{w}_k$, but if we consider the covariance matrix $Q_k$ diagonal we can split the equation into:
 \begin{align}
 {\begin{bmatrix}
 \dot{x}_k^1 \\[10pt]
@@ -558,7 +613,8 @@ w_k^2 \\[10pt]
 w_k^n
 \end{bmatrix}}
 \end{align}
-where $w_k^i$ is a scalar Gaussian random variable with variance $q_k^i$. This variance can now be directly related to the error that is generally computed when the variable is predicted with the theoretical model.\\
+where $w_k^i$ is a scalar Gaussian random variable with variance $q_k^i$.\\
+This variance can now be directly related to the error that is generally computed when the variable is predicted with the theoretical model.\\
 For the error update equation \ref{eq:ekf2} the concept is the same: 
 \begin{align}
 {\begin{bmatrix}
@@ -581,19 +637,20 @@ v_k^2 \\[10pt]
 v_k^m
 \end{bmatrix}}
 \end{align}
-with $v_k^i$ scalar Gaussian noise with variance $r_k^i$. This variance is even more understandable and it is related on the actual error that we are making while measuring the component $z_k^i$ due to measurement limitations.\\
-In our case the measures are \ref{eq:realmeasure} and they are computed with the methods described in the previous section. To estimate the variance of the measure we must start from the error computed in the image when we detect the pose of the platform and propagate the correspondent covariance in the real world. The propagation of uncertainty is the effect of variables'  uncertainties on the uncertainty of a function based on them.\\
-Supposed that in the equation \ref{eq:ekf2} $\boldsymbol{z}_k$ is not a direct measure of $\boldsymbol{x}_{k}$
-but is a function of other variables $\boldsymbol{\gamma}_k$, such as:
+With $v_k^i$ scalar Gaussian noise with variance $r_k^i$.\\
+This variance is even more understandable and it is related on the actual error that we are making while measuring the component $z_k^i$ due to measurement limitations.\\
+If these values, used in the update step, are not directly measured, but they derive from other quantities, to calculate their covariance we should propagate the uncertainty:\\
+supposed that in the equation \ref{eq:ekf2} $\boldsymbol{z}_k = h(\boldsymbol{x}_{k})$ is not a direct measurement of $\boldsymbol{x}_{k}$ but is a function of other  $\boldsymbol{\gamma}_k$, such as:
 \begin{align}
 h(\boldsymbol{x}_{k}) = g(\boldsymbol{\gamma}_k)
 \end{align}
-Then we can easily estimate the measurement error (variance) that we have computed during the observation of  $\boldsymbol{\gamma}_k$, but we need the correspondent error for the measures $ g(\boldsymbol{\gamma}_k)$.\\
+Then we can easily estimate the uncertainty that we have computed during the observation of  $\boldsymbol{\gamma}_k$, but in the EKF we need the correspondent error for the measures $ g(\boldsymbol{\gamma}_k)$.\\
 
 In the linear case 
 \begin{align}
 g(\boldsymbol{\gamma}_k) = \mathrm {A}\boldsymbol{\gamma}_k
 \end{align}
+
 The covariance matrix $\mathrm {\Sigma }_g$ of $g$ is related to $\mathrm {\Sigma }_{\boldsymbol{\gamma}}$, the covariance of the variable $\boldsymbol{\gamma}$, by the equation:
 \begin{align}
 \begin{split}
@@ -606,25 +663,47 @@ If the function $g$ is a set of non-linear combination of the variables $\gamma_
 \begin{align}
 g_{i}(\boldsymbol{\gamma}_{k}) \approx g_{i}(\tilde{\boldsymbol{\gamma}}_{k})+\sum _{j}^{n}{\frac  {\partial g_{i}}{\partial {\gamma_{j}}}}\Big|_{\tilde{\gamma}_k^{j}}(\gamma_k^{j}-\tilde{\gamma}_k^{j})
 \end{align}
-where ${\frac  {\partial g_{i}}{\partial {\gamma_{j}}}}\Big|_{\tilde{\gamma}_k^{j}}$ denotes the partial derivative of $g_i$ with respect to the j-th variable, evaluated at the measured component $\tilde{\gamma}_k^{j}$.\\
+where ${\frac  {\partial g_{i}}{\partial {\gamma_{j}}}}\Big|_{\tilde{\gamma}_k^{j}}$ denotes the partial derivative of $g_i$ with respect to the $j-th$ variable, evaluated at the measured component $\tilde{\gamma}_k^{j}$.\\
 In matrix notation the first-order Taylor series expansion is:
 \begin{align}
 g(\boldsymbol{\gamma}_{k}) \approx g(\tilde{\boldsymbol{\gamma}}_{k})+J\Big|_{\tilde{\gamma}_k}(\gamma_k-\tilde{\gamma}_k)
 \end{align}
-where $J$ is the Jacobian matrix. Since $g(\tilde{\boldsymbol{\gamma}}_{k})$ is a constant it does not contribute to the error on $g$, so the propagation of the error can be approximate with the linear case where $A = J$:
+where $J$ is the Jacobian matrix.\\
+Since $g(\tilde{\boldsymbol{\gamma}}_{k})$ is a constant it does not contribute to the error on $g$, so the propagation of the error can be approximate with the linear case where $A = J$:
 \begin{align}
 {\displaystyle \mathrm {\Sigma }_g\approx \mathrm {J} \mathrm {\Sigma }_{\boldsymbol{\gamma}}\mathrm {J} ^{\top}} 
 \label{eq:errorpropag}
 \end{align}
 
-In our case to have the final measure $\boldsymbol{z}_k$  in the 3D real world coordinate system, we start from a measure in pixel in the image coordinate system. We have the function $g : \mathrm{R}^{6 \times 6} \to \mathrm{R}^{2 \times 2} $ that is converting the real world coordinate in image coordinate, and its Jacobian matrix $J \in \mathrm{R}^{2 \times 6} $.\\
-Now to calculate the covariance of the final pose estimate, $\mathrm {\Sigma }_{RW} \in \mathrm{R}^{6 \times 6} $, from the covariance of the image position  $\mathrm {\Sigma }_{I} \in \mathrm{R}^{2 \times 2} $, we need to invert the equation \ref{eq:errorpropag}:
+In our case the update step is defined in \ref{eq:realmeasure}, and it is computed with the methods described in the previous section: we do not have a direct measure of the 3D position and angle $\theta$, but they derive from the measurement of the 2D position of the pixel that corespondent to the corners of the platform.\\
+To estimate the final variance of the measurements used in the update step of the EKF we must start from the error computed in the image, and propagate the covariance through the functions we apply, to finally find the uncertainty of the 3D pose used.\\
+Given the function
 \begin{align}
-{\displaystyle \mathrm{\Sigma}_{RW} = ( \mathrm{J}^{\top} \mathrm{\Sigma }_{I} \mathrm{J})^{-1} } 
-\label{eq:errorpropag}
+g : \mathrm{R}^{6 \times 6} \to \mathrm{R}^{2 \times 2} 
+\end{align}
+that is converting the real world coordinate in image coordinate, and its Jacobian matrix 
+\begin{align}
+J \in \mathrm{R}^{2 \times 6} 
 \end{align}
 
-In our implementation we do not have a single function $g$ from image pixel $(u,v)$ to 3D coordinate $(x,y,z,\theta)$. The passage from image to 6dof pose is done using the openCV function $solvePnP$ \cite{opencv_library} that returns a pose expressed as 3D coordinates $(x,y,z)$ and Rodrigues orientation  \cite{belongie1999rodrigues}. To convert the orientation in Euler angles we convert the Rodrigues angles into a rotation matrix and the rotation matrix into finally $(roll,pitch,yaw)$ notation:
+To calculate the covariance of the final pose estimate, 
+\begin{align}
+\mathrm {\Sigma }_{RW} \in \mathrm{R}^{6 \times 6} 
+\end{align}
+From the covariance of the image position  
+ \begin{align}
+ \mathrm {\Sigma }_{I} \in \mathrm{R}^{2 \times 2} 
+ \end{align}
+We need to invert the equation \ref{eq:errorpropag}:
+\begin{align}
+ \mathrm{\Sigma}_{RW} = ( \mathrm{J}^{\top} \mathrm{\Sigma }_{I} \mathrm{J})^{-1} 
+\label{eq:errorpropag_inv}
+\end{align}
+
+In our implementation we do not have a single function $g$ from image pixel $(u,v)$ to 3D coordinate $(x,y,z,\theta)$.\\
+The main calculation from coordinates in the image to 6dof pose is done using the openCV function $solvePnP$ \cite{opencv_library} that returns a pose expressed as 3D position $(x,y,z)$ and Rodrigues orientation  \cite{belongie1999rodrigues}.\\
+To convert the orientation in Euler angles we convert the Rodrigues angles into a rotation matrix and then the rotation matrix into finally $(roll,pitch,yaw)$ notation.\\
+So in our case we are using a composition of functions and, to propagate the uncertainty through it, we have to calculate the Jacobian of this composition:
 \begin{align}
 \begin{split}
 J_{solvePnP} &= J_0 = \Big[ \frac  {\partial g}{\partial rodrigues},  \frac {\partial g}{\partial xyzpos} \Big] \\[10pt]
@@ -636,5 +715,8 @@ J_{1}J_{2} & 0 \\[10pt]
 \end{bmatrix}}
 \end{split}
 \end{align}
+
+At this point applying \ref{eq:errorpropag_inv} with the final Jacobian we have the covariance we need in the EKF.
+
 
 
