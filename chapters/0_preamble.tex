@@ -24,10 +24,12 @@
 
 \chapter*{Abstract}
  \addcontentsline{toc}{chapter}{Abstract}
-In this thesis we present a complete framework to autonomous landing on a moving platform
-TODO complete \\
-  Compress the introduction in a few key sentences. No more than half a page. The abstract should motivate your work, outline the work that you did, and give some insights into its results.
-
+In this thesis  we study the problem of autonomous landing a quadrotor on a moving platform.\\
+The aerial robot employs a forward looking fisheye camera to perform self state estimation and a down looking camera
+to detect and observe the landing platform, which is carried by a mobile robot moving independently inside an arena. Measurements from the downlooking camera are combined with a proper dynamic model in order to estimate position and velocity of the moving platform.\\
+The overall goal is to design a complete framework to perform the entire task: area exploration searching for the base, finding and approaching the platform, while maintaining it within the camera's field of view, and finally landing on it, minimizing the errors in position, and velocity.\\
+The frameworks consists in several modules that perform different functions and collaborate together to complete the mission. All the computation are onboard, and so the quadrotor can perform this task fully autonomously.\\
+The system is validated in the real world on a quadrotor: the vehicle successfully landed on the moving platform during outdoor flight tests.
  \cleardoublepage
 
 %---------------------------------------------------------------------------
@@ -40,7 +42,6 @@ TODO complete \\
   \begin{tabbing}
     \hspace*{1.6cm}   \= \kill
     $\mathbf{J}$       \> Jacobian \\[0.5ex]
-    $\mathbf{H}$       \> Hessian \\[0.5ex]
     $\boldsymbol{r}$  \> position of the frame $B$ with respect to frame $W$ \\[0.5ex]
     $\mathbf{T}_{WB}$  \> coordinate transformation from frame $B$ to frame $W$ \\[0.5ex]
     $\mathbf{R}_{WB}$  \> orientation of $B$ with respect to $W$ \\[0.5ex]

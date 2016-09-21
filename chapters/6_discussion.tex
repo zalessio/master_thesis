@@ -1,11 +1,18 @@
 \chapter{Discussion}\label{chap:discussion}
+This thesis proposes a landing algorithm for a quadrotor on a moving platform.
+The approach presented is combining the robustness of predicting and replanning methods with the possibility of onboard computation.\\
+We proved functionality of this framework both in simulation and in real word experiments achieving good results in therms of robustness.\\
+The complete onboard computation ensure the framework to be robust to delays and lost of connection with other equipment, very likely in a large environment as the one in MBZIRC.\\
+On the other end the replanning in an MPC style seems very promising to correct estimation errors, using noisy sensors and flying at fast velocity, it happens very easily.\\
+When the initial condition of the quadrotor are far from the  hovering state, the trajectory generator method appears not really robust and it is failing to find a feasible path to complete the task.
 
-TODO
-Explain both the advantages and limitations of your approach.
 
 \section{Conclusion}\label{sec:conclusion}
 In this thesis we presented a complete framework to permits a quadrotor to find, approach and land on a moving platform. We explained all the modules that make up the system, showing in detail the computation we perform in order to complete the assigned task. \\
-Several experiments were carried in simulation and in the real world to demonstrate the functionality of our system. From these experiments we demonstrate robustness of the framework up to a certain velocity, after which the trajectory generation and the self state estimation modules start to fail.\\
+A set of algorithms were developed for detecting a tracking the target based on images. The observation and the non-holonomic models were concatenated to formulate a nonlinear estimator (EKF).\\
+A self state estimation based on visual odometry and a controller were integrate and implemented into a single system that achieve the final mission.\\
+Several experiments were carried in simulation and in the real world to demonstrate the functionality of our system. From these experiments we proved robustness of the framework up to a certain velocity, after which the trajectory generation and the self state estimation modules start to fail.\\
+The flight test showed satisfactory performance, but in general we can say that further work needs to be done in order to achieve results that can be used in the MBZIRC challenge.
 
 \section{Future Work}\label{sec:future_work}
 There are several upgrades that can be done to this frameworks. The major problems are related to the not always robust state estimation and the issues with the trajectory generator ( described in \ref{sec:trajectory_problem}).\\
@@ -14,7 +21,7 @@ There are several upgrades that can be done to this frameworks. The major proble
 \subsection{State estimation using also GPS and Teraranger}
 A future upgrade that we should do is to fuse multiple sensor to have a more robust and precise state estimation.\\
 As a matter of fact MSF can combine easily different sources of data, filtering them with the IMU information.
-The main two sensor we can add for this upgrade can be:
+The main two sensors we can add for this upgrade can be:
 \begin{itemize}
 \item GPS: it gives a 3D absolute position with not a high accuracy, but are always available in outside environment, and can be useful to have a continue state estimation used to initialized (and reinitialized if it fails) the visual odometry. Of course the uncertainty related to this measure will be much more higher w.r.t the one from SVO, but it is MSF's duty taking in account these information and filtering the data in the right way.
 \item Teraranger \cite{teraranger}: it is distance sensor for robotics, it can operate both in inside and outside environment, it is very light and can be really useful to have an estimation of the height of the quadrotor. It is in fact well known that both VO and GPS systems have much more error in the depth component, so the data from this sensor can be correct all the wrong estimations from the other two sources. 

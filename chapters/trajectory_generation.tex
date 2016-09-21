@@ -42,6 +42,12 @@ This state will be the input of the high controller module.
 \end{itemize}
 \end{itemize}
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{img/threads_trajectory_generation.pdf}
+    \caption{Scheme of tasks subdivision between the two threads.}
+    \label{fig:traject_gen}
+\end{figure}
 
 In this module we utilize the trajectory planning approach described in \cite{mueller2015computationally} to generate thousands of trajectories per second ($2ms$ each), and then choose the best one to follow. We are doing this calculation with frequent replanning in order to correct any errors related to the prediction of the final target or related to a displacement between desired state and actual state of the quadrotor, due to the not perfect tracking of the trajectory by the controller.\\
 
@@ -72,6 +78,8 @@ c
 \end{align}
 Where the system input are  $c$, the total normalized thrust, and the angular rates $\omega_1,\omega_2,\omega_3$ .\\
 
+Now the goal is to express these inputs in function of the states and the jerk.\\
+ 
 The input thrust $c$ is computed by applying the norm to the position dynamics:
 \begin{align}
 c^2 &= ||\boldsymbol{c}||^2 =  ||\ddot{\boldsymbol{r}} - \boldsymbol{g}||^2 \\[20pt] \label{eq:thrust_from_jerk}
@@ -83,9 +91,7 @@ c^2 &= ||\boldsymbol{c}||^2 =  ||\ddot{\boldsymbol{r}} - \boldsymbol{g}||^2 \\[2
 
 We can also define the position dynamic in therms of jerk:
 \begin{align}
-\begin{split}
 \boldsymbol{j} &= \dddot{\boldsymbol{r}} = \dot{\boldsymbol{R}}_{WB}\boldsymbol{c} + \boldsymbol{R}_{WB}\dot{\boldsymbol{c}}
-\end{split}
 \end{align}
 
 Combining the two derivations, we can say that fixed $\boldsymbol{j}$ and $c$, we define uniquely two components of the body rates:
@@ -102,7 +108,13 @@ Combining the two derivations, we can say that fixed $\boldsymbol{j}$ and $c$, w
 \end{align}
 Using these equations the inputs of the system are defined with a degree of freedom in $\omega_3$.\\
 
-If we consider the system input to be the three-dimensional jerk, then we can decoupling the dynamics into three orthogonal inertial axes, and treating each axis as a triple integrator with jerk used as control input. The true control inputs $c$ and $\omega$ are then recovered from $\boldsymbol{j}$  inputs using equations \ref{eq:thrust_from_jerk} and \ref{eq:omega_from_jerk}.
+The goal of this algorithm is to find  the trajectory $\boldsymbol{z}(t)$ for $t \in [0,T]$, consisting of the quadrotor position, velocity and acceleration, such that:
+\begin{align}
+\boldsymbol{z}(t) = (\boldsymbol{r}(t),\dot{\boldsymbol{r}}(t),\ddot{\boldsymbol{r}}(t)) \in \mathbb{R}^9
+\end{align}
+with given initial and final conditions $\boldsymbol{z}(0)$ and $\boldsymbol{z}(T)$.
+
+If we consider the system input to be the three-dimensional jerk, then we can decoupling the dynamics into three orthogonal inertial axes, and treating each axis as a triple integrator with jerk used as control input. The true control inputs $c$ and $\boldsymbol{\omega}$ are then recovered from $\boldsymbol{j}$  using equations \ref{eq:thrust_from_jerk} and \ref{eq:omega_from_jerk}.
 
 
 \subsection{Optimal control problem}
@@ -111,32 +123,32 @@ The trajectory generation is rewritten as a discrete optimal control problem, wi
 As we said, the dynamics are split among the three decoupled axis, and for each axis the optimal control problem is  solved independently.\\
 
 For a single axis the problem is defined as following:\\
-find the control input $j$ that minimizes:
+find the sequence of control input $j_k$ that minimizes:
 \begin{align}
-J = \sum_{k=0}^N j_k^2
+J = \sum_{k=0}^{N-1} j_k^2
 \end{align}
 
 subject to the dynamics:
 \begin{align}
 \begin{split}
-j_k &= \dddot{r}_k\\
+j_k &= \dddot{r}_k\\[10pt]
 z_k  &= 
 {\begin{bmatrix}
- r_k \\[10pt]
- \dot{r}_k \\[10pt]
+ r_k \\[5pt]
+ \dot{r}_k \\[5pt]
  \ddot{r}_k
 \end{bmatrix}} = 
 {\begin{bmatrix}
-1 & dt & \frac{dt^2}{2}  \\[10pt]
-0 & 1 & dt \\[10pt]
+1 & dt & \frac{dt^2}{2}  \\[5pt]
+0 & 1 & dt \\[5pt]
 0 & 0 & 1
 \end{bmatrix}}z_{k-1} + 
 {\begin{bmatrix}
- \frac{dt^3}{6}  \\[10pt]
- \frac{dt^2}{2} \\[10pt]
+ \frac{dt^3}{6}  \\[5pt]
+ \frac{dt^2}{2} \\[5pt]
  dt
-\end{bmatrix}}j_{k-1} \\
-z_0 &= z(0) \\
+\end{bmatrix}}j_{k-1} \\[10pt]
+z_0 &= z(0) \\[5pt]
 z_N &= z(T)
 \end{split}
 \end{align}
@@ -156,7 +168,7 @@ The final result requires the evaluation of a single matrix that depends on the 
 \subsection{Cost function}
 The cost function selected is, considering the three axis together:
 \begin{align}
-J = \sum_{k=0}^N ||\boldsymbol{j}_k||^2
+J = \sum_{k=0}^{N-1} ||\boldsymbol{j}_k||^2
 \end{align}
 
 This cost function has been chosen because it can be interpreted as an upper bound for a product of the input (using equation \ref{eq:omega_from_jerk}):

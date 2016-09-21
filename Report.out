@@ -59,9 +59,10 @@
 \BOOKMARK [2][-]{subsection.6.4.2}{From low altitude}{section.6.4}% 59
 \BOOKMARK [1][-]{section.6.5}{Trajectory generation}{chapter.6}% 60
 \BOOKMARK [2][-]{subsection.6.5.1}{Acceleration estimation}{section.6.5}% 61
-\BOOKMARK [0][-]{chapter.7}{Discussion}{}% 62
-\BOOKMARK [1][-]{section.7.1}{Conclusion}{chapter.7}% 63
-\BOOKMARK [1][-]{section.7.2}{Future Work}{chapter.7}% 64
-\BOOKMARK [2][-]{subsection.7.2.1}{State estimation using also GPS and Teraranger}{section.7.2}% 65
-\BOOKMARK [2][-]{subsection.7.2.2}{Change the controller}{section.7.2}% 66
-\BOOKMARK [2][-]{subsection.7.2.3}{Cross detector}{section.7.2}% 67
+\BOOKMARK [1][-]{section.6.6}{Landing on a moving platform}{chapter.6}% 62
+\BOOKMARK [0][-]{chapter.7}{Discussion}{}% 63
+\BOOKMARK [1][-]{section.7.1}{Conclusion}{chapter.7}% 64
+\BOOKMARK [1][-]{section.7.2}{Future Work}{chapter.7}% 65
+\BOOKMARK [2][-]{subsection.7.2.1}{State estimation using also GPS and Teraranger}{section.7.2}% 66
+\BOOKMARK [2][-]{subsection.7.2.2}{Change the controller}{section.7.2}% 67
+\BOOKMARK [2][-]{subsection.7.2.3}{Cross detector}{section.7.2}% 68

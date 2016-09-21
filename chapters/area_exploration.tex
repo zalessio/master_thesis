@@ -589,14 +589,13 @@ imu_{filt}(t_k) =  (1-e^{-\frac{t_k-t_{k-1}}{\tau_{imu}}})imu_{raw}(t_k) + e^{-\
 \label{eq:imu_filtered}
 \end{align} 
 The filter eliminates the noise but it slows down the response to changes, so the detection of the bump is done with some delay: the parameter $\tau_{imu}$ is deciding the cut frequency of the filter, so tuning this quantity can lead to a final filtered data with the right balance between smoothness and sensibility to changes.\\  
-
 These methods that uses the absolute value of the acceleration, do not take in consideration that the quadrotor could assume a very high acceleration while is performing a normal flight, and so this acceleration could exceed the threshold and be detected as a bump.\\
 Another solution to have a robust and fast bump detector is to compare the raw data from the IMU with the filtered one: only the bump creates a big change that the filter cannot follow instantaneously, so the difference between the two version of the data will be very high only in this occasion.\\
 The figure \ref{fig:imu_landing} shows the data used by the bump detector in order to find when the quad is touching the platform and switch off the motors.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.72\textwidth]{img/imu_landing.pdf}
+    \includegraphics[width=0.7\textwidth]{img/imu_landing.pdf}
     \caption{Data used by the bump detector: difference between the norms of the raw data from the imu and the filtered version of the same. The difference is growing really fast only when the UAV bumps on the surface.}
     \label{fig:imu_landing}
 \end{figure}

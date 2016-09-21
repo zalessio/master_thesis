@@ -35,18 +35,18 @@
 \contentsline {section}{\numberline {4.3}Approaching the base}{44}{section.4.3}
 \contentsline {section}{\numberline {4.4}Align with the base}{46}{section.4.4}
 \contentsline {section}{\numberline {4.5}Landing on the base}{47}{section.4.5}
-\contentsline {chapter}{\numberline {5}Trajectory generator}{51}{chapter.5}
-\contentsline {section}{\numberline {5.1}Rapid Trajectory}{53}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Dynamic model}{53}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Optimal control problem}{54}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Cost function}{55}{subsection.5.1.3}
+\contentsline {chapter}{\numberline {5}Trajectory generator}{50}{chapter.5}
+\contentsline {section}{\numberline {5.1}Rapid Trajectory}{52}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Dynamic model}{52}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Optimal control problem}{53}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Cost function}{54}{subsection.5.1.3}
 \contentsline {subsection}{\numberline {5.1.4}Constraints}{55}{subsection.5.1.4}
 \contentsline {subsection}{\numberline {5.1.5}Feasibility check}{55}{subsection.5.1.5}
 \contentsline {subsection}{\numberline {5.1.6}Compute the acceleration}{56}{subsection.5.1.6}
 \contentsline {section}{\numberline {5.2}Minimum snap trajectory}{57}{section.5.2}
 \contentsline {section}{\numberline {5.3}Problems with the trajectory generation}{58}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Last chance solution}{58}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Too frequent replanning}{60}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.2}Too frequent replanning}{59}{subsection.5.3.2}
 \contentsline {subsection}{\numberline {5.3.3}Too short final time}{60}{subsection.5.3.3}
 \contentsline {chapter}{\numberline {6}Experiments}{61}{chapter.6}
 \contentsline {section}{\numberline {6.1}Real world hardware}{61}{section.6.1}
@@ -55,19 +55,20 @@
 \contentsline {section}{\numberline {6.2}Simulation}{63}{section.6.2}
 \contentsline {section}{\numberline {6.3}SVO}{63}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}Front looking vs down looking}{64}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Drifting}{66}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.2}Drifting}{67}{subsection.6.3.2}
 \contentsline {subsection}{\numberline {6.3.3}Very fast flight}{67}{subsection.6.3.3}
-\contentsline {section}{\numberline {6.4}Base detection and tracking}{67}{section.6.4}
+\contentsline {section}{\numberline {6.4}Base detection and tracking}{69}{section.6.4}
 \contentsline {subsection}{\numberline {6.4.1}From high altitude}{69}{subsection.6.4.1}
-\contentsline {subsection}{\numberline {6.4.2}From low altitude}{70}{subsection.6.4.2}
-\contentsline {subsubsection}{Different AR-Tag detector}{70}{section*.47}
-\contentsline {paragraph}{AR-Sys}{70}{section*.48}
-\contentsline {subsubsection}{Results}{71}{section*.49}
-\contentsline {section}{\numberline {6.5}Trajectory generation}{72}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}Acceleration estimation}{72}{subsection.6.5.1}
-\contentsline {chapter}{\numberline {7}Discussion}{75}{chapter.7}
-\contentsline {section}{\numberline {7.1}Conclusion}{75}{section.7.1}
-\contentsline {section}{\numberline {7.2}Future Work}{75}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}State estimation using also GPS and Teraranger}{75}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Change the controller}{76}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Cross detector}{76}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {6.4.2}From low altitude}{71}{subsection.6.4.2}
+\contentsline {subsubsection}{Different AR-Tag detector}{71}{section*.50}
+\contentsline {paragraph}{AR-Sys}{71}{section*.51}
+\contentsline {subsubsection}{Results}{72}{section*.52}
+\contentsline {section}{\numberline {6.5}Trajectory generation}{73}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Acceleration estimation}{73}{subsection.6.5.1}
+\contentsline {section}{\numberline {6.6}Landing on a moving platform}{75}{section.6.6}
+\contentsline {chapter}{\numberline {7}Discussion}{77}{chapter.7}
+\contentsline {section}{\numberline {7.1}Conclusion}{77}{section.7.1}
+\contentsline {section}{\numberline {7.2}Future Work}{78}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}State estimation using also GPS and Teraranger}{78}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Change the controller}{78}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Cross detector}{79}{subsection.7.2.3}
