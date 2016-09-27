@@ -9,8 +9,8 @@ Warning--empty journal in lange2008autonomous
 Warning--empty journal in herisse2008hovering
 Warning--empty journal in tang2011uav
 Warning--empty journal in jian2012automatic
-Warning--empty journal in lee2012autonomous
 Warning--empty journal in mellinger2010control
+Warning--empty journal in lee2012autonomous
 Warning--empty journal in vlantis2015quadrotor
 Warning--empty journal in neunertfast
 Warning--empty year in neunertfast
@@ -23,45 +23,45 @@ Warning--empty journal in kato1999marker
 Warning--empty journal in van1997real
 Warning--empty journal in mellinger2011minimum
 Warning--empty journal in rotors2016
-You've used 46 entries,
+You've used 47 entries,
             1791 wiz_defined-function locations,
-            689 strings with 10914 characters,
-and the built_in function-call counts, 10777 in all, are:
-= -- 984
-> -- 422
-< -- 13
-+ -- 161
-- -- 115
-* -- 637
-:= -- 1582
-add.period$ -- 124
-call.type$ -- 46
-change.case$ -- 45
+            688 strings with 10942 characters,
+and the built_in function-call counts, 11073 in all, are:
+= -- 1012
+> -- 432
+< -- 14
++ -- 165
+- -- 118
+* -- 642
+:= -- 1615
+add.period$ -- 127
+call.type$ -- 47
+change.case$ -- 46
 chr.to.int$ -- 0
-cite$ -- 66
-duplicate$ -- 479
-empty$ -- 1059
-format.name$ -- 115
-if$ -- 2443
+cite$ -- 67
+duplicate$ -- 498
+empty$ -- 1092
+format.name$ -- 118
+if$ -- 2524
 int.to.chr$ -- 0
-int.to.str$ -- 46
+int.to.str$ -- 47
 missing$ -- 35
-newline$ -- 219
-num.names$ -- 45
-pop$ -- 194
+newline$ -- 223
+num.names$ -- 46
+pop$ -- 206
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 324
+skip$ -- 341
 stack$ -- 0
-substring$ -- 844
-swap$ -- 144
-text.length$ -- 13
+substring$ -- 853
+swap$ -- 157
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 20
-while$ -- 113
-width$ -- 48
-write$ -- 440
+while$ -- 115
+width$ -- 49
+write$ -- 449
 (There were 20 warnings)

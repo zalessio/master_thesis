@@ -1,74 +1,74 @@
 \contentsline {chapter}{Abstract}{iii}{chapter*.2}
 \contentsline {chapter}{Nomenclature}{v}{chapter*.3}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Related Work}{2}{section.1.1}
+\contentsline {section}{\numberline {1.1}Related work}{2}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Landing on a static platform}{2}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1.2}Landing on a moving platform}{2}{subsection.1.1.2}
+\contentsline {subsection}{\numberline {1.1.3}MPC for quadrotors}{4}{subsection.1.1.3}
 \contentsline {section}{\numberline {1.2}MBZIRC challenge}{5}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}The Arena}{5}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.1}The arena}{5}{subsection.1.2.1}
 \contentsline {subsection}{\numberline {1.2.2}Landing platform}{6}{subsection.1.2.2}
-\contentsline {chapter}{\numberline {2}General Framework}{7}{chapter.2}
+\contentsline {chapter}{\numberline {2}General Overview}{7}{chapter.2}
 \contentsline {section}{\numberline {2.1}SVO \& MSF}{8}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}SVO}{8}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}MSF}{9}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}High \& low level controls}{9}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}High part}{9}{subsection.2.2.1}
-\contentsline {subsubsection}{Position Controller}{10}{section*.9}
-\contentsline {subsubsection}{Attitude Controller}{10}{section*.10}
-\contentsline {subsection}{\numberline {2.2.2}Low part}{10}{subsection.2.2.2}
-\contentsline {section}{\numberline {2.3}Base detection \& tracking}{11}{section.2.3}
-\contentsline {section}{\numberline {2.4}State machine}{12}{section.2.4}
+\contentsline {section}{\numberline {2.2}Control}{9}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}High level control}{9}{subsection.2.2.1}
+\contentsline {subsubsection}{Position controller}{10}{section*.9}
+\contentsline {subsubsection}{Attitude controller}{10}{section*.10}
+\contentsline {subsection}{\numberline {2.2.2}Low level control}{10}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Base detection and tracking}{11}{section.2.3}
+\contentsline {section}{\numberline {2.4}Landing state machine}{12}{section.2.4}
 \contentsline {section}{\numberline {2.5}Trajectory generation}{12}{section.2.5}
-\contentsline {chapter}{\numberline {3}Base detection and tracking}{13}{chapter.3}
-\contentsline {section}{\numberline {3.1}Prediction update: non-holonomic model}{14}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Straight and circular path}{16}{subsection.3.1.1}
+\contentsline {chapter}{\numberline {3}Base Detection and Tracking}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Prediction update: non-holonomic model}{15}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Straight and circular path}{17}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Infinity shape path}{17}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}Measurement update}{19}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}From high altitude}{20}{subsection.3.2.1}
-\contentsline {subsubsection}{From images to real world}{22}{section*.16}
-\contentsline {subsection}{\numberline {3.2.2}From low altitude}{25}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Covariance Estimation}{27}{subsection.3.2.3}
-\contentsline {chapter}{\numberline {4}State machine}{30}{chapter.4}
-\contentsline {section}{\numberline {4.1}Takeoff and searching for the base}{30}{section.4.1}
-\contentsline {section}{\numberline {4.2}Following the base}{32}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Understand type of movement}{32}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Calculate future position}{38}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {3.2.1}Platform pose estimation at high altitudes}{20}{subsection.3.2.1}
+\contentsline {subsubsection}{From images to real world}{22}{section*.15}
+\contentsline {subsection}{\numberline {3.2.2}Platform pose estimation at low altitudes}{26}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Covariance estimation}{28}{subsection.3.2.3}
+\contentsline {chapter}{\numberline {4}Landing State Machine}{31}{chapter.4}
+\contentsline {section}{\numberline {4.1}Takeoff and searching for the base}{31}{section.4.1}
+\contentsline {section}{\numberline {4.2}Following the base}{33}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Understand type of movement}{33}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Calculate future positions of the moving platform}{39}{subsection.4.2.2}
 \contentsline {subsection}{\numberline {4.2.3}Select moment to land}{41}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}Approaching the base}{44}{section.4.3}
-\contentsline {section}{\numberline {4.4}Align with the base}{46}{section.4.4}
-\contentsline {section}{\numberline {4.5}Landing on the base}{47}{section.4.5}
-\contentsline {chapter}{\numberline {5}Trajectory generator}{50}{chapter.5}
-\contentsline {section}{\numberline {5.1}Rapid Trajectory}{52}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Dynamic model}{52}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Optimal control problem}{53}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Cost function}{54}{subsection.5.1.3}
-\contentsline {subsection}{\numberline {5.1.4}Constraints}{55}{subsection.5.1.4}
-\contentsline {subsection}{\numberline {5.1.5}Feasibility check}{55}{subsection.5.1.5}
-\contentsline {subsection}{\numberline {5.1.6}Compute the acceleration}{56}{subsection.5.1.6}
-\contentsline {section}{\numberline {5.2}Minimum snap trajectory}{57}{section.5.2}
-\contentsline {section}{\numberline {5.3}Problems with the trajectory generation}{58}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Last chance solution}{58}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Too frequent replanning}{59}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Too short final time}{60}{subsection.5.3.3}
-\contentsline {chapter}{\numberline {6}Experiments}{61}{chapter.6}
-\contentsline {section}{\numberline {6.1}Real world hardware}{61}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Quadrotor}{61}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Moving platform}{62}{subsection.6.1.2}
+\contentsline {section}{\numberline {4.3}Approaching the base}{45}{section.4.3}
+\contentsline {section}{\numberline {4.4}Aligning with the base}{46}{section.4.4}
+\contentsline {section}{\numberline {4.5}Landing on the base}{49}{section.4.5}
+\contentsline {chapter}{\numberline {5}Trajectory Generator}{52}{chapter.5}
+\contentsline {section}{\numberline {5.1}Minimum jerk trajectory}{54}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Dynamic Model}{54}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Optimal control problem}{55}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Cost function}{56}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Constraints}{57}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.5}Feasibility check}{57}{subsection.5.1.5}
+\contentsline {subsection}{\numberline {5.1.6}Estimating the acceleration}{58}{subsection.5.1.6}
+\contentsline {section}{\numberline {5.2}Minimum snap trajectory}{59}{section.5.2}
+\contentsline {section}{\numberline {5.3}Trajectory generation issues}{60}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Last chance solution}{60}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Too short final time}{61}{subsection.5.3.2}
+\contentsline {chapter}{\numberline {6}Experiments}{62}{chapter.6}
+\contentsline {section}{\numberline {6.1}Real world hardware}{62}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Quadrotor}{62}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Moving platform}{63}{subsection.6.1.2}
 \contentsline {section}{\numberline {6.2}Simulation}{63}{section.6.2}
-\contentsline {section}{\numberline {6.3}SVO}{63}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Front looking vs down looking}{64}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Drifting}{67}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}Very fast flight}{67}{subsection.6.3.3}
-\contentsline {section}{\numberline {6.4}Base detection and tracking}{69}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}From high altitude}{69}{subsection.6.4.1}
-\contentsline {subsection}{\numberline {6.4.2}From low altitude}{71}{subsection.6.4.2}
-\contentsline {subsubsection}{Different AR-Tag detector}{71}{section*.50}
-\contentsline {paragraph}{AR-Sys}{71}{section*.51}
-\contentsline {subsubsection}{Results}{72}{section*.52}
-\contentsline {section}{\numberline {6.5}Trajectory generation}{73}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}Acceleration estimation}{73}{subsection.6.5.1}
-\contentsline {section}{\numberline {6.6}Landing on a moving platform}{75}{section.6.6}
-\contentsline {chapter}{\numberline {7}Discussion}{77}{chapter.7}
-\contentsline {section}{\numberline {7.1}Conclusion}{77}{section.7.1}
-\contentsline {section}{\numberline {7.2}Future Work}{78}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}State estimation using also GPS and Teraranger}{78}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Change the controller}{78}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Cross detector}{79}{subsection.7.2.3}
+\contentsline {section}{\numberline {6.3}SVO}{64}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Front looking vs down looking}{65}{subsection.6.3.1}
+\contentsline {section}{\numberline {6.4}Base detection and tracking}{68}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}From high altitude}{68}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}From low altitude}{70}{subsection.6.4.2}
+\contentsline {subsubsection}{Different AR-Tag detector}{70}{section*.46}
+\contentsline {paragraph}{AR-Sys}{70}{section*.47}
+\contentsline {section}{\numberline {6.5}Trajectory generation}{71}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Acceleration estimation}{71}{subsection.6.5.1}
+\contentsline {section}{\numberline {6.6}Landing on a moving platform}{74}{section.6.6}
+\contentsline {chapter}{\numberline {7}Discussion}{78}{chapter.7}
+\contentsline {section}{\numberline {7.1}Conclusion}{78}{section.7.1}
+\contentsline {section}{\numberline {7.2}Future Work}{79}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}SVO with multiple cameras}{79}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}State estimation fuse multiple sensors}{79}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Change the controller}{79}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Cross detector}{80}{subsection.7.2.4}

@@ -16,9 +16,13 @@ The flight test showed satisfactory performance, but in general we can say that 
 
 \section{Future Work}\label{sec:future_work}
 There are several upgrades that can be done to this frameworks. The major problems are related to the not always robust state estimation and the issues with the trajectory generator ( described in \ref{sec:trajectory_problem}).\\
- Following we describe what solution can be applied in future to solve these problems.
+Following we describe what solution can be applied in future to solve these problems.
 
-\subsection{State estimation using also GPS and Teraranger}
+\subsection{SVO with multiple cameras}
+Since we have more then one camera on the UAV we can use the images from all of them to estimate the pose of the quadrotor with SVO, in this way we have a more robust and accurate state estimation. Furthermore, using more then one camera, we have low probability that all the visual odometry fail in the same time and so we can recover automatically when 
+
+
+\subsection{State estimation fuse multiple sensors}
 A future upgrade that we should do is to fuse multiple sensor to have a more robust and precise state estimation.\\
 As a matter of fact MSF can combine easily different sources of data, filtering them with the IMU information.
 The main two sensors we can add for this upgrade can be:

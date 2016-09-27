@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.1)  20 SEP 2016 18:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.1)  27 SEP 2016 18:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -196,7 +196,298 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(./rpg.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/siunitx/siunitx.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2016/05/18 v6512 L3 programming layer (loader) 
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2016/05/18 v6512 L3 programming layer (code)
+L3 Module: l3bootstrap 2016/02/12 v6412 L3 Bootstrap code
+L3 Module: l3names 2016/03/11 v6433 L3 Namespace for primitives
+L3 Module: l3basics 2015/11/22 v6315 L3 Basic definitions
+L3 Module: l3expan 2015/09/10 v5983 L3 Argument expansion
+L3 Module: l3tl 2016/03/26 v6465 L3 Token lists
+L3 Module: l3str 2016/03/24 v6441 L3 Strings
+L3 Module: l3seq 2015/08/05 v5777 L3 Sequences and stacks
+L3 Module: l3int 2016/03/24 v6441 L3 Integers
+\c_max_int=\count105
+\l_tmpa_int=\count106
+\l_tmpb_int=\count107
+\g_tmpa_int=\count108
+\g_tmpb_int=\count109
+L3 Module: l3quark 2015/08/17 v5855 L3 Quarks
+L3 Module: l3prg 2015/11/01 v6216 L3 Control structures
+\g__prg_map_int=\count110
+L3 Module: l3clist 2015/09/02 v5901 L3 Comma separated lists
+L3 Module: l3token 2016/04/03 v6470 L3 Experimental token manipulation
+L3 Module: l3prop 2016/01/05 v6366 L3 Property lists
+L3 Module: l3msg 2016/03/26 v6464 L3 Messages
+L3 Module: l3file 2016/03/25 v6458 L3 File and I/O operations
+\l_iow_line_count_int=\count111
+\l__iow_target_count_int=\count112
+\l__iow_current_line_int=\count113
+\l__iow_current_word_int=\count114
+\l__iow_current_indentation_int=\count115
+L3 Module: l3skip 2016/01/05 v6366 L3 Dimensions and skips
+\c_zero_dim=\dimen124
+\c_max_dim=\dimen125
+\l_tmpa_dim=\dimen126
+\l_tmpb_dim=\dimen127
+\g_tmpa_dim=\dimen128
+\g_tmpb_dim=\dimen129
+\c_zero_skip=\skip48
+\c_max_skip=\skip49
+\l_tmpa_skip=\skip50
+\l_tmpb_skip=\skip51
+\g_tmpa_skip=\skip52
+\g_tmpb_skip=\skip53
+\c_zero_muskip=\muskip11
+\c_max_muskip=\muskip12
+\l_tmpa_muskip=\muskip13
+\l_tmpb_muskip=\muskip14
+\g_tmpa_muskip=\muskip15
+\g_tmpb_muskip=\muskip16
+L3 Module: l3keys 2015/11/17 v6284 L3 Key-value interfaces
+\g__keyval_level_int=\count116
+\l_keys_choice_int=\count117
+L3 Module: l3fp 2016/03/26 v6465 L3 Floating points
+\c__fp_leading_shift_int=\count118
+\c__fp_middle_shift_int=\count119
+\c__fp_trailing_shift_int=\count120
+\c__fp_big_leading_shift_int=\count121
+\c__fp_big_middle_shift_int=\count122
+\c__fp_big_trailing_shift_int=\count123
+\c__fp_Bigg_leading_shift_int=\count124
+\c__fp_Bigg_middle_shift_int=\count125
+\c__fp_Bigg_trailing_shift_int=\count126
+L3 Module: l3box 2015/08/09 v5822 L3 Experimental boxes
+\c_empty_box=\box28
+\l_tmpa_box=\box29
+\l_tmpb_box=\box30
+\g_tmpa_box=\box31
+\g_tmpb_box=\box32
+L3 Module: l3coffins 2016/05/17 v6508 L3 Coffin code layer
+\l__coffin_internal_box=\box33
+\l__coffin_internal_dim=\dimen130
+\l__coffin_offset_x_dim=\dimen131
+\l__coffin_offset_y_dim=\dimen132
+\l__coffin_x_dim=\dimen133
+\l__coffin_y_dim=\dimen134
+\l__coffin_x_prime_dim=\dimen135
+\l__coffin_y_prime_dim=\dimen136
+\c_empty_coffin=\box34
+\l__coffin_aligned_coffin=\box35
+\l__coffin_aligned_internal_coffin=\box36
+\l_tmpa_coffin=\box37
+\l_tmpb_coffin=\box38
+\l__coffin_display_coffin=\box39
+\l__coffin_display_coord_coffin=\box40
+\l__coffin_display_pole_coffin=\box41
+\l__coffin_display_offset_dim=\dimen137
+\l__coffin_display_x_dim=\dimen138
+\l__coffin_display_y_dim=\dimen139
+L3 Module: l3color 2014/08/23 v5354 L3 Experimental color support
+L3 Module: l3sys 2015/09/25 v6087 L3 Experimental system/runtime functions
+L3 Module: l3candidates 2016/05/13 v6484 L3 Experimental additions to l3kernel
+\l__box_top_dim=\dimen140
+\l__box_bottom_dim=\dimen141
+\l__box_left_dim=\dimen142
+\l__box_right_dim=\dimen143
+\l__box_top_new_dim=\dimen144
+\l__box_bottom_new_dim=\dimen145
+\l__box_left_new_dim=\dimen146
+\l__box_right_new_dim=\dimen147
+\l__box_internal_box=\box42
+\l__coffin_bounding_shift_dim=\dimen148
+\l__coffin_left_corner_dim=\dimen149
+\l__coffin_right_corner_dim=\dimen150
+\l__coffin_bottom_corner_dim=\dimen151
+\l__coffin_top_corner_dim=\dimen152
+\l__coffin_scaled_total_height_dim=\dimen153
+\l__coffin_scaled_width_dim=\dimen154
+L3 Module: l3luatex 2016/03/26 v6465 L3 Experimental LuaTeX-specific functions
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
+File: l3pdfmode.def 2016/03/26 v6465 L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count127
+\l__driver_tmp_box=\box43
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2016/05/18 v6512 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count128
+\l__xparse_m_args_int=\count129
+\l__xparse_mandatory_args_int=\count130
+\l__xparse_processor_int=\count131
+\l__xparse_v_nesting_int=\count132
+)
+Package: siunitx 2016/03/01 v2.6q A comprehensive (SI) units package
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2016/05/18 v6512 LaTeX2e option processing using LaTeX3 keys
+)
+\l__siunitx_tmp_box=\box44
+\l__siunitx_tmp_dim=\dimen155
+\l__siunitx_tmp_int=\count133
+\l__siunitx_number_mantissa_length_int=\count134
+\l__siunitx_number_uncert_length_int=\count135
+\l__siunitx_round_int=\count136
+\l__siunitx_process_decimal_int=\count137
+\l__siunitx_process_uncertainty_int=\count138
+\l__siunitx_process_fixed_int=\count139
+\l__siunitx_process_integer_min_int=\count140
+\l__siunitx_process_precision_int=\count141
+\l__siunitx_group_min_int=\count142
+\l__siunitx_angle_marker_box=\box45
+\l__siunitx_angle_unit_box=\box46
+\l__siunitx_angle_marker_dim=\dimen156
+\l__siunitx_angle_unit_dim=\dimen157
+\l__siunitx_unit_int=\count143
+\l__siunitx_unit_denominator_int=\count144
+\l__siunitx_unit_numerator_int=\count145
+\l__siunitx_unit_prefix_int=\count146
+\l__siunitx_unit_prefix_base_int=\count147
+\l__siunitx_unit_prefix_gram_int=\count148
+\l__siunitx_number_product_int=\count149
+\c__siunitx_one_fill_skip=\skip54
+\l__siunitx_table_unit_align_skip=\skip55
+\l__siunitx_table_exponent_dim=\dimen158
+\l__siunitx_table_integer_dim=\dimen159
+\l__siunitx_table_mantissa_dim=\dimen160
+\l__siunitx_table_marker_dim=\dimen161
+\l__siunitx_table_result_dim=\dimen162
+\l__siunitx_table_uncert_dim=\dimen163
+\l__siunitx_table_fill_pre_dim=\dimen164
+\l__siunitx_table_fill_post_dim=\dimen165
+\l__siunitx_table_fill_mid_dim=\dimen166
+\l__siunitx_table_pre_box=\box47
+\l__siunitx_table_post_box=\box48
+\l__siunitx_table_mantissa_box=\box49
+\l__siunitx_table_result_box=\box50
+\l__siunitx_table_number_align_skip=\skip56
+\l__siunitx_table_text_align_skip=\skip57
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareBinaryPrefix with sig. 'mmm' on line 7218.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIPostPower with sig. 'mm' on line 7221.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIPrefix with sig. 'mmm' on line 7224.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIPrePower with sig. 'mm' on line 7227.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIQualifier with sig. 'mm' on line 7230.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIUnit with sig. 'O{}mm' on line 7233.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIUnitWithOptions with sig. 'mmm' on line 7236.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ang with sig. 'o>{\SplitArgument {2}{;}}m' on line 7251.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \num with sig. 'om' on line 7260.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \numlist with sig. 'o>{\SplitList {;}}m' on line 7269.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \numrange with sig. 'omm' on line 7278.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SIlist with sig. 'o>{\SplitList {;}}mm' on line 7290.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SIrange with sig. 'ommm' on line 7302.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SI with sig. 'omom' on line 7314.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \sisetup with sig. 'm' on line 7317.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \tablenum with sig. 'om' on line 7332.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \si with sig. 'om' on line 7344.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_num:w with sig. 'om' on line 7391.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_numrange:w with sig. 'omm' on line
+. 7393.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_SI:w with sig. 'omom' on line 7395.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_SIlist:w with sig. 'omm' on line 7397.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_SIrange:w with sig. 'ommm' on line
+. 7399.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__siunitx_bookmark_si:w with sig. 'om' on line 7400.
+.................................................
+\g__file_internal_ior=\read1
+(/usr/local/texlive/2016/texmf-dist/tex/latex/beamer/translator/translator.sty
+Package: translator 2010/06/12 ver 1.10
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/beamer/translator/translator-lang
+uage-mappings.tex))) (./rpg.sty
 Package: rpg 2009/29/05, v. 1.1
 
 providing new style definitions and commands ---
@@ -216,34 +507,34 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headfont=\toks25
 \thm@notefont=\toks26
 \thm@headpunct=\toks27
-\thm@preskip=\skip48
-\thm@postskip=\skip49
-\thm@headsep=\skip50
+\thm@preskip=\skip58
+\thm@postskip=\skip59
+\thm@headsep=\skip60
 \dth@everypar=\toks28
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
-\epsfxsize=\dimen124
-\epsfysize=\dimen125
+\epsfxsize=\dimen167
+\epsfysize=\dimen168
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count105
+\c@float@type=\count150
 \float@exts=\toks29
-\float@box=\box28
+\float@box=\box51
 \@float@everytoks=\toks30
-\@floatcapt=\box29
+\@floatcapt=\box52
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip51
-\f@ncyO@elh=\skip52
-\f@ncyO@erh=\skip53
-\f@ncyO@olh=\skip54
-\f@ncyO@orh=\skip55
-\f@ncyO@elf=\skip56
-\f@ncyO@erf=\skip57
-\f@ncyO@olf=\skip58
-\f@ncyO@orf=\skip59
+\fancy@headwidth=\skip61
+\f@ncyO@elh=\skip62
+\f@ncyO@erh=\skip63
+\f@ncyO@olh=\skip64
+\f@ncyO@orh=\skip65
+\f@ncyO@elf=\skip66
+\f@ncyO@erf=\skip67
+\f@ncyO@olf=\skip68
+\f@ncyO@orf=\skip69
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2016/05/05 v6.83n Hypertext links for LaTeX
@@ -301,14 +592,14 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen126
-\Hy@linkcounter=\count106
-\Hy@pagecounter=\count107
+\@linkdim=\dimen169
+\Hy@linkcounter=\count151
+\Hy@pagecounter=\count152
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2016/05/05 v6.83n Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count108
+\Hy@SavedSpaceFactor=\count153
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -320,17 +611,17 @@ Package hyperref Info: Plain pages OFF on input line 4461.
 Package hyperref Info: Backreferencing OFF on input line 4466.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4691.
-\c@Hy@tempcnt=\count109
+\c@Hy@tempcnt=\count154
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip11
+\Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5044.
-\XeTeXLinkMargin=\dimen127
-\Fld@menulength=\count110
-\Field@Width=\dimen128
-\Fld@charsize=\dimen129
+\XeTeXLinkMargin=\dimen170
+\Fld@menulength=\count155
+\Field@Width=\dimen171
+\Fld@charsize=\dimen172
 Package hyperref Info: Hyper figures OFF on input line 6298.
 Package hyperref Info: Link nesting OFF on input line 6303.
 Package hyperref Info: Hyper index ON on input line 6306.
@@ -340,24 +631,24 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6323.
 Package hyperref Info: PDF/A mode OFF on input line 6328.
 LaTeX Info: Redefining \ref on input line 6368.
 LaTeX Info: Redefining \pageref on input line 6372.
-\Hy@abspage=\count111
-\c@Item=\count112
-\c@Hfootnote=\count113
+\Hy@abspage=\count156
+\c@Item=\count157
+\c@Hfootnote=\count158
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2016/05/05 v6.83n Hyperref driver for pdfTeX
-\Fld@listcount=\count114
-\c@bookmark@seq@number=\count115
+\Fld@listcount=\count159
+\c@bookmark@seq@number=\count160
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip60
+\Hy@SectionHShift=\skip70
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/pstricks/pstricks.sty
 Package: pstricks 2015/11/14 v0.62 LaTeX wrapper for `PSTricks' (RN,HV)
@@ -374,26 +665,26 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 \XKV@toks=\toks31
 \XKV@tempa@toks=\toks32
 )
-\XKV@depth=\count116
+\XKV@depth=\count161
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )))
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pstricks/pst-fp.tex
 `pst-fp' v0.05, 2010/01/17 (hv)
-\pstFP@xs=\count117
-\pstFP@xia=\count118
-\pstFP@xib=\count119
-\pstFP@xfa=\count120
-\pstFP@xfb=\count121
-\pstFP@rega=\count122
-\pstFP@regb=\count123
-\pstFP@regs=\count124
-\pstFP@times=\count125
+\pstFP@xs=\count162
+\pstFP@xia=\count163
+\pstFP@xib=\count164
+\pstFP@xfa=\count165
+\pstFP@xfb=\count166
+\pstFP@rega=\count167
+\pstFP@regb=\count168
+\pstFP@regs=\count169
+\pstFP@times=\count170
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
 \pgfutil@everybye=\toks33
-\pgfutil@tempdima=\dimen130
-\pgfutil@tempdimb=\dimen131
+\pgfutil@tempdima=\dimen173
+\pgfutil@tempdimb=\dimen174
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
 sts.tex))
@@ -409,25 +700,25 @@ ode.tex
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
-\pgf@x=\dimen132
-\pgf@xa=\dimen133
-\pgf@xb=\dimen134
-\pgf@xc=\dimen135
-\pgf@y=\dimen136
-\pgf@ya=\dimen137
-\pgf@yb=\dimen138
-\pgf@yc=\dimen139
-\c@pgf@counta=\count126
-\c@pgf@countb=\count127
-\c@pgf@countc=\count128
-\c@pgf@countd=\count129
-\pgfutil@tempcnta=\count130
-\pgfutil@tempcntb=\count131
+\pgf@x=\dimen175
+\pgf@xa=\dimen176
+\pgf@xb=\dimen177
+\pgf@xc=\dimen178
+\pgf@y=\dimen179
+\pgf@ya=\dimen180
+\pgf@yb=\dimen181
+\pgf@yc=\dimen182
+\c@pgf@counta=\count171
+\c@pgf@countb=\count172
+\c@pgf@countc=\count173
+\c@pgf@countd=\count174
+\pgfutil@tempcnta=\count175
+\pgfutil@tempcntb=\count176
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen140
-\pgfmath@count=\count132
-\pgfmath@box=\box30
+\pgfmath@dimen=\dimen183
+\pgfmath@count=\count177
+\pgfmath@box=\box53
 \pgfmath@toks=\toks37
 \pgfmath@stack@operand=\toks38
 \pgfmath@stack@operation=\toks39
@@ -451,60 +742,61 @@ code.tex)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
 erarithmetics.code.tex)))
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count133
+\c@pgfmathroundto@lastzeros=\count178
 ))
-\pgffor@iter=\dimen141
-\pgffor@skip=\dimen142
+\pgffor@iter=\dimen184
+\pgffor@skip=\dimen185
 \pgffor@stack=\toks40
 \pgffor@toks=\toks41
 )
-\psLoopIndex=\count134
+\psLoopIndex=\count179
 
 `PSTricks' v2.66  <2016/05/18> (tvz)
-\pst@dima=\dimen143
-\pst@dimb=\dimen144
-\pst@dimc=\dimen145
-\pst@dimd=\dimen146
-\pst@dimg=\dimen147
-\pst@dimh=\dimen148
-\pst@dimm=\dimen149
-\pst@dimn=\dimen150
-\pst@dimo=\dimen151
-\pst@dimp=\dimen152
-\pst@hbox=\box31
-\pst@ibox=\box32
-\pst@boxg=\box33
-\pst@cnta=\count135
-\pst@cntb=\count136
-\pst@cntc=\count137
-\pst@cntd=\count138
-\pst@cntg=\count139
-\pst@cnth=\count140
-\pst@cntm=\count141
-\pst@cntn=\count142
-\pst@cnto=\count143
-\pst@cntp=\count144
-\@zero=\count145
+\pst@dima=\dimen186
+\pst@dimb=\dimen187
+\pst@dimc=\dimen188
+\pst@dimd=\dimen189
+\pst@dimg=\dimen190
+\pst@dimh=\dimen191
+\pst@dimm=\dimen192
+\pst@dimn=\dimen193
+\pst@dimo=\dimen194
+\pst@dimp=\dimen195
+\pst@hbox=\box54
+\pst@ibox=\box55
+\pst@boxg=\box56
+\pst@cnta=\count180
+\pst@cntb=\count181
+\pst@cntc=\count182
+\pst@cntd=\count183
+\pst@cntg=\count184
+\pst@cnth=\count185
+\pst@cntm=\count186
+\pst@cntn=\count187
+\pst@cnto=\count188
+\pst@cntp=\count189
+\@zero=\count190
 \pst@toks=\toks42
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pstricks/pstricks.con)
-\psunit=\dimen153
-\psxunit=\dimen154
-\psyunit=\dimen155
-\pst@C@@rType=\count146
-\pslinewidth=\dimen156
-\psk@startLW=\dimen157
-\psk@endLW=\dimen158
+\psunit=\dimen196
+\psxunit=\dimen197
+\psyunit=\dimen198
+\pst@C@@rType=\count191
+\pslinewidth=\dimen199
+Normal \dimen register pool exhausted, switching to extended pool.
+\psk@startLW=\dimen256
+\psk@endLW=\dimen257
 \pst@customdefs=\toks43
-\pslinearc=\dimen159
-\pst@symbolStep=\dimen160
-\pst@symbolWidth=\dimen161
-\pst@symbolLinewidth=\dimen162
+\pslinearc=\dimen258
+\pst@symbolStep=\dimen259
+\pst@symbolWidth=\dimen260
+\pst@symbolLinewidth=\dimen261
 \everypsbox=\toks44
-\psframesep=\dimen163
-\pslabelsep=\dimen164
-\sh@wgridXunit=\dimen165
-\sh@wgridYunit=\dimen166
-\pst@shift=\dimen167
+\psframesep=\dimen262
+\pslabelsep=\dimen263
+\sh@wgridXunit=\dimen264
+\sh@wgridYunit=\dimen265
+\pst@shift=\dimen266
 )
 File: pstricks.tex 2016/05/18 v2.66 `PSTricks' (tvz,hv)
 
@@ -523,8 +815,8 @@ Package: multido 2004/05/17 package wrapper for PSTricks `multido.tex', (HV/RN)
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/multido/multido.tex
  v1.42, 2010/05/14 <tvz>
-\multido@count=\count147
-\multidocount=\count148
+\multido@count=\count192
+\multidocount=\count193
 \multido@stuff=\toks45
 )
 File: multido.tex 2010/05/14 v1.42 `multido' (tvz,hv)
@@ -537,63 +829,64 @@ Package: pst-plot 2011/04/13 package wrapper for pst-plot.tex (hv)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pstricks-add/pstricks-add.tex
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pst-node/pst-node.tex
  v1.36, 2016/04/24
-\psrow=\count149
-\pscol=\count150
-\psmatrixcnt=\count151
-\psrowsep=\skip61
-\pscolsep=\skip62
-\pst@args=\count152
-\num@pts=\count153
-\pst@argcnt=\count154
+\psrow=\count194
+\pscol=\count195
+\psmatrixcnt=\count196
+\psrowsep=\skip71
+\pscolsep=\skip72
+\pst@args=\count197
+\num@pts=\count198
+\pst@argcnt=\count199
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pst-3d/pst-3d.tex
 `PST-3d' v1.11, 2010/02/14 (tvz))
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pst-math/pst-math.tex
 `pst-math' v0.63 , (CJ,hv)) `pstricks-add' v3.80, 2016/04/25 (dr,hv)
-\psparallelogramsep=\dimen168
-\pshooklength=\dimen169
-\pshookwidth=\dimen170
-\pst@cntC=\count155
-\chart@ColorIndex=\dimen171
-\chart@ColorStep=\dimen172
-\pst@chartHeight=\dimen173
-\pst@chartStackDepth=\dimen174
-\pst@chartStackWidth=\dimen175
-\chart@Toggle=\count156
-\psVectorCtr=\count157
+\psparallelogramsep=\dimen267
+\pshooklength=\dimen268
+\pshookwidth=\dimen269
+Normal \count register pool exhausted, switching to extended pool.
+\pst@cntC=\count277
+\chart@ColorIndex=\dimen270
+\chart@ColorStep=\dimen271
+\pst@chartHeight=\dimen272
+\pst@chartStackDepth=\dimen273
+\pst@chartStackWidth=\dimen274
+\chart@Toggle=\count278
+\psVectorCtr=\count279
 )
  v1.75, 2016/05/18 (tvz,hv)
-\pstRadUnit=\dimen176
-\pstRadUnitInv=\dimen177
-\pst@linecnt=\count158
-\RCD@file=\read1
-\psxlabelsep=\dimen178
-\psylabelsep=\dimen179
-\psk@subticksize=\dimen180
-\pst@xticksizeA=\dimen181
-\pst@xticksizeB=\dimen182
-\pst@xticksizeC=\dimen183
-\pst@yticksizeA=\dimen184
-\pst@yticksizeB=\dimen185
-\pst@yticksizeC=\dimen186
-\@digitcounter=\count159
-\psk@llx=\dimen187
-\psk@lly=\dimen188
-\psk@urx=\dimen189
-\psk@ury=\dimen190
-\pst@xunit=\dimen191
-\pst@yunit=\dimen192
+\pstRadUnit=\dimen275
+\pstRadUnitInv=\dimen276
+\pst@linecnt=\count280
+\RCD@file=\read2
+\psxlabelsep=\dimen277
+\psylabelsep=\dimen278
+\psk@subticksize=\dimen279
+\pst@xticksizeA=\dimen280
+\pst@xticksizeB=\dimen281
+\pst@xticksizeC=\dimen282
+\pst@yticksizeA=\dimen283
+\pst@yticksizeB=\dimen284
+\pst@yticksizeC=\dimen285
+\@digitcounter=\count281
+\psk@llx=\dimen286
+\psk@lly=\dimen287
+\psk@urx=\dimen288
+\psk@ury=\dimen289
+\pst@xunit=\dimen290
+\pst@yunit=\dimen291
 )
 File: pst-plot.tex 2016/05/18 1.75 `pst-plot' (tvz,hv)
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/psfrag/psfrag.sty
 Package: psfrag 1998/04/11 v3.04 PSfrag (MCG)
-\pfg@pcount=\count160
-\pfg@scount=\count161
+\pfg@pcount=\count282
+\pfg@scount=\count283
 \pfg@temp=\write3
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/multirow/multirow.sty
-\bigstrutjot=\dimen193
+\bigstrutjot=\dimen292
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/rotating/rotating.sty
 Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
@@ -601,34 +894,34 @@ Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@r@tfl@t=\count162
-\rotFPtop=\skip63
-\rotFPbot=\skip64
-\rot@float@box=\box34
+\c@r@tfl@t=\count284
+\rotFPtop=\skip73
+\rotFPbot=\skip74
+\rot@float@box=\box57
 \rot@mess@toks=\toks46
 ) (./mcode.sty
 -- Package: `mcode' 2.0 <2011/03/15> --
 Package: mcode 2011/03/15 2.0
  - settings optimized for display (colour formating)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count163
-\lst@gtempboxa=\box35
+\lst@mode=\count285
+\lst@gtempboxa=\box58
 \lst@token=\toks47
-\lst@length=\count164
-\lst@currlwidth=\dimen194
-\lst@column=\count165
-\lst@pos=\count166
-\lst@lostspace=\dimen195
-\lst@width=\dimen196
-\lst@newlines=\count167
-\lst@lineno=\count168
-\lst@maxwidth=\dimen197
+\lst@length=\count286
+\lst@currlwidth=\dimen293
+\lst@column=\count287
+\lst@pos=\count288
+\lst@lostspace=\dimen294
+\lst@width=\dimen295
+\lst@newlines=\count289
+\lst@lineno=\count290
+\lst@maxwidth=\dimen296
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count169
-\lst@skipnumbers=\count170
-\lst@framebox=\box36
+\c@lstnumber=\count291
+\lst@skipnumbers=\count292
+\lst@framebox=\box59
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
@@ -722,30 +1015,29 @@ Package: units 1998/08/04 v0.9b Typesetting units
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/units/nicefrac.sty
 Package: nicefrac 1998/08/04 v0.9b Nice fractions
-\L@UnitsRaiseDisplaystyle=\skip65
-\L@UnitsRaiseTextstyle=\skip66
-\L@UnitsRaiseScriptstyle=\skip67
+\L@UnitsRaiseDisplaystyle=\skip75
+\L@UnitsRaiseTextstyle=\skip76
+\L@UnitsRaiseScriptstyle=\skip77
 ))
 (/usr/local/texlive/2016/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2016/04/27 v1.618033 publication quality tables
-\heavyrulewidth=\dimen198
-\lightrulewidth=\dimen199
-Normal \dimen register pool exhausted, switching to extended pool.
-\cmidrulewidth=\dimen256
-\belowrulesep=\dimen257
-\belowbottomsep=\dimen258
-\aboverulesep=\dimen259
-\abovetopsep=\dimen260
-\cmidrulesep=\dimen261
-\cmidrulekern=\dimen262
-\defaultaddspace=\dimen263
-\@cmidla=\count171
-\@cmidlb=\count172
-\@aboverulesep=\dimen264
-\@belowrulesep=\dimen265
-\@thisruleclass=\count173
-\@lastruleclass=\count174
-\@thisrulewidth=\dimen266
+\heavyrulewidth=\dimen297
+\lightrulewidth=\dimen298
+\cmidrulewidth=\dimen299
+\belowrulesep=\dimen300
+\belowbottomsep=\dimen301
+\aboverulesep=\dimen302
+\abovetopsep=\dimen303
+\cmidrulesep=\dimen304
+\cmidrulekern=\dimen305
+\defaultaddspace=\dimen306
+\@cmidla=\count293
+\@cmidlb=\count294
+\@aboverulesep=\dimen307
+\@belowrulesep=\dimen308
+\@thisruleclass=\count295
+\@lastruleclass=\count296
+\@thisrulewidth=\dimen309
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2001/04/09 non-zero parskip adjustments
@@ -759,13 +1051,13 @@ Package: pgfplots 2016/01/06 v1.13 Data Visualization (1.13)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
 \pgfutil@everybye=\toks48
-\pgfutil@tempdima=\dimen267
-\pgfutil@tempdimb=\dimen268
+\pgfutil@tempdima=\dimen310
+\pgfutil@tempdimb=\dimen311
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
 sts.tex))
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box37
+\pgfutil@abb=\box60
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
@@ -778,20 +1070,20 @@ Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
-\pgf@x=\dimen269
-\pgf@y=\dimen270
-\pgf@xa=\dimen271
-\pgf@ya=\dimen272
-\pgf@xb=\dimen273
-\pgf@yb=\dimen274
-\pgf@xc=\dimen275
-\pgf@yc=\dimen276
+\pgf@x=\dimen312
+\pgf@y=\dimen313
+\pgf@xa=\dimen314
+\pgf@ya=\dimen315
+\pgf@xb=\dimen316
+\pgf@yb=\dimen317
+\pgf@xc=\dimen318
+\pgf@yc=\dimen319
 \w@pgf@writea=\write4
-\r@pgf@reada=\read2
-\c@pgf@counta=\count175
-\c@pgf@countb=\count176
-\c@pgf@countc=\count177
-\c@pgf@countd=\count178
+\r@pgf@reada=\read3
+\c@pgf@counta=\count297
+\c@pgf@countb=\count298
+\c@pgf@countc=\count299
+\c@pgf@countd=\count300
 \t@pgf@toka=\toks49
 \t@pgf@tokb=\toks50
 \t@pgf@tokc=\toks51
@@ -811,8 +1103,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count179
-\pgfsyssoftpath@bigbuffer@items=\count180
+\pgfsyssoftpath@smallbuffer@items=\count301
+\pgfsyssoftpath@bigbuffer@items=\count302
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
 code.tex
@@ -824,52 +1116,52 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
 de.tex
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
-\pgf@picminx=\dimen277
-\pgf@picmaxx=\dimen278
-\pgf@picminy=\dimen279
-\pgf@picmaxy=\dimen280
-\pgf@pathminx=\dimen281
-\pgf@pathmaxx=\dimen282
-\pgf@pathminy=\dimen283
-\pgf@pathmaxy=\dimen284
-\pgf@xx=\dimen285
-\pgf@xy=\dimen286
-\pgf@yx=\dimen287
-\pgf@yy=\dimen288
-\pgf@zx=\dimen289
-\pgf@zy=\dimen290
+\pgf@picminx=\dimen320
+\pgf@picmaxx=\dimen321
+\pgf@picminy=\dimen322
+\pgf@picmaxy=\dimen323
+\pgf@pathminx=\dimen324
+\pgf@pathmaxx=\dimen325
+\pgf@pathminy=\dimen326
+\pgf@pathmaxy=\dimen327
+\pgf@xx=\dimen328
+\pgf@xy=\dimen329
+\pgf@yx=\dimen330
+\pgf@yy=\dimen331
+\pgf@zx=\dimen332
+\pgf@zy=\dimen333
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
 ruct.code.tex
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
-\pgf@path@lastx=\dimen291
-\pgf@path@lasty=\dimen292
+\pgf@path@lastx=\dimen334
+\pgf@path@lasty=\dimen335
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
 .code.tex
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
-\pgf@shorten@end@additional=\dimen293
-\pgf@shorten@start@additional=\dimen294
+\pgf@shorten@end@additional=\dimen336
+\pgf@shorten@start@additional=\dimen337
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
 de.tex
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
-\pgfpic=\box38
-\pgf@hbox=\box39
-\pgf@layerbox@main=\box40
-\pgf@picture@serial@count=\count181
+\pgfpic=\box61
+\pgf@hbox=\box62
+\pgf@layerbox@main=\box63
+\pgf@picture@serial@count=\count303
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
 ate.code.tex
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
-\pgflinewidth=\dimen295
+\pgflinewidth=\dimen338
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
 ations.code.tex
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
-\pgf@pt@x=\dimen296
-\pgf@pt@y=\dimen297
-\pgf@pt@temp=\dimen298
+\pgf@pt@x=\dimen339
+\pgf@pt@y=\dimen340
+\pgf@pt@temp=\dimen341
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
 e.tex
@@ -886,13 +1178,13 @@ File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
 de.tex
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
-\pgfarrowsep=\dimen299
+\pgfarrowsep=\dimen342
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
 e.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
-\pgf@max=\dimen300
-\pgf@sys@shading@range@num=\count182
+\pgf@max=\dimen343
+\pgf@sys@shading@range@num=\count304
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
 e.tex
@@ -901,7 +1193,7 @@ File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
 code.tex
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
-\pgfexternal@startupbox=\box41
+\pgfexternal@startupbox=\box64
 ))
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
 de.tex
@@ -918,7 +1210,7 @@ File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
 e.tex
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
-\pgfnodeparttextbox=\box42
+\pgfnodeparttextbox=\box65
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
 tex
@@ -927,8 +1219,8 @@ File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -0-65.sty
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen301
-\pgf@nodesepend=\dimen302
+\pgf@nodesepstart=\dimen344
+\pgf@nodesepend=\dimen345
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -1-18.sty
@@ -943,8 +1235,8 @@ Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen303
-\pgffor@skip=\dimen304
+\pgffor@iter=\dimen346
+\pgffor@skip=\dimen347
 \pgffor@stack=\toks52
 \pgffor@toks=\toks53
 ))
@@ -955,32 +1247,32 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
 dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count183
-\pgfplotmarksize=\dimen305
+\pgf@plot@mark@count=\count305
+\pgfplotmarksize=\dimen348
 )
-\tikz@lastx=\dimen306
-\tikz@lasty=\dimen307
-\tikz@lastxsaved=\dimen308
-\tikz@lastysaved=\dimen309
-\tikzleveldistance=\dimen310
-\tikzsiblingdistance=\dimen311
-\tikz@figbox=\box43
-\tikz@figbox@bg=\box44
-\tikz@tempbox=\box45
-\tikz@tempbox@bg=\box46
-\tikztreelevel=\count184
-\tikznumberofchildren=\count185
-\tikznumberofcurrentchild=\count186
-\tikz@fig@count=\count187
+\tikz@lastx=\dimen349
+\tikz@lasty=\dimen350
+\tikz@lastxsaved=\dimen351
+\tikz@lastysaved=\dimen352
+\tikzleveldistance=\dimen353
+\tikzsiblingdistance=\dimen354
+\tikz@figbox=\box66
+\tikz@figbox@bg=\box67
+\tikz@tempbox=\box68
+\tikz@tempbox@bg=\box69
+\tikztreelevel=\count306
+\tikznumberofchildren=\count307
+\tikznumberofcurrentchild=\count308
+\tikz@fig@count=\count309
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
 e.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count188
-\pgfmatrixcurrentcolumn=\count189
-\pgf@matrix@numberofcolumns=\count190
+\pgfmatrixcurrentrow=\count310
+\pgfmatrixcurrentcolumn=\count311
+\pgf@matrix@numberofcolumns=\count312
 )
-\tikz@expandcount=\count191
+\tikz@expandcount=\count313
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
@@ -991,9 +1283,9 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 \t@pgfplots@toka=\toks54
 \t@pgfplots@tokb=\toks55
 \t@pgfplots@tokc=\toks56
-\pgfplots@tmpa=\dimen312
-\c@pgfplots@coordindex=\count192
-\c@pgfplots@scanlineindex=\count193
+\pgfplots@tmpa=\dimen355
+\c@pgfplots@coordindex=\count314
+\c@pgfplots@scanlineindex=\count315
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric
 .code.tex))
@@ -1009,7 +1301,7 @@ Package pgfplots: loading complementary arithmetics for your pgf version...
 soldpgfsupp_pgflibraryfpu.code.tex)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplot
 soldpgfsupp_pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count194
+\c@pgfmathroundto@lastzeros=\count316
 ))
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code
 .tex
@@ -1019,13 +1311,13 @@ liststructure.code.tex)
 liststructureext.code.tex)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
 array.code.tex
-\c@pgfplotsarray@tmp=\count195
+\c@pgfplotsarray@tmp=\count317
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
 matrix.code.tex)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable
 shared.code.tex
-\c@pgfplotstable@counta=\count196
+\c@pgfplotstable@counta=\count318
 \t@pgfplotstable@a=\toks57
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
@@ -1038,7 +1330,7 @@ ta.code.tex))
 .code.tex)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplot
 s.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count197
+\c@pgfplotslibrarysurf@no=\count319
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots
 .surfshading.pgfsys-pdftex.def)))
@@ -1070,16 +1362,16 @@ x)
 s/tikzlibrarydecorations.code.tex
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/modules/pgfmoduledecoration
 s.code.tex
-\pgfdecoratedcompleteddistance=\dimen313
-\pgfdecoratedremainingdistance=\dimen314
-\pgfdecoratedinputsegmentcompleteddistance=\dimen315
-\pgfdecoratedinputsegmentremainingdistance=\dimen316
-\pgf@decorate@distancetomove=\dimen317
-\pgf@decorate@repeatstate=\count198
-\pgfdecorationsegmentamplitude=\dimen318
-\pgfdecorationsegmentlength=\dimen319
+\pgfdecoratedcompleteddistance=\dimen356
+\pgfdecoratedremainingdistance=\dimen357
+\pgfdecoratedinputsegmentcompleteddistance=\dimen358
+\pgfdecoratedinputsegmentremainingdistance=\dimen359
+\pgf@decorate@distancetomove=\dimen360
+\pgf@decorate@repeatstate=\count320
+\pgfdecorationsegmentamplitude=\dimen361
+\pgfdecorationsegmentlength=\dimen362
 )
-\tikz@lib@dec@box=\box47
+\tikz@lib@dec@box=\box70
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarydecorations.pathmorphing.code.tex
@@ -1089,13 +1381,13 @@ brarydecorations.pathmorphing.code.tex))
 s/tikzlibrarydecorations.pathreplacing.code.tex
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
 brarydecorations.pathreplacing.code.tex))
-\pgfplots@numplots=\count199
-\pgfplots@xmin@reg=\dimen320
-\pgfplots@xmax@reg=\dimen321
-\pgfplots@ymin@reg=\dimen322
-\pgfplots@ymax@reg=\dimen323
-\pgfplots@zmin@reg=\dimen324
-\pgfplots@zmax@reg=\dimen325
+\pgfplots@numplots=\count321
+\pgfplots@xmin@reg=\dimen363
+\pgfplots@xmax@reg=\dimen364
+\pgfplots@ymin@reg=\dimen365
+\pgfplots@ymax@reg=\dimen366
+\pgfplots@zmin@reg=\dimen367
+\pgfplots@zmax@reg=\dimen368
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryplotmarks.code.tex
@@ -1105,15 +1397,9 @@ File: tikzlibraryplotmarks.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 ks.code.tex
 File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
 ))))
-\fheight=\skip68
-\fwidth=\skip69
+\fheight=\skip78
+\fwidth=\skip79
  (./Report.aux
-
-LaTeX Warning: Label `chap:thechallenge' multiply defined.
-
-
-LaTeX Warning: Label `chap:thechallenge' multiply defined.
-
 
 LaTeX Warning: Label `eq:mandqcirum' multiply defined.
 
@@ -1196,9 +1482,6 @@ LaTeX Warning: Label `fig:traject_gen' multiply defined.
 LaTeX Warning: Label `eq:finite_difference' multiply defined.
 
 
-LaTeX Warning: Label `fig:quad_hardware' multiply defined.
-
-
 LaTeX Warning: Label `fig:one' multiply defined.
 
 
@@ -1217,10 +1500,52 @@ LaTeX Warning: Label `fig:two' multiply defined.
 LaTeX Warning: Label `sub@fig:two' multiply defined.
 
 
-LaTeX Warning: Label `fig:ekf_position_real' multiply defined.
+LaTeX Warning: Label `fig:two' multiply defined.
 
 
-LaTeX Warning: Label `fig:ekf_position_real_fast' multiply defined.
+LaTeX Warning: Label `sub@fig:two' multiply defined.
+
+
+LaTeX Warning: Label `fig:three' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:three' multiply defined.
+
+
+LaTeX Warning: Label `fig:four' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:four' multiply defined.
+
+
+LaTeX Warning: Label `fig:five' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:five' multiply defined.
+
+
+LaTeX Warning: Label `fig:two' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:two' multiply defined.
+
+
+LaTeX Warning: Label `fig:three' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:three' multiply defined.
+
+
+LaTeX Warning: Label `fig:four' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:four' multiply defined.
+
+
+LaTeX Warning: Label `fig:five' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:five' multiply defined.
 
 
 LaTeX Warning: Label `sec:trajectory_problem' multiply defined.
@@ -1228,40 +1553,39 @@ LaTeX Warning: Label `sec:trajectory_problem' multiply defined.
 )
 \openout1 = `Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 59.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 59.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 61.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 61.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    ... okay on input line 61.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-Normal \count register pool exhausted, switching to extended pool.
-\scratchcounter=\count277
-\scratchdimen=\dimen326
-\scratchbox=\box48
-\nofMPsegments=\count278
-\nofMParguments=\count279
+\scratchcounter=\count322
+\scratchdimen=\dimen369
+\scratchbox=\box71
+\nofMPsegments=\count323
+\nofMParguments=\count324
 \everyMPshowfont=\toks58
-\MPscratchCnt=\count280
-\MPscratchDim=\dimen327
-\MPnumerator=\count281
-\makeMPintoPDFobject=\count282
+\MPscratchCnt=\count325
+\MPscratchDim=\dimen370
+\MPnumerator=\count326
+\makeMPintoPDFobject=\count327
 \everyMPtoPDFconversion=\toks59
 ) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1284,30 +1608,48 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box49
-Package hyperref Info: Link coloring OFF on input line 59.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/beamer/translator/dicts/translato
+r-basic-dictionary/translator-basic-dictionary-English.dict
+Dictionary: translator-basic-dictionary, Language: English 
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
+File: siunitx-abbreviations.cfg 2016/03/01 v2.6q siunitx: Abbreviated units
+)
+\AtBeginShipoutBox=\box72
+Package hyperref Info: Link coloring OFF on input line 61.
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count283
+\c@section@level=\count328
 )
-LaTeX Info: Redefining \ref on input line 59.
-LaTeX Info: Redefining \pageref on input line 59.
-LaTeX Info: Redefining \nameref on input line 59.
+LaTeX Info: Redefining \ref on input line 61.
+LaTeX Info: Redefining \pageref on input line 61.
+LaTeX Info: Redefining \nameref on input line 61.
 
 (./Report.out) (./Report.out)
 \@outlinefile=\write5
 \openout5 = `Report.out'.
 
-\c@lstlisting=\count284
+\c@lstlisting=\count329
  ABD: EveryShipout initializing macros
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.13}).
 
+\c__siunitx_mathsf_int=\count330
+LaTeX Font Info:    Try loading font information for U+msa on input line 61.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 61.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+\c__siunitx_mathtt_int=\count331
 Package epstopdf Info: Source file: <logos/ethlogo.eps>
 (epstopdf)                    date: 2016-08-01 14:01:32
 (epstopdf)                    size: 72851 bytes
@@ -1316,36 +1658,28 @@ Package epstopdf Info: Source file: <logos/ethlogo.eps>
 (epstopdf)                    size: 14327 bytes
 (epstopdf)             Command: <repstopdf --outfile=logos/ethlogo-eps-converte
 d-to.pdf logos/ethlogo.eps>
-(epstopdf)             \includegraphics on input line 60.
+(epstopdf)             \includegraphics on input line 62.
 Package epstopdf Info: Output file is already uptodate.
-<logos/ethlogo-eps-converted-to.pdf, id=280, 192.72pt x 59.22125pt>
+
+<logos/ethlogo-eps-converted-to.pdf, id=284, 192.72pt x 59.22125pt>
 File: logos/ethlogo-eps-converted-to.pdf Graphic file (type pdf)
 
 <use logos/ethlogo-eps-converted-to.pdf>
 Package pdftex.def Info: logos/ethlogo-eps-converted-to.pdf used on input line 
-60.
+62.
 (pdftex.def)             Requested size: 185.18846pt x 56.9055pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 60.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 60.
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./logos/RPG_logo_color.pdf):
  PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<logos/RPG_logo_color.pdf, id=281, 399.2797pt x 233.61479pt>
+<logos/RPG_logo_color.pdf, id=285, 399.2797pt x 233.61479pt>
 File: logos/RPG_logo_color.pdf Graphic file (type pdf)
 
 <use logos/RPG_logo_color.pdf>
-Package pdftex.def Info: logos/RPG_logo_color.pdf used on input line 60.
+Package pdftex.def Info: logos/RPG_logo_color.pdf used on input line 62.
 (pdftex.def)             Requested size: 97.25473pt x 56.9055pt.
 
-Overfull \hbox (69.95322pt too wide) in paragraph at lines 60--60
+Overfull \hbox (69.95322pt too wide) in paragraph at lines 62--62
  |  []
  []
 
@@ -1395,7 +1729,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--6
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--18
+Underfull \hbox (badness 10000) in paragraph at lines 17--19
 
  []
 
@@ -1406,7 +1740,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.18 
+l.19 
       [1
 
 
@@ -1415,55 +1749,70 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+
+ []
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.38 
+l.39 
       [2]
 Underfull \hbox (badness 10000) in paragraph at lines 45--48
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 65--68
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
+
+ []
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 93.
+See the caption package documentation for explanation.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4]
-Underfull \hbox (badness 10000) in paragraph at lines 124--126
+Underfull \hbox (badness 10000) in paragraph at lines 125--127
 
  []
 
-[5] <img/arena.png, id=471, 777.90625pt x 352.31625pt>
+[5] <img/arena.png, id=477, 777.90625pt x 352.31625pt>
 File: img/arena.png Graphic file (type png)
  <use img/arena.png>
-Package pdftex.def Info: img/arena.png used on input line 148.
+Package pdftex.def Info: img/arena.png used on input line 149.
 (pdftex.def)             Requested size: 345.0pt x 156.25607pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--159
+Underfull \hbox (badness 10000) in paragraph at lines 155--160
 
  []
 
-<img/base.pdf, id=474, 660.4675pt x 666.49pt>
+<img/base.pdf, id=480, 660.4675pt x 666.49pt>
 File: img/base.pdf Graphic file (type pdf)
  <use img/base.pdf>
-Package pdftex.def Info: img/base.pdf used on input line 162.
-(pdftex.def)             Requested size: 103.50105pt x 104.4439pt.
+Package pdftex.def Info: img/base.pdf used on input line 163.
+(pdftex.def)             Requested size: 137.9979pt x 139.25514pt.
 )
 (./chapters/general_framework.tex [6 <./img/arena.png> <./img/base.pdf>]
 Chapter 2.
-<img/pipeline_diagram.pdf, id=485, 590.66846pt x 457.72154pt>
+<img/pipeline_diagram.pdf, id=492, 590.66846pt x 457.72154pt>
 File: img/pipeline_diagram.pdf Graphic file (type pdf)
 
 <use img/pipeline_diagram.pdf>
 Package pdftex.def Info: img/pipeline_diagram.pdf used on input line 5.
 (pdftex.def)             Requested size: 345.0pt x 267.35046pt.
 
-Underfull \vbox (badness 1082) has occurred while \output is active []
+Underfull \vbox (badness 1478) has occurred while \output is active []
 
  [7
 
@@ -1487,91 +1836,86 @@ Underfull \hbox (badness 10000) in paragraph at lines 64--65
 
  []
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 119--122
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
-
- []
-
-[10] <img/quadrotor.pdf, id=537, 305.36134pt x 204.59125pt>
+[9] [10] <img/quadrotor.pdf, id=545, 305.36134pt x 204.59125pt>
 File: img/quadrotor.pdf Graphic file (type pdf)
 
 <use img/quadrotor.pdf>
-Package pdftex.def Info: img/quadrotor.pdf used on input line 200.
+Package pdftex.def Info: img/quadrotor.pdf used on input line 198.
 (pdftex.def)             Requested size: 241.49895pt x 161.80325pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--209
+Underfull \hbox (badness 10000) in paragraph at lines 204--207
 
  []
 
 [11 <./img/quadrotor.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 213--215
+Underfull \hbox (badness 10000) in paragraph at lines 211--213
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--223
+Underfull \hbox (badness 10000) in paragraph at lines 218--221
 
  []
 
 ) (./chapters/base_tracking.tex [12]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--4
+Underfull \hbox (badness 10000) in paragraph at lines 2--5
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--23
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--26
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
 
  []
 
 [13
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 27--53
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
 
  []
 
-<img/non_holonomic_model.png, id=586, 310.15875pt x 310.15875pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--63
+
+ []
+
+[14] <img/non_holonomic_model.png, id=608, 310.15875pt x 310.15875pt>
 File: img/non_holonomic_model.png Graphic file (type png)
 
 <use img/non_holonomic_model.png>
-Package pdftex.def Info: img/non_holonomic_model.png used on input line 90.
+Package pdftex.def Info: img/non_holonomic_model.png used on input line 103.
 (pdftex.def)             Requested size: 172.5pt x 172.49982pt.
- [14] [15 <./img/non_holonomic_model.png>]
-[16]
-Overfull \hbox (2.00581pt too wide) in paragraph at lines 223--223
-[] 
+ [15 <./img/non_holonomic_model.png>] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 194--196
+
  []
 
-<img/constructionshape1_.png, id=616, 1756.5625pt x 1063.975pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--208
+
+ []
+
+[17] <img/constructionshape1_.png, id=642, 1756.5625pt x 1063.975pt>
 File: img/constructionshape1_.png Graphic file (type png)
 
 <use img/constructionshape1_.png>
-Package pdftex.def Info: img/constructionshape1_.png used on input line 228.
+Package pdftex.def Info: img/constructionshape1_.png used on input line 238.
 (pdftex.def)             Requested size: 155.24895pt x 94.03271pt.
 
-<img/constructionshape2_.png, id=617, 1750.54pt x 1077.02374pt>
+<img/constructionshape2_.png, id=643, 1750.54pt x 1077.02374pt>
 File: img/constructionshape2_.png Graphic file (type png)
 
 <use img/constructionshape2_.png>
-Package pdftex.def Info: img/constructionshape2_.png used on input line 233.
+Package pdftex.def Info: img/constructionshape2_.png used on input line 243.
 (pdftex.def)             Requested size: 155.24895pt x 95.51462pt.
- [17]
-Underfull \hbox (badness 10000) in paragraph at lines 261--263
-
- []
-
+ [18 <./img/constructionshape1_.png> <./img/constructionshape2_.png>]
 Package epstopdf Info: Source file: <img/angle_x.eps>
 (epstopdf)                    date: 2016-08-01 19:03:34
 (epstopdf)                    size: 114813 bytes
@@ -1580,14 +1924,15 @@ Package epstopdf Info: Source file: <img/angle_x.eps>
 (epstopdf)                    size: 11970 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/angle_x-eps-converted-
 to.pdf img/angle_x.eps>
-(epstopdf)             \includegraphics on input line 283.
+(epstopdf)             \includegraphics on input line 287.
 Package epstopdf Info: Output file is already uptodate.
-<img/angle_x-eps-converted-to.pdf, id=625, 1284.8pt x 587.19376pt>
+
+<img/angle_x-eps-converted-to.pdf, id=660, 1284.8pt x 587.19376pt>
 File: img/angle_x-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/angle_x-eps-converted-to.pdf>
 Package pdftex.def Info: img/angle_x-eps-converted-to.pdf used on input line 28
-3.
+7.
 (pdftex.def)             Requested size: 144.89937pt x 66.2222pt.
 Package epstopdf Info: Source file: <img/path_x_quarter.eps>
 (epstopdf)                    date: 2016-08-01 19:03:34
@@ -1597,174 +1942,167 @@ Package epstopdf Info: Source file: <img/path_x_quarter.eps>
 (epstopdf)                    size: 15916 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/path_x_quarter-eps-con
 verted-to.pdf img/path_x_quarter.eps>
-(epstopdf)             \includegraphics on input line 289.
+(epstopdf)             \includegraphics on input line 293.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/path_x_quarter-eps-converted-to.pdf, id=626, 1284.8pt x 587.19376pt>
+<img/path_x_quarter-eps-converted-to.pdf, id=661, 1284.8pt x 587.19376pt>
 File: img/path_x_quarter-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/path_x_quarter-eps-converted-to.pdf>
 Package pdftex.def Info: img/path_x_quarter-eps-converted-to.pdf used on input 
-line 289.
+line 293.
 (pdftex.def)             Requested size: 155.24895pt x 70.95299pt.
 
-<img/infinityshapepath.png, id=627, 1898.09125pt x 1174.3875pt>
+<img/infinityshapepath.png, id=662, 1898.09125pt x 1174.3875pt>
 File: img/infinityshapepath.png Graphic file (type png)
 
 <use img/infinityshapepath.png>
-Package pdftex.def Info: img/infinityshapepath.png used on input line 295.
+Package pdftex.def Info: img/infinityshapepath.png used on input line 299.
 (pdftex.def)             Requested size: 155.24895pt x 96.04951pt.
- [18 <./img/constructionshape1_.png> <./img/constructionshape2_.png>] [19 <./im
-g/angle_x-eps-converted-to.pdf> <./img/path_x_quarter-eps-converted-to.pdf> <./
-img/infinityshapepath.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 359--361
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19 <./img/angle_x-eps-converted-to.pdf> <./img/path_x_quarter-eps-converted-t
+o.pdf> <./img/infinityshapepath.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
 
  []
 
-[20] [21] <img/18730previousImage.png, id=688, 754.82pt x 481.8pt>
-File: img/18730previousImage.png Graphic file (type png)
-
-<use img/18730previousImage.png>
-Package pdftex.def Info: img/18730previousImage.png used on input line 427.
-(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
-
-<img/18730_thresholded.png, id=689, 754.82pt x 481.8pt>
-File: img/18730_thresholded.png Graphic file (type png)
-
-<use img/18730_thresholded.png>
-Package pdftex.def Info: img/18730_thresholded.png used on input line 429.
-(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
-
-<img/18741_optical_flow.png, id=690, 754.82pt x 481.8pt>
-File: img/18741_optical_flow.png Graphic file (type png)
-
-<use img/18741_optical_flow.png>
-Package pdftex.def Info: img/18741_optical_flow.png used on input line 432.
-(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
-
-<img/18758_optical_flow.png, id=691, 754.82pt x 481.8pt>
-File: img/18758_optical_flow.png Graphic file (type png)
-
-<use img/18758_optical_flow.png>
-Package pdftex.def Info: img/18758_optical_flow.png used on input line 434.
-(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
-
-<img/18777_optical_flow.png, id=692, 754.82pt x 481.8pt>
-File: img/18777_optical_flow.png Graphic file (type png)
-
-<use img/18777_optical_flow.png>
-Package pdftex.def Info: img/18777_optical_flow.png used on input line 437.
-(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
-
-<img/18800_optical_flow.png, id=693, 754.82pt x 481.8pt>
-File: img/18800_optical_flow.png Graphic file (type png)
-
-<use img/18800_optical_flow.png>
-Package pdftex.def Info: img/18800_optical_flow.png used on input line 439.
-(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
-
-<img/18856_optical_flow.png, id=694, 754.82pt x 481.8pt>
-File: img/18856_optical_flow.png Graphic file (type png)
-
-<use img/18856_optical_flow.png>
-Package pdftex.def Info: img/18856_optical_flow.png used on input line 442.
-(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
-
-<img/18881_optical_flow.png, id=695, 754.82pt x 481.8pt>
-File: img/18881_optical_flow.png Graphic file (type png)
-
-<use img/18881_optical_flow.png>
-Package pdftex.def Info: img/18881_optical_flow.png used on input line 444.
-(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
- [22] [23 <./img/18730previousImage.png (PNG copy)> <./img/18730_thresholded.pn
-g (PNG copy)> <./img/18741_optical_flow.png (PNG copy)> <./img/18758_optical_fl
-ow.png (PNG copy)> <./img/18777_optical_flow.png (PNG copy)> <./img/18800_optic
-al_flow.png (PNG copy)> <./img/18856_optical_flow.png (PNG copy)> <./img/18881_
-optical_flow.png (PNG copy)>]
-<img/platform_4_edges.pdf, id=713, 253.90509pt x 253.70865pt>
+[20] [21] [22] <img/platform_4_edges.pdf, id=730, 253.90509pt x 253.70865pt>
 File: img/platform_4_edges.pdf Graphic file (type pdf)
 
 <use img/platform_4_edges.pdf>
-Package pdftex.def Info: img/platform_4_edges.pdf used on input line 501.
-(pdftex.def)             Requested size: 68.99895pt x 68.94357pt.
+Package pdftex.def Info: img/platform_4_edges.pdf used on input line 473.
+(pdftex.def)             Requested size: 103.50105pt x 103.42116pt.
 
-<img/platform_3_edges.pdf, id=714, 253.92355pt x 252.73753pt>
+<img/platform_3_edges.pdf, id=731, 253.92355pt x 252.73753pt>
 File: img/platform_3_edges.pdf Graphic file (type pdf)
 
 <use img/platform_3_edges.pdf>
-Package pdftex.def Info: img/platform_3_edges.pdf used on input line 503.
-(pdftex.def)             Requested size: 68.99895pt x 68.67581pt.
+Package pdftex.def Info: img/platform_3_edges.pdf used on input line 478.
+(pdftex.def)             Requested size: 103.50105pt x 103.0176pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 508--509
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
+
+ []
+
+[23 <./img/platform_4_edges.pdf> <./img/platform_3_edges.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 507--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 528--531
+Underfull \hbox (badness 10000) in paragraph at lines 511--512
 
  []
 
+<img/img_330.png, id=753, 617.30624pt x 392.46625pt>
+File: img/img_330.png Graphic file (type png)
+ <use img/img_330.png>
+Package pdftex.def Info: img/img_330.png used on input line 516.
+(pdftex.def)             Requested size: 155.24895pt x 98.70319pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 532--533
+<img/img_155.png, id=754, 616.3025pt x 391.4625pt>
+File: img/img_155.png Graphic file (type png)
+ <use img/img_155.png>
+Package pdftex.def Info: img/img_155.png used on input line 521.
+(pdftex.def)             Requested size: 155.24895pt x 98.60605pt.
 
- []
+<img/18730previousImage.png, id=755, 754.82pt x 481.8pt>
+File: img/18730previousImage.png Graphic file (type png)
 
-[24 <./img/platform_4_edges.pdf> <./img/platform_3_edges.pdf>]
-<img/tempbase.png, id=739, 4015.0pt x 4015.0pt>
+<use img/18730previousImage.png>
+Package pdftex.def Info: img/18730previousImage.png used on input line 536.
+(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
+
+<img/18730_thresholded.png, id=756, 754.82pt x 481.8pt>
+File: img/18730_thresholded.png Graphic file (type png)
+
+<use img/18730_thresholded.png>
+Package pdftex.def Info: img/18730_thresholded.png used on input line 540.
+(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
+
+<img/18741_optical_flow.png, id=757, 754.82pt x 481.8pt>
+File: img/18741_optical_flow.png Graphic file (type png)
+
+<use img/18741_optical_flow.png>
+Package pdftex.def Info: img/18741_optical_flow.png used on input line 545.
+(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
+
+<img/18800_optical_flow.png, id=758, 754.82pt x 481.8pt>
+File: img/18800_optical_flow.png Graphic file (type png)
+
+<use img/18800_optical_flow.png>
+Package pdftex.def Info: img/18800_optical_flow.png used on input line 549.
+(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
+
+<img/18856_optical_flow.png, id=759, 754.82pt x 481.8pt>
+File: img/18856_optical_flow.png Graphic file (type png)
+
+<use img/18856_optical_flow.png>
+Package pdftex.def Info: img/18856_optical_flow.png used on input line 554.
+(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
+
+<img/18881_optical_flow.png, id=760, 754.82pt x 481.8pt>
+File: img/18881_optical_flow.png Graphic file (type png)
+
+<use img/18881_optical_flow.png>
+Package pdftex.def Info: img/18881_optical_flow.png used on input line 558.
+(pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
+
+<img/tempbase.png, id=765, 4015.0pt x 4015.0pt>
 File: img/tempbase.png Graphic file (type png)
  <use img/tempbase.png>
-Package pdftex.def Info: img/tempbase.png used on input line 539.
+Package pdftex.def Info: img/tempbase.png used on input line 573.
 (pdftex.def)             Requested size: 103.50105pt x 103.4747pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 544--546
-
- []
-
-[25 <./img/tempbase.png>] <img/frame0.jpg, id=751, 754.82pt x 481.8pt>
+ [24 <./img/img_330.png> <./img/img_155.png>] [25 <./img/18730previousImage.png
+ (PNG copy)> <./img/18730_thresholded.png (PNG copy)> <./img/18741_optical_flow
+.png (PNG copy)> <./img/18800_optical_flow.png (PNG copy)> <./img/18856_optical
+_flow.png (PNG copy)> <./img/18881_optical_flow.png (PNG copy)>]
+<img/frame0.jpg, id=787, 754.82pt x 481.8pt>
 File: img/frame0.jpg Graphic file (type jpg)
-
-<use img/frame0.jpg>
-Package pdftex.def Info: img/frame0.jpg used on input line 554.
+ <use img/frame0.jpg>
+Package pdftex.def Info: img/frame0.jpg used on input line 585.
 (pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
- <img/frame1.jpg, id=752, 754.82pt x 481.8pt>
+
+<img/frame1.jpg, id=788, 754.82pt x 481.8pt>
 File: img/frame1.jpg Graphic file (type jpg)
-
-<use img/frame1.jpg>
-Package pdftex.def Info: img/frame1.jpg used on input line 559.
+ <use img/frame1.jpg>
+Package pdftex.def Info: img/frame1.jpg used on input line 590.
 (pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
- <img/frame2.jpg, id=753, 754.82pt x 481.8pt>
+
+<img/frame2.jpg, id=789, 754.82pt x 481.8pt>
 File: img/frame2.jpg Graphic file (type jpg)
-
-<use img/frame2.jpg>
-Package pdftex.def Info: img/frame2.jpg used on input line 565.
+ <use img/frame2.jpg>
+Package pdftex.def Info: img/frame2.jpg used on input line 596.
 (pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
- <img/frame3.jpg, id=754, 754.82pt x 481.8pt>
+
+<img/frame3.jpg, id=790, 754.82pt x 481.8pt>
 File: img/frame3.jpg Graphic file (type jpg)
-
-<use img/frame3.jpg>
-Package pdftex.def Info: img/frame3.jpg used on input line 570.
+ <use img/frame3.jpg>
+Package pdftex.def Info: img/frame3.jpg used on input line 601.
 (pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
- <img/frame4.jpg, id=755, 754.82pt x 481.8pt>
+
+<img/frame4.jpg, id=791, 754.82pt x 481.8pt>
 File: img/frame4.jpg Graphic file (type jpg)
-
-<use img/frame4.jpg>
-Package pdftex.def Info: img/frame4.jpg used on input line 576.
+ <use img/frame4.jpg>
+Package pdftex.def Info: img/frame4.jpg used on input line 607.
 (pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
- <img/frame5.jpg, id=756, 754.82pt x 481.8pt>
+
+<img/frame5.jpg, id=792, 754.82pt x 481.8pt>
 File: img/frame5.jpg Graphic file (type jpg)
-
-<use img/frame5.jpg>
-Package pdftex.def Info: img/frame5.jpg used on input line 581.
+ <use img/frame5.jpg>
+Package pdftex.def Info: img/frame5.jpg used on input line 612.
 (pdftex.def)             Requested size: 155.24895pt x 99.09311pt.
- [26 <./img/frame0.jpg> <./img/frame1.jpg> <./img/frame2.jpg> <./img/frame3.jpg
-> <./img/frame4.jpg> <./img/frame5.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 646--648
+ [26 <./img/tempbase.png>] [27 <./img/frame0.jpg> <./img/frame1.jpg> <./img/fra
+me2.jpg> <./img/frame3.jpg> <./img/frame4.jpg> <./img/frame5.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 676--678
 
  []
 
-[27] [28]) (./chapters/area_exploration.tex [29]
+[28] [29]) (./chapters/area_exploration.tex [30]
 Chapter 4.
-<img/state_machine.pdf, id=800, 554.5106pt x 794.97pt>
+<img/state_machine.pdf, id=848, 554.5106pt x 794.97pt>
 File: img/state_machine.pdf Graphic file (type pdf)
 
 <use img/state_machine.pdf>
@@ -1785,9 +2123,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--24
 
  []
 
-[30
+[31
 
-] [31 <./img/state_machine.pdf>]
+] [32 <./img/state_machine.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
  []
@@ -1802,263 +2140,256 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
  []
 
-[32]
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
  []
 
-[33] [34] [35]
-<img/following_platform_for_long_position_base_error.pdf, id=869, 603.07921pt x
- 530.36916pt>
+[34] [35] [36] [37]
+<img/following_platform_for_long_position_base_error.pdf, id=944, 591.55795pt x
+ 470.21573pt>
 File: img/following_platform_for_long_position_base_error.pdf Graphic file (typ
 e pdf)
  <use img/following_platform_for_long_position_base_error.pdf>
 Package pdftex.def Info: img/following_platform_for_long_position_base_error.pd
-f used on input line 225.
-(pdftex.def)             Requested size: 310.50183pt x 172.4974pt.
+f used on input line 239.
+(pdftex.def)             Requested size: 310.4979pt x 246.81673pt.
 
-<img/following_platform_for_long_map_simple.pdf, id=870, 535.4782pt x 350.40984
+<img/following_platform_for_long_map_simple.pdf, id=945, 554.39935pt x 370.8542
 pt>
 File: img/following_platform_for_long_map_simple.pdf Graphic file (type pdf)
  <use img/following_platform_for_long_map_simple.pdf>
 Package pdftex.def Info: img/following_platform_for_long_map_simple.pdf used on
- input line 231.
-(pdftex.def)             Requested size: 276.00105pt x 180.6101pt.
- [36] [37 <./img/following_platform_for_long_position_base_error.pdf> <./img/fo
-llowing_platform_for_long_map_simple.pdf>]
-Overfull \hbox (1.81302pt too wide) in paragraph at lines 269--270
-[]\OT1/cmr/m/n/10 Referring to fig-ure []4.4[] we can cal-cu-late that the seg-
-ment con-nect-ing $(\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 )$
- []
-
-[38] <img/chord.pdf, id=923, 404.90361pt x 282.9498pt>
+ input line 245.
+(pdftex.def)             Requested size: 276.00105pt x 184.62875pt.
+ [38 <./img/following_platform_for_long_position_base_error.pdf>] [39 <./img/fo
+llowing_platform_for_long_map_simple.pdf>] <img/chord.pdf, id=988, 404.90361pt 
+x 282.9498pt>
 File: img/chord.pdf Graphic file (type pdf)
- <use img/chord.pdf>
-Package pdftex.def Info: img/chord.pdf used on input line 285.
+
+<use img/chord.pdf>
+Package pdftex.def Info: img/chord.pdf used on input line 298.
 (pdftex.def)             Requested size: 172.5pt x 120.5478pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
+Underfull \hbox (badness 10000) in paragraph at lines 320--321
 
  []
 
-<img/circular_movment1.pdf, id=928, 614.295pt x 304.18854pt>
+[40 <./img/chord.pdf>]
+<img/circular_movment1.pdf, id=1021, 614.295pt x 304.18854pt>
 File: img/circular_movment1.pdf Graphic file (type pdf)
 
 <use img/circular_movment1.pdf>
-Package pdftex.def Info: img/circular_movment1.pdf used on input line 314.
+Package pdftex.def Info: img/circular_movment1.pdf used on input line 327.
 (pdftex.def)             Requested size: 155.24895pt x 76.87778pt.
 
-<img/circular_movment2.pdf, id=929, 614.295pt x 303.5578pt>
+<img/circular_movment2.pdf, id=1022, 614.295pt x 303.5578pt>
 File: img/circular_movment2.pdf Graphic file (type pdf)
 
 <use img/circular_movment2.pdf>
-Package pdftex.def Info: img/circular_movment2.pdf used on input line 319.
+Package pdftex.def Info: img/circular_movment2.pdf used on input line 332.
 (pdftex.def)             Requested size: 155.24895pt x 76.71837pt.
 
-<img/circular_movment3.pdf, id=930, 614.295pt x 440.85483pt>
+<img/circular_movment3.pdf, id=1023, 614.295pt x 440.85483pt>
 File: img/circular_movment3.pdf Graphic file (type pdf)
 
 <use img/circular_movment3.pdf>
-Package pdftex.def Info: img/circular_movment3.pdf used on input line 325.
+Package pdftex.def Info: img/circular_movment3.pdf used on input line 338.
 (pdftex.def)             Requested size: 155.24895pt x 111.41754pt.
 
-<img/circular_movment4.pdf, id=931, 612.36476pt x 436.0337pt>
+<img/circular_movment4.pdf, id=1024, 612.36476pt x 436.0337pt>
 File: img/circular_movment4.pdf Graphic file (type pdf)
 
 <use img/circular_movment4.pdf>
-Package pdftex.def Info: img/circular_movment4.pdf used on input line 330.
+Package pdftex.def Info: img/circular_movment4.pdf used on input line 343.
 (pdftex.def)             Requested size: 155.24895pt x 110.54507pt.
 
-<img/circular_movment5.pdf, id=932, 614.295pt x 416.9469pt>
+<img/circular_movment5.pdf, id=1025, 614.295pt x 416.9469pt>
 File: img/circular_movment5.pdf Graphic file (type pdf)
 
 <use img/circular_movment5.pdf>
-Package pdftex.def Info: img/circular_movment5.pdf used on input line 336.
+Package pdftex.def Info: img/circular_movment5.pdf used on input line 349.
 (pdftex.def)             Requested size: 155.24895pt x 105.37527pt.
 
-<img/circular_movment6.pdf, id=933, 614.295pt x 441.64066pt>
+<img/circular_movment6.pdf, id=1026, 614.295pt x 441.64066pt>
 File: img/circular_movment6.pdf Graphic file (type pdf)
 
 <use img/circular_movment6.pdf>
-Package pdftex.def Info: img/circular_movment6.pdf used on input line 341.
+Package pdftex.def Info: img/circular_movment6.pdf used on input line 354.
 (pdftex.def)             Requested size: 155.24895pt x 111.61615pt.
 
-Underfull \hbox (badness 1960) in paragraph at lines 342--342
+Underfull \hbox (badness 1960) in paragraph at lines 355--355
 []\OT1/cmr/m/n/9 (f) |Green crosses: fu-ture pos-si-ble
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 342--342
+Underfull \hbox (badness 1178) in paragraph at lines 355--355
 \OT1/cmr/m/n/9 states of the plat-form at po-si-tions
  []
 
-<img/circular_movment7.pdf, id=934, 614.295pt x 444.86551pt>
+<img/circular_movment7.pdf, id=1027, 614.295pt x 444.86551pt>
 File: img/circular_movment7.pdf Graphic file (type pdf)
 
 <use img/circular_movment7.pdf>
-Package pdftex.def Info: img/circular_movment7.pdf used on input line 347.
+Package pdftex.def Info: img/circular_movment7.pdf used on input line 360.
 (pdftex.def)             Requested size: 155.24895pt x 112.43117pt.
 
-<img/circular_movment8.pdf, id=935, 614.295pt x 330.60262pt>
+<img/circular_movment8.pdf, id=1028, 614.295pt x 330.60262pt>
 File: img/circular_movment8.pdf Graphic file (type pdf)
 
 <use img/circular_movment8.pdf>
-Package pdftex.def Info: img/circular_movment8.pdf used on input line 352.
+Package pdftex.def Info: img/circular_movment8.pdf used on input line 365.
 (pdftex.def)             Requested size: 155.24895pt x 83.55342pt.
 
 
-LaTeX Warning: Float too large for page by 7.34264pt on input line 358.
+LaTeX Warning: Float too large for page by 7.34264pt on input line 371.
 
-[39 <./img/chord.pdf>] [40 <./img/circular_movment1.pdf> <./img/circular_movmen
-t2.pdf> <./img/circular_movment3.pdf> <./img/circular_movment4.pdf> <./img/circ
-ular_movment5.pdf> <./img/circular_movment6.pdf> <./img/circular_movment7.pdf> 
-<./img/circular_movment8.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 362--363
+
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
 
  []
 
 
-<img/following_platform_long_map_waypoints.pdf, id=1099, 551.55682pt x 389.0581
+<img/following_platform_long_map_waypoints.pdf, id=1030, 551.55682pt x 389.0581
 4pt>
 File: img/following_platform_long_map_waypoints.pdf Graphic file (type pdf)
  <use img/following_platform_long_map_waypoints.pdf>
 Package pdftex.def Info: img/following_platform_long_map_waypoints.pdf used on 
-input line 369.
+input line 381.
 (pdftex.def)             Requested size: 276.00105pt x 194.68887pt.
- [41 <./img/following_platform_long_map_waypoints.pdf>]
-<img/intersection_1.pdf, id=1121, 613.51204pt x 316.53606pt>
+ [41] [42 <./img/circular_movment1.pdf> <./img/circular_movment2.pdf> <./img/ci
+rcular_movment3.pdf> <./img/circular_movment4.pdf> <./img/circular_movment5.pdf
+> <./img/circular_movment6.pdf> <./img/circular_movment7.pdf> <./img/circular_m
+ovment8.pdf>] [43 <./img/following_platform_long_map_waypoints.pdf>]
+<img/intersection_1.pdf, id=1199, 613.51204pt x 316.53606pt>
 File: img/intersection_1.pdf Graphic file (type pdf)
 
 <use img/intersection_1.pdf>
-Package pdftex.def Info: img/intersection_1.pdf used on input line 420.
+Package pdftex.def Info: img/intersection_1.pdf used on input line 432.
 (pdftex.def)             Requested size: 155.24895pt x 80.09981pt.
 
-<img/intersection_2.pdf, id=1122, 614.295pt x 370.3219pt>
+<img/intersection_2.pdf, id=1200, 614.295pt x 370.3219pt>
 File: img/intersection_2.pdf Graphic file (type pdf)
 
 <use img/intersection_2.pdf>
-Package pdftex.def Info: img/intersection_2.pdf used on input line 425.
+Package pdftex.def Info: img/intersection_2.pdf used on input line 437.
 (pdftex.def)             Requested size: 155.24895pt x 93.5917pt.
 
-<img/intersection_3.pdf, id=1123, 614.295pt x 343.53154pt>
+<img/intersection_3.pdf, id=1201, 614.295pt x 343.53154pt>
 File: img/intersection_3.pdf Graphic file (type pdf)
 
 <use img/intersection_3.pdf>
-Package pdftex.def Info: img/intersection_3.pdf used on input line 431.
+Package pdftex.def Info: img/intersection_3.pdf used on input line 443.
 (pdftex.def)             Requested size: 155.24895pt x 86.82095pt.
 
-<img/intersection_4.pdf, id=1124, 614.295pt x 350.22574pt>
+<img/intersection_4.pdf, id=1202, 614.295pt x 350.22574pt>
 File: img/intersection_4.pdf Graphic file (type pdf)
 
 <use img/intersection_4.pdf>
-Package pdftex.def Info: img/intersection_4.pdf used on input line 436.
+Package pdftex.def Info: img/intersection_4.pdf used on input line 448.
 (pdftex.def)             Requested size: 155.24895pt x 88.51279pt.
 
-<img/intersection_5.pdf, id=1125, 614.295pt x 348.16724pt>
+<img/intersection_5.pdf, id=1203, 614.295pt x 348.16724pt>
 File: img/intersection_5.pdf Graphic file (type pdf)
 
 <use img/intersection_5.pdf>
-Package pdftex.def Info: img/intersection_5.pdf used on input line 442.
+Package pdftex.def Info: img/intersection_5.pdf used on input line 454.
 (pdftex.def)             Requested size: 155.24895pt x 87.99254pt.
- [42] [43 <./img/intersection_1.pdf> <./img/intersection_2.pdf> <./img/intersec
-tion_3.pdf> <./img/intersection_4.pdf> <./img/intersection_5.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 452--453
+
+Underfull \hbox (badness 10000) in paragraph at lines 463--464
 
  []
 
-
-<img/following_platform_normal_map_intersection.pdf, id=1221, 530.65366pt x 372
+[44 <./img/intersection_1.pdf> <./img/intersection_2.pdf> <./img/intersection_3
+.pdf> <./img/intersection_4.pdf> <./img/intersection_5.pdf>]
+<img/following_platform_normal_map_intersection.pdf, id=1295, 530.65366pt x 372
 .9705pt>
 File: img/following_platform_normal_map_intersection.pdf Graphic file (type pdf
 )
  <use img/following_platform_normal_map_intersection.pdf>
 Package pdftex.def Info: img/following_platform_normal_map_intersection.pdf use
-d on input line 458.
+d on input line 469.
 (pdftex.def)             Requested size: 276.00105pt x 193.997pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 464--465
+Underfull \hbox (badness 10000) in paragraph at lines 475--476
 
  []
 
-[44 <./img/following_platform_normal_map_intersection.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 481--484
+[45 <./img/following_platform_normal_map_intersection.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 492--499
 
  []
 
+<img/approach_platform_lose.png, id=1317, 954.56625pt x 629.35126pt>
+File: img/approach_platform_lose.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 485--489
+<use img/approach_platform_lose.png>
+Package pdftex.def Info: img/approach_platform_lose.png used on input line 506.
 
- []
+(pdftex.def)             Requested size: 345.0pt x 227.45937pt.
 
-<img/approach_platform_lose.pdf, id=1243, 458.40776pt x 302.29477pt>
-File: img/approach_platform_lose.pdf Graphic file (type pdf)
+<img/approach_platform.png, id=1318, 969.6225pt x 618.31pt>
+File: img/approach_platform.png Graphic file (type png)
 
-<use img/approach_platform_lose.pdf>
-Package pdftex.def Info: img/approach_platform_lose.pdf used on input line 496.
+<use img/approach_platform.png>
+Package pdftex.def Info: img/approach_platform.png used on input line 513.
+(pdftex.def)             Requested size: 345.0pt x 219.9969pt.
 
-(pdftex.def)             Requested size: 276.00105pt x 182.00557pt.
-
-<img/approach_platform.pdf, id=1244, 466.04578pt x 296.94177pt>
-File: img/approach_platform.pdf Graphic file (type pdf)
-
-<use img/approach_platform.pdf>
-Package pdftex.def Info: img/approach_platform.pdf used on input line 503.
-(pdftex.def)             Requested size: 276.00105pt x 175.85564pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 512--513
-
- []
-
-[45 <./img/approach_platform_lose.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 514--516
+Underfull \hbox (badness 10000) in paragraph at lines 522--523
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--527
+Underfull \hbox (badness 10000) in paragraph at lines 524--525
+
+ []
+
+[46] [47 <./img/approach_platform_lose.png> <./img/approach_platform.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 534--536
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 528--531
+Underfull \hbox (badness 10000) in paragraph at lines 537--540
 
  []
 
-[46 <./img/approach_platform.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 532--534
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--543
 
  []
 
-<img/prediction_platform.pdf, id=1295, 614.295pt x 364.43382pt>
+<img/prediction_platform.pdf, id=1334, 614.295pt x 364.43382pt>
 File: img/prediction_platform.pdf Graphic file (type pdf)
 
 <use img/prediction_platform.pdf>
-Package pdftex.def Info: img/prediction_platform.pdf used on input line 537.
+Package pdftex.def Info: img/prediction_platform.pdf used on input line 546.
 (pdftex.def)             Requested size: 276.00105pt x 163.7379pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 545--546
+Underfull \hbox (badness 10000) in paragraph at lines 554--555
 
  []
 
-[47 <./img/prediction_platform.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 574--575
+[48 <./img/prediction_platform.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 583--584
 
  []
 
-<img/blind_landing.pdf, id=1318, 506.23335pt x 266.07002pt>
+<img/blind_landing.pdf, id=1361, 506.23335pt x 266.07002pt>
 File: img/blind_landing.pdf Graphic file (type pdf)
 
 <use img/blind_landing.pdf>
-Package pdftex.def Info: img/blind_landing.pdf used on input line 578.
+Package pdftex.def Info: img/blind_landing.pdf used on input line 587.
 (pdftex.def)             Requested size: 276.00105pt x 145.06413pt.
- [48 <./img/blind_landing.pdf>]
-<img/imu_landing.pdf, id=1347, 614.295pt x 413.96658pt>
+ [49]
+<img/imu_landing.pdf, id=1371, 614.295pt x 413.96658pt>
 File: img/imu_landing.pdf Graphic file (type pdf)
 
 <use img/imu_landing.pdf>
-Package pdftex.def Info: img/imu_landing.pdf used on input line 598.
+Package pdftex.def Info: img/imu_landing.pdf used on input line 606.
 (pdftex.def)             Requested size: 241.49895pt x 162.74123pt.
-) (./chapters/trajectory_generation.tex [49 <./img/imu_landing.pdf>]
+) (./chapters/trajectory_generation.tex [50 <./img/blind_landing.pdf>] [51 <./i
+mg/imu_landing.pdf>]
 Chapter 5.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
@@ -2075,526 +2406,563 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
 
-[50
+[52
 
-] <img/trajectory_generation.pdf, id=1374, 614.295pt x 261.09566pt>
+] <img/trajectory_generation.pdf, id=1419, 614.295pt x 261.09566pt>
 File: img/trajectory_generation.pdf Graphic file (type pdf)
 
 <use img/trajectory_generation.pdf>
 Package pdftex.def Info: img/trajectory_generation.pdf used on input line 26.
 (pdftex.def)             Requested size: 276.00105pt x 117.30869pt.
 
-<img/threads_trajectory_generation.pdf, id=1375, 580.73903pt x 389.15266pt>
+<img/threads_trajectory_generation.pdf, id=1420, 580.73903pt x 389.15266pt>
 File: img/threads_trajectory_generation.pdf Graphic file (type pdf)
 
 <use img/threads_trajectory_generation.pdf>
 Package pdftex.def Info: img/threads_trajectory_generation.pdf used on input li
-ne 47.
+ne 46.
 (pdftex.def)             Requested size: 345.0pt x 231.18945pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
 
  []
 
-[51 <./img/trajectory_generation.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 78--80
-
- []
-
-[52 <./img/threads_trajectory_generation.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
+[53 <./img/trajectory_generation.pdf>] [54 <./img/threads_trajectory_generation
+.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 106--108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--110
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
-
- []
-
-[53] [54] [55]
-Underfull \hbox (badness 10000) in paragraph at lines 293--297
-
- []
-
-[56]
-Underfull \hbox (badness 10000) in paragraph at lines 304--306
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 315--317
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 318--321
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 334--336
+[55] [56]
+Underfull \hbox (badness 10000) in paragraph at lines 232--234
 
  []
 
 [57]
-Underfull \hbox (badness 10000) in paragraph at lines 337--338
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 346--347
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 348--350
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 351--352
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 356--358
+Underfull \hbox (badness 10000) in paragraph at lines 294--296
 
  []
 
 [58]
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+Underfull \hbox (badness 10000) in paragraph at lines 305--307
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 371--372
+Underfull \hbox (badness 10000) in paragraph at lines 308--311
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
+Underfull \hbox (badness 10000) in paragraph at lines 324--326
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--379
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
 
  []
 
-[59] <img/frequent_replanning.pdf, id=1498, 599.97275pt x 337.39993pt>
-File: img/frequent_replanning.pdf Graphic file (type pdf)
+[59]
+Underfull \hbox (badness 10000) in paragraph at lines 335--336
 
-<use img/frequent_replanning.pdf>
-Package pdftex.def Info: img/frequent_replanning.pdf used on input line 385.
-(pdftex.def)             Requested size: 241.49895pt x 135.80705pt.
-) (./chapters/experiments.tex [60 <./img/frequent_replanning.pdf>]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--339
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--347
+
+ []
+
+[60]
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
+
+ []
+
+) (./chapters/experiments.tex [61]
 Chapter 6.
+[62
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--3
+] <img/real_world_hardware.jpg, id=1559, 6038.56pt x 3396.69pt>
+File: img/real_world_hardware.jpg Graphic file (type jpg)
 
- []
+<use img/real_world_hardware.jpg>
+Package pdftex.def Info: img/real_world_hardware.jpg used on input line 36.
+(pdftex.def)             Requested size: 345.0pt x 194.0487pt.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--6
-
- []
-
-[61
-
-] <img/photo_quad.png, id=1529, 793.96625pt x 586.19pt>
-File: img/photo_quad.png Graphic file (type png)
-
-<use img/photo_quad.png>
-Package pdftex.def Info: img/photo_quad.png used on input line 24.
-(pdftex.def)             Requested size: 224.2479pt x 165.5632pt.
- <img/jackal.jpg, id=1533, 505.89pt x 361.35pt>
-File: img/jackal.jpg Graphic file (type jpg)
-
-<use img/jackal.jpg>
-Package pdftex.def Info: img/jackal.jpg used on input line 36.
-(pdftex.def)             Requested size: 224.2479pt x 160.17995pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
+Underfull \hbox (badness 10000) in paragraph at lines 45--48
 
  []
 
-[62 <./img/photo_quad.png> <./img/jackal.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 44--47
-
- []
-
-<img/simulation.jpg, id=1545, 904.37875pt x 598.235pt>
+[63 <./img/real_world_hardware.jpg>]
+<img/simulation.jpg, id=1571, 903.375pt x 520.94624pt>
 File: img/simulation.jpg Graphic file (type jpg)
 
 <use img/simulation.jpg>
-Package pdftex.def Info: img/simulation.jpg used on input line 52.
-(pdftex.def)             Requested size: 241.49895pt x 159.74557pt.
- [63 <./img/simulation.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 63--65
-
- []
-
-
-<img/comparision_between_two_svo_and_opti_position.pdf, id=1559, 578.65201pt x 
-459.80351pt>
-File: img/comparision_between_two_svo_and_opti_position.pdf Graphic file (type 
-pdf)
- <use img/comparision_between_two_svo_and_opti_position.pdf>
-Package pdftex.def Info: img/comparision_between_two_svo_and_opti_position.pdf 
-used on input line 71.
-(pdftex.def)             Requested size: 258.75pt x 205.6117pt.
-
-<img/comparision_between_two_svo_and_opti_angles.pdf, id=1560, 585.35265pt x 44
-1.54239pt>
-File: img/comparision_between_two_svo_and_opti_angles.pdf Graphic file (type pd
-f)
- <use img/comparision_between_two_svo_and_opti_angles.pdf>
-Package pdftex.def Info: img/comparision_between_two_svo_and_opti_angles.pdf us
-ed on input line 78.
-(pdftex.def)             Requested size: 258.75pt x 195.18205pt.
-
-<img/comparision_between_two_svo_and_opti_velocities.pdf, id=1561, 586.76172pt 
-x 452.34377pt>
-File: img/comparision_between_two_svo_and_opti_velocities.pdf Graphic file (typ
-e pdf)
- <use img/comparision_between_two_svo_and_opti_velocities.pdf>
-Package pdftex.def Info: img/comparision_between_two_svo_and_opti_velocities.pd
-f used on input line 85.
-(pdftex.def)             Requested size: 258.75pt x 199.4736pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 90--91
-
- []
-
-[64 <./img/comparision_between_two_svo_and_opti_position.pdf>]
-Underfull \vbox (badness 1270) has occurred while \output is active []
-
- [65 <./img/comparision_between_two_svo_and_opti_angles.pdf> <./img/comparision
-_between_two_svo_and_opti_velocities.pdf>]
-<img/comparision_between_two_svo_and_opti_error.pdf, id=1617, 611.36511pt x 438
-.04063pt>
-File: img/comparision_between_two_svo_and_opti_error.pdf Graphic file (type pdf
-)
- <use img/comparision_between_two_svo_and_opti_error.pdf>
-Package pdftex.def Info: img/comparision_between_two_svo_and_opti_error.pdf use
-d on input line 94.
-(pdftex.def)             Requested size: 241.49895pt x 173.03418pt.
-
-<img/err_perc_2_svo_x.pdf, id=1619, 526.33118pt x 556.05661pt>
-File: img/err_perc_2_svo_x.pdf Graphic file (type pdf)
-
-<use img/err_perc_2_svo_x.pdf>
-Package pdftex.def Info: img/err_perc_2_svo_x.pdf used on input line 104.
-(pdftex.def)             Requested size: 103.50105pt x 109.34271pt.
-
-<img/err_perc_2_svo_y.pdf, id=1620, 528.82935pt x 551.64854pt>
-File: img/err_perc_2_svo_y.pdf Graphic file (type pdf)
-
-<use img/err_perc_2_svo_y.pdf>
-Package pdftex.def Info: img/err_perc_2_svo_y.pdf used on input line 108.
-(pdftex.def)             Requested size: 103.50105pt x 107.96245pt.
-
-<img/err_perc_2_svo_z.pdf, id=1621, 528.16347pt x 543.16525pt>
-File: img/err_perc_2_svo_z.pdf Graphic file (type pdf)
-
-<use img/err_perc_2_svo_z.pdf>
-Package pdftex.def Info: img/err_perc_2_svo_z.pdf used on input line 112.
-(pdftex.def)             Requested size: 103.50105pt x 106.4348pt.
-
-<img/comparision_between_two_svo_and_opti_trajectory.pdf, id=1623, 534.06453pt 
+Package pdftex.def Info: img/simulation.jpg used on input line 53.
+(pdftex.def)             Requested size: 345.0pt x 198.95525pt.
+ [64 <./img/simulation.jpg>]
+<img/comparision_between_two_svo_and_opti_trajectory.pdf, id=1579, 534.06453pt 
 x 478.12888pt>
 File: img/comparision_between_two_svo_and_opti_trajectory.pdf Graphic file (typ
 e pdf)
  <use img/comparision_between_two_svo_and_opti_trajectory.pdf>
 Package pdftex.def Info: img/comparision_between_two_svo_and_opti_trajectory.pd
-f used on input line 122.
-(pdftex.def)             Requested size: 241.49895pt x 216.19928pt.
+f used on input line 70.
+(pdftex.def)             Requested size: 310.4979pt x 277.97154pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--131
+<img/comparision_between_two_svo_and_opti_position.pdf, id=1583, 578.65201pt x 
+459.80351pt>
+File: img/comparision_between_two_svo_and_opti_position.pdf Graphic file (type 
+pdf)
+ <use img/comparision_between_two_svo_and_opti_position.pdf>
+Package pdftex.def Info: img/comparision_between_two_svo_and_opti_position.pdf 
+used on input line 79.
+(pdftex.def)             Requested size: 276.00105pt x 219.32101pt.
+
+<img/comparision_between_two_svo_and_opti_angles.pdf, id=1584, 585.35265pt x 44
+1.54239pt>
+File: img/comparision_between_two_svo_and_opti_angles.pdf Graphic file (type pd
+f)
+ <use img/comparision_between_two_svo_and_opti_angles.pdf>
+Package pdftex.def Info: img/comparision_between_two_svo_and_opti_angles.pdf us
+ed on input line 86.
+(pdftex.def)             Requested size: 276.00105pt x 208.19194pt.
+
+<img/comparision_between_two_svo_and_opti_velocities.pdf, id=1585, 586.76172pt 
+x 452.34377pt>
+File: img/comparision_between_two_svo_and_opti_velocities.pdf Graphic file (typ
+e pdf)
+ <use img/comparision_between_two_svo_and_opti_velocities.pdf>
+Package pdftex.def Info: img/comparision_between_two_svo_and_opti_velocities.pd
+f used on input line 93.
+(pdftex.def)             Requested size: 276.00105pt x 212.77414pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
-[66 <./img/comparision_between_two_svo_and_opti_error.pdf> <./img/err_perc_2_sv
-o_x.pdf> <./img/err_perc_2_svo_y.pdf> <./img/err_perc_2_svo_z.pdf>]
-<img/fly_with_landing_position.pdf, id=1683, 597.23125pt x 551.83197pt>
-File: img/fly_with_landing_position.pdf Graphic file (type pdf)
 
-<use img/fly_with_landing_position.pdf>
-Package pdftex.def Info: img/fly_with_landing_position.pdf used on input line 1
-35.
-(pdftex.def)             Requested size: 137.9979pt x 127.5081pt.
+<img/comparision_between_two_svo_and_opti_error.pdf, id=1587, 611.36511pt x 438
+.04063pt>
+File: img/comparision_between_two_svo_and_opti_error.pdf Graphic file (type pdf
+)
+ <use img/comparision_between_two_svo_and_opti_error.pdf>
+Package pdftex.def Info: img/comparision_between_two_svo_and_opti_error.pdf use
+d on input line 102.
+(pdftex.def)             Requested size: 310.4979pt x 222.47537pt.
+ [65 <./img/comparision_between_two_svo_and_opti_trajectory.pdf>] [66 <./img/co
+mparision_between_two_svo_and_opti_position.pdf> <./img/comparision_between_two
+_svo_and_opti_angles.pdf>]
 
-<img/fly_with_landing_trajectory_x.pdf, id=1684, 596.8239pt x 571.44522pt>
-File: img/fly_with_landing_trajectory_x.pdf Graphic file (type pdf)
+LaTeX Warning: Text page 67 contains only floats.
 
-<use img/fly_with_landing_trajectory_x.pdf>
-Package pdftex.def Info: img/fly_with_landing_trajectory_x.pdf used on input li
-ne 139.
-(pdftex.def)             Requested size: 137.9979pt x 132.1272pt.
+[67 <./img/comparision_between_two_svo_and_opti_velocities.pdf> <./img/comparis
+ion_between_two_svo_and_opti_error.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 167--170
 
-<img/fly_with_landing_trajectory_y.pdf, id=1685, 591.35628pt x 559.2609pt>
-File: img/fly_with_landing_trajectory_y.pdf Graphic file (type pdf)
+ []
 
-<use img/fly_with_landing_trajectory_y.pdf>
-Package pdftex.def Info: img/fly_with_landing_trajectory_y.pdf used on input li
-ne 143.
-(pdftex.def)             Requested size: 137.9979pt x 130.5047pt.
 
-Underfull \vbox (badness 1215) has occurred while \output is active []
+<img/tag_moving_real_world_pos_high_altitude.pdf, id=1675, 577.89449pt x 462.71
+649pt>
+File: img/tag_moving_real_world_pos_high_altitude.pdf Graphic file (type pdf)
+ <use img/tag_moving_real_world_pos_high_altitude.pdf>
+Package pdftex.def Info: img/tag_moving_real_world_pos_high_altitude.pdf used o
+n input line 175.
+(pdftex.def)             Requested size: 155.24895pt x 124.30673pt.
 
- [67 <./img/comparision_between_two_svo_and_opti_trajectory.pdf>] [68 <./img/fl
-y_with_landing_position.pdf> <./img/fly_with_landing_trajectory_x.pdf> <./img/f
-ly_with_landing_trajectory_y.pdf>]
-<img/high_altitude_error_xy.pdf, id=1757, 498.28085pt x 310.82323pt>
+<img/tag_moving_real_world_vel_high_altitude.pdf, id=1676, 580.90898pt x 456.88
+591pt>
+File: img/tag_moving_real_world_vel_high_altitude.pdf Graphic file (type pdf)
+ <use img/tag_moving_real_world_vel_high_altitude.pdf>
+Package pdftex.def Info: img/tag_moving_real_world_vel_high_altitude.pdf used o
+n input line 180.
+(pdftex.def)             Requested size: 155.24895pt x 122.099pt.
+
+<img/high_altitude_error_xy.pdf, id=1678, 498.28085pt x 310.82323pt>
 File: img/high_altitude_error_xy.pdf Graphic file (type pdf)
 
 <use img/high_altitude_error_xy.pdf>
-Package pdftex.def Info: img/high_altitude_error_xy.pdf used on input line 167.
+Package pdftex.def Info: img/high_altitude_error_xy.pdf used on input line 193.
 
-(pdftex.def)             Requested size: 207.0021pt x 129.12677pt.
+(pdftex.def)             Requested size: 172.5pt x 107.60406pt.
 
-<img/high_altitude_error_x.pdf, id=1758, 614.295pt x 555.39195pt>
+<img/high_altitude_error_x.pdf, id=1679, 614.295pt x 555.39195pt>
 File: img/high_altitude_error_x.pdf Graphic file (type pdf)
 
 <use img/high_altitude_error_x.pdf>
-Package pdftex.def Info: img/high_altitude_error_x.pdf used on input line 172.
-(pdftex.def)             Requested size: 137.9979pt x 124.76288pt.
+Package pdftex.def Info: img/high_altitude_error_x.pdf used on input line 198.
+(pdftex.def)             Requested size: 120.7521pt x 109.16963pt.
 
-<img/high_altitude_error_y.pdf, id=1759, 609.40901pt x 548.84068pt>
+<img/high_altitude_error_y.pdf, id=1680, 609.40901pt x 548.84068pt>
 File: img/high_altitude_error_y.pdf Graphic file (type pdf)
 
 <use img/high_altitude_error_y.pdf>
-Package pdftex.def Info: img/high_altitude_error_y.pdf used on input line 177.
-(pdftex.def)             Requested size: 137.9979pt x 124.2794pt.
+Package pdftex.def Info: img/high_altitude_error_y.pdf used on input line 203.
+(pdftex.def)             Requested size: 120.7521pt x 108.74448pt.
 
-<img/high_altitude_error.pdf, id=1761, 613.61075pt x 420.03604pt>
+<img/high_altitude_error.pdf, id=1682, 613.61075pt x 420.03604pt>
 File: img/high_altitude_error.pdf Graphic file (type pdf)
 
 <use img/high_altitude_error.pdf>
-Package pdftex.def Info: img/high_altitude_error.pdf used on input line 189.
-(pdftex.def)             Requested size: 241.49895pt x 165.31316pt.
+Package pdftex.def Info: img/high_altitude_error.pdf used on input line 215.
+(pdftex.def)             Requested size: 207.0021pt x 141.70157pt.
+ [68 <./img/tag_moving_real_world_pos_high_altitude.pdf> <./img/tag_moving_real
+_world_vel_high_altitude.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [69 <./img/high_altitude_error_xy.pdf> <./img/high_altitude_error_x.pdf> <./im
-g/high_altitude_error_y.pdf>]
-<img/position_real_world.png, id=1807, 1064.5371pt x 450.2421pt>
-File: img/position_real_world.png Graphic file (type png)
-
-<use img/position_real_world.png>
-Package pdftex.def Info: img/position_real_world.png used on input line 197.
-(pdftex.def)             Requested size: 241.49895pt x 102.13824pt.
-
-<img/position_real_world_fast.png, id=1808, 1064.5371pt x 450.2421pt>
-File: img/position_real_world_fast.png Graphic file (type png)
-
-<use img/position_real_world_fast.png>
-Package pdftex.def Info: img/position_real_world_fast.png used on input line 20
-4.
-(pdftex.def)             Requested size: 241.49895pt x 102.13824pt.
- [70 <./img/high_altitude_error.pdf> <./img/position_real_world.png> <./img/pos
-ition_real_world_fast.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 240--241
+g/high_altitude_error_y.pdf> <./img/high_altitude_error.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 248--250
 
  []
 
-[71]
-Underfull \hbox (badness 10000) in paragraph at lines 242--243
-
- []
-
-<img/tag_static_real_world_pos.pdf, id=1846, 596.4007pt x 547.56921pt>
+[70] <img/tag_static_real_world_pos.pdf, id=1789, 596.4007pt x 547.56921pt>
 File: img/tag_static_real_world_pos.pdf Graphic file (type pdf)
 
 <use img/tag_static_real_world_pos.pdf>
 Package pdftex.def Info: img/tag_static_real_world_pos.pdf used on input line 2
-47.
+54.
 (pdftex.def)             Requested size: 155.24895pt x 142.53174pt.
 
-<img/tag_static_real_world_vel.pdf, id=1847, 608.02408pt x 559.83875pt>
+<img/tag_static_real_world_vel.pdf, id=1790, 608.02408pt x 559.83875pt>
 File: img/tag_static_real_world_vel.pdf Graphic file (type pdf)
 
 <use img/tag_static_real_world_vel.pdf>
 Package pdftex.def Info: img/tag_static_real_world_vel.pdf used on input line 2
-52.
+59.
 (pdftex.def)             Requested size: 155.24895pt x 142.94064pt.
 
-<img/tag_2ms_simulation_pos.pdf, id=1848, 593.73956pt x 555.18237pt>
+<img/tag_moving_real_world_pos.pdf, id=1791, 569.94339pt x 462.14699pt>
+File: img/tag_moving_real_world_pos.pdf Graphic file (type pdf)
+
+<use img/tag_moving_real_world_pos.pdf>
+Package pdftex.def Info: img/tag_moving_real_world_pos.pdf used on input line 2
+70.
+(pdftex.def)             Requested size: 155.24895pt x 125.88142pt.
+
+<img/tag_moving_real_world_vel.pdf, id=1792, 573.10602pt x 447.59712pt>
+File: img/tag_moving_real_world_vel.pdf Graphic file (type pdf)
+
+<use img/tag_moving_real_world_vel.pdf>
+Package pdftex.def Info: img/tag_moving_real_world_vel.pdf used on input line 2
+75.
+(pdftex.def)             Requested size: 155.24895pt x 121.24896pt.
+
+<img/tag_moving_real_world_pos2.pdf, id=1793, 586.80833pt x 492.27965pt>
+File: img/tag_moving_real_world_pos2.pdf Graphic file (type pdf)
+
+<use img/tag_moving_real_world_pos2.pdf>
+Package pdftex.def Info: img/tag_moving_real_world_pos2.pdf used on input line 
+281.
+(pdftex.def)             Requested size: 155.24895pt x 130.23564pt.
+
+<img/tag_moving_real_world_vel2.pdf, id=1794, 569.46829pt x 465.13835pt>
+File: img/tag_moving_real_world_vel2.pdf Graphic file (type pdf)
+
+<use img/tag_moving_real_world_vel2.pdf>
+Package pdftex.def Info: img/tag_moving_real_world_vel2.pdf used on input line 
+286.
+(pdftex.def)             Requested size: 155.24895pt x 126.80269pt.
+
+<img/tag_2ms_simulation_pos.pdf, id=1795, 593.73956pt x 555.18237pt>
 File: img/tag_2ms_simulation_pos.pdf Graphic file (type pdf)
 
 <use img/tag_2ms_simulation_pos.pdf>
-Package pdftex.def Info: img/tag_2ms_simulation_pos.pdf used on input line 263.
+Package pdftex.def Info: img/tag_2ms_simulation_pos.pdf used on input line 297.
 
 (pdftex.def)             Requested size: 155.24895pt x 145.16573pt.
 
-<img/tag_2ms_simulation_vel.pdf, id=1849, 584.42499pt x 537.9328pt>
+<img/tag_2ms_simulation_vel.pdf, id=1796, 584.42499pt x 537.9328pt>
 File: img/tag_2ms_simulation_vel.pdf Graphic file (type pdf)
 
 <use img/tag_2ms_simulation_vel.pdf>
-Package pdftex.def Info: img/tag_2ms_simulation_vel.pdf used on input line 268.
+Package pdftex.def Info: img/tag_2ms_simulation_vel.pdf used on input line 302.
 
 (pdftex.def)             Requested size: 155.24895pt x 142.89626pt.
-File: img/position_real_world.png Graphic file (type png)
- <use img/position_real_world.png>
-Package pdftex.def Info: img/position_real_world.png used on input line 296.
-(pdftex.def)             Requested size: 276.00105pt x 116.73041pt.
-File: img/position_real_world_fast.png Graphic file (type png)
 
-<use img/position_real_world_fast.png>
-Package pdftex.def Info: img/position_real_world_fast.png used on input line 30
-3.
-(pdftex.def)             Requested size: 276.00105pt x 116.73041pt.
- [72 <./img/tag_static_real_world_pos.pdf> <./img/tag_static_real_world_vel.pdf
-> <./img/tag_2ms_simulation_pos.pdf> <./img/tag_2ms_simulation_vel.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 313--315
+Underfull \hbox (badness 10000) in paragraph at lines 331--333
 
  []
 
 
-<img/acceleration_mass_changed_no_filter_x.pdf, id=1913, 542.31851pt x 445.3329
+<img/acceleration_mass_changed_no_filter_x.pdf, id=1799, 542.31851pt x 445.3329
 5pt>
 File: img/acceleration_mass_changed_no_filter_x.pdf Graphic file (type pdf)
  <use img/acceleration_mass_changed_no_filter_x.pdf>
 Package pdftex.def Info: img/acceleration_mass_changed_no_filter_x.pdf used on 
-input line 320.
+input line 338.
 (pdftex.def)             Requested size: 155.24895pt x 127.4852pt.
 
-<img/acceleration_mass_changed_filtered_x.pdf, id=1914, 543.03947pt x 446.28131
+<img/acceleration_mass_changed_filtered_x.pdf, id=1800, 543.03947pt x 446.28131
 pt>
 File: img/acceleration_mass_changed_filtered_x.pdf Graphic file (type pdf)
  <use img/acceleration_mass_changed_filtered_x.pdf>
 Package pdftex.def Info: img/acceleration_mass_changed_filtered_x.pdf used on i
-nput line 325.
+nput line 343.
 (pdftex.def)             Requested size: 155.24895pt x 127.58646pt.
 
-<img/acceleration_mass_changed_no_filter_y.pdf, id=1915, 544.01921pt x 449.5962
+<img/acceleration_mass_changed_no_filter_y.pdf, id=1801, 544.01921pt x 449.5962
 8pt>
 File: img/acceleration_mass_changed_no_filter_y.pdf Graphic file (type pdf)
  <use img/acceleration_mass_changed_no_filter_y.pdf>
 Package pdftex.def Info: img/acceleration_mass_changed_no_filter_y.pdf used on 
-input line 331.
+input line 349.
 (pdftex.def)             Requested size: 155.24895pt x 128.3009pt.
 
-<img/acceleration_mass_changed_filtered_y.pdf, id=1916, 542.13068pt x 445.81366
+<img/acceleration_mass_changed_filtered_y.pdf, id=1802, 542.13068pt x 445.81366
 pt>
 File: img/acceleration_mass_changed_filtered_y.pdf Graphic file (type pdf)
  <use img/acceleration_mass_changed_filtered_y.pdf>
 Package pdftex.def Info: img/acceleration_mass_changed_filtered_y.pdf used on i
-nput line 336.
+nput line 354.
 (pdftex.def)             Requested size: 155.24895pt x 127.66364pt.
 
-<img/acceleration_mass_changed_no_filter_z.pdf, id=1917, 543.5158pt x 448.87419
+<img/acceleration_mass_changed_no_filter_z.pdf, id=1803, 543.5158pt x 448.87419
 pt>
 File: img/acceleration_mass_changed_no_filter_z.pdf Graphic file (type pdf)
  <use img/acceleration_mass_changed_no_filter_z.pdf>
 Package pdftex.def Info: img/acceleration_mass_changed_no_filter_z.pdf used on 
-input line 342.
+input line 360.
 (pdftex.def)             Requested size: 155.24895pt x 128.21814pt.
 
-<img/acceleration_mass_changed_filtered_z.pdf, id=1918, 548.24275pt x 453.31348
+<img/acceleration_mass_changed_filtered_z.pdf, id=1804, 548.24275pt x 453.31348
 pt>
 File: img/acceleration_mass_changed_filtered_z.pdf Graphic file (type pdf)
  <use img/acceleration_mass_changed_filtered_z.pdf>
 Package pdftex.def Info: img/acceleration_mass_changed_filtered_z.pdf used on i
-nput line 347.
+nput line 365.
 (pdftex.def)             Requested size: 155.24895pt x 128.36563pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 355--357
+Underfull \hbox (badness 10000) in paragraph at lines 373--374
 
  []
 
-[73] [74 <./img/acceleration_mass_changed_no_filter_x.pdf> <./img/acceleration_
-mass_changed_filtered_x.pdf> <./img/acceleration_mass_changed_no_filter_y.pdf> 
-<./img/acceleration_mass_changed_filtered_y.pdf> <./img/acceleration_mass_chang
-ed_no_filter_z.pdf> <./img/acceleration_mass_changed_filtered_z.pdf>]
-<img/acceleration_mass_correct_filtered_z.pdf, id=2012, 542.07236pt x 447.42668
+[71 <./img/tag_static_real_world_pos.pdf> <./img/tag_static_real_world_vel.pdf>
+] [72 <./img/tag_moving_real_world_pos.pdf> <./img/tag_moving_real_world_vel.pd
+f> <./img/tag_moving_real_world_pos2.pdf> <./img/tag_moving_real_world_vel2.pdf
+> <./img/tag_2ms_simulation_pos.pdf> <./img/tag_2ms_simulation_vel.pdf>]
+[73 <./img/acceleration_mass_changed_no_filter_x.pdf> <./img/acceleration_mass_
+changed_filtered_x.pdf> <./img/acceleration_mass_changed_no_filter_y.pdf> <./im
+g/acceleration_mass_changed_filtered_y.pdf> <./img/acceleration_mass_changed_no
+_filter_z.pdf> <./img/acceleration_mass_changed_filtered_z.pdf>]
+<img/acceleration_mass_correct_filtered_z.pdf, id=2009, 542.07236pt x 447.42668
 pt>
 File: img/acceleration_mass_correct_filtered_z.pdf Graphic file (type pdf)
  <use img/acceleration_mass_correct_filtered_z.pdf>
 Package pdftex.def Info: img/acceleration_mass_correct_filtered_z.pdf used on i
-nput line 364.
+nput line 381.
 (pdftex.def)             Requested size: 155.24895pt x 128.13919pt.
 File: img/acceleration_mass_changed_filtered_z.pdf Graphic file (type pdf)
 
 <use img/acceleration_mass_changed_filtered_z.pdf>
 Package pdftex.def Info: img/acceleration_mass_changed_filtered_z.pdf used on i
-nput line 369.
+nput line 386.
 (pdftex.def)             Requested size: 155.24895pt x 128.36563pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--382
+LaTeX Warning: Reference `fig:landing3' on page 74 undefined on input line 402.
 
- []
 
-[75 <./img/acceleration_mass_correct_filtered_z.pdf>])
-(./chapters/6_discussion.tex [76]
+<img/takeoff1.png, id=2012, 804.00375pt x 514.92375pt>
+File: img/takeoff1.png Graphic file (type png)
+ <use img/takeoff1.png>
+Package pdftex.def Info: img/takeoff1.png used on input line 407.
+(pdftex.def)             Requested size: 172.5pt x 110.47073pt.
+
+<img/exploring1.png, id=2013, 706.13812pt x 433.62pt>
+File: img/exploring1.png Graphic file (type png)
+ <use img/exploring1.png>
+Package pdftex.def Info: img/exploring1.png used on input line 411.
+(pdftex.def)             Requested size: 172.5pt x 105.92354pt.
+
+<img/align1.png, id=2014, 529.98pt x 325.71687pt>
+File: img/align1.png Graphic file (type png)
+ <use img/align1.png>
+Package pdftex.def Info: img/align1.png used on input line 416.
+(pdftex.def)             Requested size: 172.5pt x 106.01576pt.
+
+<img/landing1.png, id=2015, 484.81125pt x 297.11pt>
+File: img/landing1.png Graphic file (type png)
+ <use img/landing1.png>
+Package pdftex.def Info: img/landing1.png used on input line 421.
+(pdftex.def)             Requested size: 172.5pt x 105.71278pt.
+
+<img/landed1.png, id=2016, 450.18187pt x 270.51062pt>
+File: img/landed1.png Graphic file (type png)
+ <use img/landed1.png>
+Package pdftex.def Info: img/landed1.png used on input line 426.
+(pdftex.def)             Requested size: 172.5pt x 103.65364pt.
+
+
+LaTeX Warning: Float too large for page by 56.77646pt on input line 433.
+
+<img/takeoff2.png, id=2017, 1052.43187pt x 618.81187pt>
+File: img/takeoff2.png Graphic file (type png)
+ <use img/takeoff2.png>
+Package pdftex.def Info: img/takeoff2.png used on input line 438.
+(pdftex.def)             Requested size: 172.5pt x 101.41971pt.
+
+<img/exploring2.png, id=2018, 914.41624pt x 558.085pt>
+File: img/exploring2.png Graphic file (type png)
+
+<use img/exploring2.png>
+Package pdftex.def Info: img/exploring2.png used on input line 442.
+(pdftex.def)             Requested size: 172.5pt x 105.27936pt.
+ <img/align2.png, id=2019, 994.71625pt x 533.49312pt>
+File: img/align2.png Graphic file (type png)
+
+<use img/align2.png>
+Package pdftex.def Info: img/align2.png used on input line 447.
+(pdftex.def)             Requested size: 172.5pt x 92.51608pt.
+ <img/landing2.png, id=2020, 1040.38687pt x 579.66562pt>
+File: img/landing2.png Graphic file (type png)
+
+<use img/landing2.png>
+Package pdftex.def Info: img/landing2.png used on input line 452.
+(pdftex.def)             Requested size: 172.5pt x 96.10948pt.
+ <img/landed2.png, id=2021, 1284.8pt x 729.72626pt>
+File: img/landed2.png Graphic file (type png)
+
+<use img/landed2.png>
+Package pdftex.def Info: img/landed2.png used on input line 457.
+(pdftex.def)             Requested size: 172.5pt x 97.97432pt.
+
+
+LaTeX Warning: Float too large for page by 18.29895pt on input line 464.
+
+<img/takeoff3.png, id=2022, 1284.8pt x 803.0pt>
+File: img/takeoff3.png Graphic file (type png)
+ <use img/takeoff3.png>
+Package pdftex.def Info: img/takeoff3.png used on input line 470.
+(pdftex.def)             Requested size: 103.50105pt x 64.6824pt.
+
+<img/exploring3.png, id=2023, 1066.48438pt x 585.18625pt>
+File: img/exploring3.png Graphic file (type png)
+
+<use img/exploring3.png>
+Package pdftex.def Info: img/exploring3.png used on input line 474.
+(pdftex.def)             Requested size: 103.50105pt x 56.78978pt.
+
+<img/following3.png, id=2024, 1015.795pt x 547.04375pt>
+File: img/following3.png Graphic file (type png)
+
+<use img/following3.png>
+Package pdftex.def Info: img/following3.png used on input line 479.
+(pdftex.def)             Requested size: 103.50105pt x 55.73428pt.
+
+<img/approaching3.png, id=2025, 892.83563pt x 526.96875pt>
+File: img/approaching3.png Graphic file (type png)
+
+<use img/approaching3.png>
+Package pdftex.def Info: img/approaching3.png used on input line 484.
+(pdftex.def)             Requested size: 103.50105pt x 61.0866pt.
+ <img/align3.png, id=2026, 1284.8pt x 803.0pt>
+File: img/align3.png Graphic file (type png)
+
+<use img/align3.png>
+Package pdftex.def Info: img/align3.png used on input line 489.
+(pdftex.def)             Requested size: 103.50105pt x 64.6824pt.
+ <img/landing3.png, id=2027, 756.32562pt x 410.53375pt>
+File: img/landing3.png Graphic file (type png)
+
+<use img/landing3.png>
+Package pdftex.def Info: img/landing3.png used on input line 494.
+(pdftex.def)             Requested size: 103.50105pt x 56.17763pt.
+ <img/landed3.png, id=2028, 774.895pt x 449.68pt>
+File: img/landed3.png Graphic file (type png)
+
+<use img/landed3.png>
+Package pdftex.def Info: img/landed3.png used on input line 499.
+(pdftex.def)             Requested size: 103.50105pt x 60.05919pt.
+) (./chapters/6_discussion.tex [74 <./img/acceleration_mass_correct_filtered_z.
+pdf>] [75 <./img/takeoff1.png> <./img/exploring1.png> <./img/align1.png> <./img
+/landing1.png> <./img/landed1.png>] [76 <./img/takeoff2.png> <./img/exploring2.
+png> <./img/align2.png> <./img/landing2.png> <./img/landed2.png>] [77 <./img/ta
+keoff3.png> <./img/exploring3.png> <./img/following3.png> <./img/approaching3.p
+ng> <./img/align3.png> <./img/landing3.png> <./img/landed3.png>]
 Chapter 7.
-[77
+[78
 
-] [78]
-Underfull \hbox (badness 10000) in paragraph at lines 40--42
+] [79]
+Underfull \hbox (badness 10000) in paragraph at lines 44--46
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--44
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 45--83
+Underfull \hbox (badness 10000) in paragraph at lines 49--85
 
  []
 
-[79] [80
+[80] (./Report.bbl [81
 
-] (./Report.bbl [81
 
 ] [82]) [83] [84
 
 ]
 File: logos/RPG_logo_color.pdf Graphic file (type pdf)
  <use logos/RPG_logo_color.pdf>
-Package pdftex.def Info: logos/RPG_logo_color.pdf used on input line 95.
+Package pdftex.def Info: logos/RPG_logo_color.pdf used on input line 97.
 (pdftex.def)             Requested size: 145.89124pt x 85.35826pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--95
+Overfull \hbox (2.91446pt too wide) in paragraph at lines 97--97
+\OT1/cmr/m/n/17.28 Au-tonomous Quadro-tor Land-ing on a Mov-ing Plat-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
 
  []
 
 [85]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 95.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 95.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 97.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 97.
  (./Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 95.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 95.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 97.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 97.
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: 95642B9075C0416341C6E70148083A5F;4563.
+(rerunfilecheck)             Checksum: 00A59D57BDD1408AD9A11B264A305C82;4746.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 95.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 97.
  ) 
 Here is how much of TeX's memory you used:
- 33343 strings out of 493014
- 746988 string characters out of 6133352
- 1023006 words of memory out of 5000000
- 35797 multiletter control sequences out of 15000+600000
- 16078 words of font info for 59 fonts, out of 8000000 for 9000
+ 42810 strings out of 493014
+ 961532 string characters out of 6133352
+ 1170390 words of memory out of 5000000
+ 45149 multiletter control sequences out of 15000+600000
+ 18938 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,22n,84p,1011b,675s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,22n,84p,10357b,1301s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
@@ -2622,10 +2990,10 @@ st/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2016/texmf-dis
 t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2016/texmf
 -dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2016/texmf-d
 ist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on Report.pdf (92 pages, 14785354 bytes).
+Output written on Report.pdf (92 pages, 74743428 bytes).
 PDF statistics:
- 2249 PDF objects out of 2487 (max. 8388607)
- 1861 compressed objects within 19 object streams
- 366 named destinations out of 1000 (max. 500000)
- 992 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2300 PDF objects out of 2487 (max. 8388607)
+ 1887 compressed objects within 19 object streams
+ 421 named destinations out of 1000 (max. 500000)
+ 1065 words of extra memory for PDF output out of 10000 (max. 10000000)
 

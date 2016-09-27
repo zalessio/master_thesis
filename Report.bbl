@@ -31,6 +31,11 @@ Zhou Jian, Wang Xin-Min, and Wang Xiao-Yan.
 \newblock Automatic landing control of uav based on optical guidance.
 \newblock pages 152--155, 2012.
 
+\bibitem{mellinger2010control}
+Daniel Mellinger, Michael Shomin, and Vijay Kumar.
+\newblock Control of quadrotors for robust perching and landing.
+\newblock pages 205--225, 2010.
+
 \bibitem{wenzel2011automatic}
 Karl~Engelbert Wenzel, Andreas Masselli, and Andreas Zell.
 \newblock Automatic take off, tracking and landing of a miniature uav on a
@@ -50,11 +55,6 @@ JeongWoon Kim, YeonDeuk Jung, DaSol Lee, and David~Hyunchul Shim.
   omnidirectional image sensor.
 \newblock {\em Journal of Intelligent {\&} Robotic Systems}, pages 1--13, 2016.
 
-\bibitem{mellinger2010control}
-Daniel Mellinger, Michael Shomin, and Vijay Kumar.
-\newblock Control of quadrotors for robust perching and landing.
-\newblock pages 205--225, 2010.
-
 \bibitem{vlantis2015quadrotor}
 Panagiotis Vlantis, Panos Marantos, Charalampos~P Bechlioulis, and Kostas~J
   Kyriakopoulos.
@@ -71,13 +71,6 @@ Michael Neunert, C{\'e}dric de~Crousaz, Fadri Furrer, Mina Kamel, Farbod
   Farshidian, Roland Siegwart, and Jonas Buchli.
 \newblock Fast nonlinear model predictive control for unified trajectory
   optimization and tracking.
-
-\bibitem{sideris2005efficient}
-Athanasios Sideris and James~E Bobrow.
-\newblock An efficient sequential linear quadratic algorithm for solving
-  nonlinear optimal control problems.
-\newblock {\em IEEE transactions on automatic control}, 50(12):2043--2047,
-  2005.
 
 \bibitem{bangura2014real}
 Moses Bangura and Robert Mahony.
@@ -122,6 +115,13 @@ Bradley~M Bell and Frederick~W Cathey.
 \newblock The iterated kalman filter update as a gauss-newton method.
 \newblock {\em IEEE Transactions on Automatic Control}, 38(2):294--297, 1993.
 
+\bibitem{faessler2015automatic}
+Matthias Faessler, Flavio Fontana, Christian Forster, and Davide Scaramuzza.
+\newblock Automatic re-initialization and failure recovery for aggressive
+  flight with a monocular vision-based quadrotor.
+\newblock In {\em 2015 IEEE International Conference on Robotics and Automation
+  (ICRA)}, pages 1722--1729. IEEE, 2015.
+
 \bibitem{kalmanfilter}
 Rudolph~Emil Kalman.
 \newblock A new approach to linear filtering and prediction problems.
@@ -155,6 +155,10 @@ Long Quan and Zhongdan Lan.
 \newblock {\em IEEE Transactions on pattern analysis and machine intelligence},
   21(8):774--780, 1999.
 
+\bibitem{ARTAG}
+Wikipedia.
+\newblock Artag, 2016.
+
 \bibitem{kato1999marker}
 Hirokazu Kato and Mark Billinghurst.
 \newblock Marker tracking and hmd calibration for a video-based augmented
@@ -187,6 +191,9 @@ Daniel Mellinger and Vijay Kumar.
 \newblock Minimum snap trajectory generation and control for quadrotors.
 \newblock pages 2520--2525, 2011.
 
+\bibitem{optitrack}
+Optitrack motion-caption system.
+
 \bibitem{clearpathrobotics}
 Clearpath Robotics.
 \newblock Clearpath robotics, 2009.
@@ -203,9 +210,6 @@ Fadri Furrer, Michael Burri, Markus Achtelik, and Roland Siegwart.
 \bibitem{RobotsHusky}
 Clearpath Robotics.
 \newblock Robots husky ros package.
-
-\bibitem{optitrack}
-Optitrack motion caption system.
 
 \bibitem{rpgapriltags}
 RPG.
