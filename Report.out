@@ -64,6 +64,7 @@
 \BOOKMARK [1][-]{section.7.1}{Conclusion}{chapter.7}% 64
 \BOOKMARK [1][-]{section.7.2}{Future Work}{chapter.7}% 65
 \BOOKMARK [2][-]{subsection.7.2.1}{SVO with multiple cameras}{section.7.2}% 66
-\BOOKMARK [2][-]{subsection.7.2.2}{State estimation fuse multiple sensors}{section.7.2}% 67
-\BOOKMARK [2][-]{subsection.7.2.3}{Change the controller}{section.7.2}% 68
-\BOOKMARK [2][-]{subsection.7.2.4}{Cross detector}{section.7.2}% 69
+\BOOKMARK [2][-]{subsection.7.2.2}{State estimation with multiple sensors}{section.7.2}% 67
+\BOOKMARK [2][-]{subsection.7.2.3}{Control}{section.7.2}% 68
+\BOOKMARK [2][-]{subsection.7.2.4}{Smart way-points sampling during the exploration}{section.7.2}% 69
+\BOOKMARK [2][-]{subsection.7.2.5}{Cross detector}{section.7.2}% 70

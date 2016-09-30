@@ -399,62 +399,72 @@ In simulation we reached velocity of the moving platform of up to \SI{3}{\meter 
 We achieved a successful landing rate of over $90\%$.\\
 The main issues why we have not tried yet higher velocity in the real world is that the quadrotor we are using has hardware limitations that do not allow fast trajectory tracking, so in the final stages of the state machine, the trajectory generator is not able to find feasible trajectories that bring the quadrotor on the platform. Furthermore, the trajectory replanning at high velocities causes some fast oscillations to the quadrotor, and this may result the failure of the visual odometry. 
 
-Figs. \ref{fig:landing1},  \ref{fig:landing2} and  \ref{fig:landing3}  shows pictures from the different tests in the real world and in simulation. In particular we highlighted the stages of the state machine.
+Figs. \ref{fig:landing1},  \ref{fig:landing2} and  \ref{fig:landing3}  show pictures from different tests in the real world and in simulation. In each set of pictures we highlighted the stages of the landing state machine. The quadrotor proceeds from a stage to another until it completes the mission and lands on the moving platform.
 
 \begin{figure}[!htbp]
   \centering
-   \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{img/takeoff1.png}
+   \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{img/takeoff3.jpg}
         \caption{Takeoff.}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{img/exploring1.png}
+   \end{subfigure}\hfill
+   \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{img/exploring3.jpg}
         \caption{Exploration.}
         \label{fig:two}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{img/align1.png}
+   \end{subfigure}\hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{img/following3.jpg}
+        \caption{Following the base.}
+        \label{fig:three}
+   \end{subfigure}\hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{img/approaching3.jpg}
+        \caption{Approaching the base.}
+        \label{fig:three}
+   \end{subfigure}\hfill
+   \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{img/align3.jpg}
         \caption{Align with the base.}
         \label{fig:three}
-   \end{subfigure}
-    \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{img/landing1.png}
+   \end{subfigure}\hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{img/landing3.jpg}
         \caption{Landing on the base.}
         \label{fig:four}
-   \end{subfigure} 
-    \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{img/landed1.png}
+   \end{subfigure} \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{img/landed3.jpg}
         \caption{Landed on the base.}
         \label{fig:five}
    \end{subfigure}
    
-  \caption{Sequence of images taken from a real world experiment in which the platform is moving at \SI{0.6}{\meter \per \second} }
+  \caption{Sequence of images taken from a simulation experiment in which the platform is moving at \SI{2.0}{\meter \per \second} }
   \label{fig:landing1}
-\end{figure} 
+\end{figure}
 
 \begin{figure}[!htbp]
   \centering
    \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{img/takeoff2.png}
+        \includegraphics[width=\textwidth]{img/takeoff2.jpg}
         \caption{Takeoff.}
    \end{subfigure}
    \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{img/exploring2.png}
+        \includegraphics[width=\textwidth]{img/exploring2.jpg}
         \caption{Exploration.}
         \label{fig:two}
    \end{subfigure}
    \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{img/align2.png}
+        \includegraphics[width=\textwidth]{img/align2.jpg}
         \caption{Align with the base.}
         \label{fig:three}
    \end{subfigure}
     \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{img/landing2.png}
+        \includegraphics[width=\textwidth]{img/landing2.jpg}
         \caption{Landing on the base.}
         \label{fig:four}
    \end{subfigure} 
     \begin{subfigure}[b]{0.5\textwidth}
-        \includegraphics[width=\textwidth]{img/landed2.png}
+        \includegraphics[width=\textwidth]{img/landed2.jpg}
         \caption{Landed on the base.}
         \label{fig:five}
    \end{subfigure}
@@ -463,47 +473,41 @@ Figs. \ref{fig:landing1},  \ref{fig:landing2} and  \ref{fig:landing3}  shows pic
   \label{fig:landing2}
 \end{figure} 
 
-
 \begin{figure}[!htbp]
   \centering
-   \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{img/takeoff3.png}
+   \begin{subfigure}[b]{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/takeoff1.jpg}
         \caption{Takeoff.}
    \end{subfigure}
-   \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{img/exploring3.png}
+   \begin{subfigure}[b]{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/exploring1.jpg}
         \caption{Exploration.}
         \label{fig:two}
    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{img/following3.png}
+   \begin{subfigure}[b]{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/align1.jpg}
         \caption{Align with the base.}
         \label{fig:three}
    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{img/approaching3.png}
-        \caption{Align with the base.}
-        \label{fig:three}
-   \end{subfigure}
-   \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{img/align3.png}
-        \caption{Align with the base.}
-        \label{fig:three}
-   \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{img/landing3.png}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/landing1.jpg}
         \caption{Landing on the base.}
         \label{fig:four}
    \end{subfigure} 
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{img/landed3.png}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/landed1.jpg}
         \caption{Landed on the base.}
         \label{fig:five}
    \end{subfigure}
    
-  \caption{Sequence of images taken from a simulation experiment in which the platform is moving at \SI{2.0}{\meter \per \second} }
-  \label{fig:landing2}
+  \caption{Sequence of images taken from a real world experiment in which the platform is moving at \SI{0.6}{\meter \per \second} }
+  \label{fig:landing3}
 \end{figure} 
+
+
+
+
+ 
 
 %\begin{figure}[h]
 %   \centering

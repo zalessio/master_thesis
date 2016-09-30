@@ -69,6 +69,7 @@
 \contentsline {section}{\numberline {7.1}Conclusion}{78}{section.7.1}
 \contentsline {section}{\numberline {7.2}Future Work}{79}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}SVO with multiple cameras}{79}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}State estimation fuse multiple sensors}{79}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Change the controller}{79}{subsection.7.2.3}
-\contentsline {subsection}{\numberline {7.2.4}Cross detector}{80}{subsection.7.2.4}
+\contentsline {subsection}{\numberline {7.2.2}State estimation with multiple sensors}{80}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Control}{80}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Smart way-points sampling during the exploration}{81}{subsection.7.2.4}
+\contentsline {subsection}{\numberline {7.2.5}Cross detector}{81}{subsection.7.2.5}
